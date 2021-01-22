@@ -1,7 +1,12 @@
-class TournamentController < ApplicationController
+class TournamentsController < ApplicationController
   def index
     @tournaments = Tournament.all
   end
+
+  def show
+    @tournament = Tournament.find(params[:id])
+  end
+
 
   def new
     @tournament = Tournament.new
@@ -21,7 +26,7 @@ class TournamentController < ApplicationController
   def update
   end
 
-  def show
+  def delete
   end
 
   def tournament_params

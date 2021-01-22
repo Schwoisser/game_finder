@@ -26,7 +26,7 @@ class DbDraft < ActiveRecord::Migration[6.1]
     end  
 
     create_table :player_groups do |t|
-      t.bigint :creator_id
+      t.bigint :organizer_id
       t.text :title
       t.text :description
       t.timestamps

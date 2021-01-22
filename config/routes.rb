@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :users
   root "main#index"
 
@@ -7,6 +8,8 @@ Rails.application.routes.draw do
   get "/profile", to: "profile#show"
   resources "match"
   resources "message"
-  resources "tournament"
+  resources "tournaments"
+  resources "player_groups"
+  resources "armies"
 
 end

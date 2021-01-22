@@ -84,7 +84,7 @@ ActiveRecord::Schema.define(version: 2021_01_15_125456) do
   end
 
   create_table "player_groups", force: :cascade do |t|
-    t.bigint "creator_id"
+    t.bigint "organizer_id"
     t.text "title"
     t.text "description"
     t.datetime "created_at", precision: 6, null: false

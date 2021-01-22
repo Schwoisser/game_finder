@@ -10,11 +10,12 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
     <%= stylesheet_pack_tag 'stylesheets', media: 'all', 'data-turbolinks-track': 'reload' %>
-    
+
   </head>
 
   <body>
-  <div style="margin-top: 50px"></div>
+
+    <%= render :partial => 'layouts/header', locals: { } %>
     <%= yield %>
     
   </body>

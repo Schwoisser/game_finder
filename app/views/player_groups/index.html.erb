@@ -1,0 +1,5 @@
+<h1>Player Groups</h1>
+<% @player_groups.each do |player_group|%>
+  <%= link_to player_group.title, player_group_path(player_group) %>
+<% end %>
+<%= link_to "Neue Gruppe erstellen", new_player_group_path %>
