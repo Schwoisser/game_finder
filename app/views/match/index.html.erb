@@ -1,0 +1,7 @@
+<% @matches.each do |match| %>
+  <h2>
+  <%= link_to match.title, match_path(match) %>
+  </h2>
+<% end%>
+
+<%= link_to "Arrange Match", new_match_path %>

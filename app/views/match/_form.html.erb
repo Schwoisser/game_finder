@@ -1,0 +1,6 @@
+<%= form_for :match, url: match_index_path, method: :post do |f| %>
+  Titel: <%= f.text_field :title %><br />
+  Beschreibung: <%= f.text_field :description %><br />
+  <%= f.collection_select :game_id, user.games, :id, :title %>
+  <%= f.submit %>
+<% end %>
