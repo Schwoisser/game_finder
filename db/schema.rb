@@ -102,6 +102,7 @@ ActiveRecord::Schema.define(version: 2021_01_15_125456) do
     t.datetime "start_date"
     t.text "title"
     t.text "description"
+    t.bigint "organizer_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

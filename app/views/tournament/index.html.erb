@@ -1,2 +1,5 @@
-<h1>Torunament#index</h1>
-<p>Find me in app/views/torunament/index.html.erb</p>
+<h1>Torunaments</h1>
+<% Tournament.all.each do |tournament|%>
+  <%= link_to tournament.title, tournament_path(tournament) %>
+<% end %>
+<%= link_to "Neues Tournier erstellen", new_tournament_path %>

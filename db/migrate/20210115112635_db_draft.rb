@@ -4,6 +4,7 @@ class DbDraft < ActiveRecord::Migration[6.1]
       t.datetime :start_date
       t.text :title
       t.text :description
+      t.bigint :organizer_id
       t.timestamps
     end
 
