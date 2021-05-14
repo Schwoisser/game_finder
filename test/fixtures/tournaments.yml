@@ -1,0 +1,14 @@
+one:
+  id: 1
+  start_date: "2020-10-10"
+  title: "Tournament 1"
+  description: "Tournament desc"
+  organizer_id: 1
+  gamesystem: "Warhammer 40k"
+  game_id: 1
+  address: "address"
+  special_rules: "free for all"
+  end_date: "2020-10-11"
+  max_player_number: 6
+  max_number_of_rounds: 3
+  current_round: 0

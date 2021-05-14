@@ -2,3 +2,19 @@
   <%= @tournament.description %>
   <%= @tournament.start_date %>
   <%= @tournament.organizer.full_name %>
+
+  <% @tournament.users.each do |user| %>
+    <%= user.full_name %>
+  <% end %>
+
+<% if @tournament.users.include?(current_user) %>
+  <%= simple_form_for :tournament, :url => '/tournaments/leave' do |f| %>
+    <%= f.hidden_field :tournament_id, :value => @tournament.id %>
+    <%= f.button :submit %>
+  <% end %>
+<% else %>
+  <%= simple_form_for :tournament, :url => '/tournaments/join' do |f| %>
+    <%= f.hidden_field :tournament_id, :value => @tournament.id %>
+    <%= f.button :submit %>
+  <% end %>
+<% end %>

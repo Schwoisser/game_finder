@@ -1,6 +1,12 @@
 class MatchController < ApplicationController
   def index
-    @matches = Match.all # where games in user.games
+    # TODO inform the user that he has no location
+    begin
+      nearest_users = User.within(20, :origin => current_user)
+      @matches = Match.where(user: nearest_users) # where games in user.games
+    rescue => e 
+      @matches = Match.all
+    end
   end
 
   def show

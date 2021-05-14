@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :invitations
   devise_for :users
   root "main#index"
 
@@ -9,7 +10,12 @@ Rails.application.routes.draw do
   resources "match"
   resources "message"
   resources "tournaments"
-  resources "player_groups"
   resources "armies"
+
+  post "/tournaments/join", to: "tournaments#join"
+  post "/tournaments/leave", to: "tournaments#leave"
+  post "/tournaments/pair", to: "tournaments#pair"
+  post "/tournaments/start_round", to: "tournaments#start_round"
+  # resources "player_groups"
 
 end

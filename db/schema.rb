@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_15_125456) do
+ActiveRecord::Schema.define(version: 2021_05_14_114000) do
 
   create_table "armies", force: :cascade do |t|
     t.bigint "user_id"
@@ -35,14 +35,24 @@ ActiveRecord::Schema.define(version: 2021_01_15_125456) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "invitations", force: :cascade do |t|
+    t.text "message"
+    t.bigint "match_id"
+    t.bigint "sender_id"
+    t.bigint "receiver_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "matches", force: :cascade do |t|
     t.datetime "start_date"
     t.text "title"
     t.text "description"
-    t.bigint "game_id"
-    t.bigint "tournament_id"
+    t.integer "game_id"
+    t.integer "tournament_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "tournament_round"
   end
 
   create_table "matches_player_attributes", force: :cascade do |t|
@@ -102,9 +112,17 @@ ActiveRecord::Schema.define(version: 2021_01_15_125456) do
     t.datetime "start_date"
     t.text "title"
     t.text "description"
-    t.bigint "organizer_id"
+    t.integer "organizer_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "gamesystem"
+    t.text "address"
+    t.text "special_rules"
+    t.date "end_date"
+    t.integer "max_player_number"
+    t.integer "max_number_of_rounds", default: 3
+    t.integer "current_round", default: 0
+    t.bigint "game_id", default: 0
   end
 
   create_table "tournaments_users", force: :cascade do |t|
@@ -124,6 +142,9 @@ ActiveRecord::Schema.define(version: 2021_01_15_125456) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.float "latidude"
+    t.float "longitude"
+    t.float "latitude"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
