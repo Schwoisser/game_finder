@@ -2,15 +2,19 @@
 <html>
   <head>
     <title>GameFinder</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta charset="UTF-8" />
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= yield :head %>
     <%= turbo_include_tags %>
     <%= stylesheet_pack_tag 'stylesheets', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link href="https://unpkg.com/tailwindcss@%5E2/dist/tailwind.min.css" rel="stylesheet">
 
   </head>
 

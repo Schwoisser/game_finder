@@ -1,8 +1,40 @@
 <%= simple_form_for tournament do |f| %>
-  <%= f.input :title %>
-  <%= f.input :description %>
-  <%= f.select :gamesystem, ['Warhammer 40k', 'Flames of War']%>
-  <%= f.input :start_date %>
-
-  <%= f.button :submit %>
+  <div>
+    <h3>Create a Tournament</h3>
+    <h2>Choose a System</h2>
+    <%= f.association :game, collection: Game.order(:title), prompt: "Choose a Gamesystem" , label_method: :title, value_method: :id %>
+  </div>
+  <div>
+    <h3>Create a Tournament</h3>
+    <h2>Choose a Scoring System</h2>
+    <!--TODO: Scoring System-->
+  </div>
+  <div>
+    <h3>Create a Tournament</h3>
+    <%= f.input :title %>
+    <%= f.input :location %>
+    <%= f.input :street %>
+    <%= f.input :zip_code %>
+    <%= f.input :city %>
+    <%= f.association :country, collection: Country.order(:name), prompt: "Choose a Country" , label_method: :name, value_method: :id %>
+    <%= f.input :start_date %>
+    <%= f.input :end_date %>
+    <%= f.input :max_player_number %>
+    <%= f.input :max_number_of_rounds %>
+  </div>
+  <div>
+    <h3>Create a Tournament</h3>
+    <%= f.input :tournament_type, collection:["Singles", "Team"] %> <!--TODO: Dropdown "Singles, Team"-->
+    <!--TODO: Best Painted Input-->
+    <%= f.input :armylist_deadline_date %>
+    <%= f.input :armylists_visible_date %>
+    <%= f.input :payment_type %>
+    <%= f.input :payment_deadline_date %>
+  </div>
+  <div>
+    <%= f.input :summary %>
+    <%= f.input :information %>
+    <%= f.input :procedure %>
+    <%= f.button :submit %>
+  </div>
 <% end %>

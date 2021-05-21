@@ -10,13 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_14_114000) do
+ActiveRecord::Schema.define(version: 2021_05_21_143219) do
 
   create_table "armies", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "game_id"
     t.text "title"
     t.text "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "countries", force: :cascade do |t|
+    t.text "name"
+    t.text "short_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -48,8 +55,8 @@ ActiveRecord::Schema.define(version: 2021_05_14_114000) do
     t.datetime "start_date"
     t.text "title"
     t.text "description"
-    t.integer "game_id"
-    t.integer "tournament_id"
+    t.bigint "game_id"
+    t.bigint "tournament_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "tournament_round"
@@ -94,7 +101,7 @@ ActiveRecord::Schema.define(version: 2021_05_14_114000) do
   end
 
   create_table "player_groups", force: :cascade do |t|
-    t.bigint "organizer_id"
+    t.bigint "creator_id"
     t.text "title"
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
@@ -111,18 +118,28 @@ ActiveRecord::Schema.define(version: 2021_05_14_114000) do
   create_table "tournaments", force: :cascade do |t|
     t.datetime "start_date"
     t.text "title"
-    t.text "description"
+    t.text "summary"
     t.integer "organizer_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.text "gamesystem"
-    t.text "address"
+    t.text "street"
+    t.text "location"
     t.text "special_rules"
-    t.date "end_date"
+    t.datetime "end_date"
     t.integer "max_player_number"
     t.integer "max_number_of_rounds", default: 3
     t.integer "current_round", default: 0
-    t.bigint "game_id", default: 0
+    t.integer "game_id", default: 0
+    t.text "zip_code"
+    t.integer "country_id"
+    t.text "city"
+    t.text "tournament_type"
+    t.datetime "armylist_deadline_date"
+    t.datetime "armylists_visible_date"
+    t.text "payment_type"
+    t.datetime "payment_deadline_date"
+    t.text "information"
+    t.text "procedure"
   end
 
   create_table "tournaments_users", force: :cascade do |t|
@@ -142,7 +159,6 @@ ActiveRecord::Schema.define(version: 2021_05_14_114000) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.float "latidude"
     t.float "longitude"
     t.float "latitude"
     t.index ["email"], name: "index_users_on_email", unique: true

@@ -1,5 +1,22 @@
-<h1>Torunaments</h1>
+<h1>Tournaments</h1>
 <% Tournament.all.each do |tournament|%>
-  <%= link_to tournament.title, tournament_path(tournament) %>
+  <a href="<%= tournament_path(tournament) %>">
+    <div class="bg-gray-300 m-2 p-1.5">
+      <%= tournament.start_date.strftime("%d.%m.%y") %><br>
+      
+      <%= tournament.title %><br>
+      <!-- <%= tournament.end_date %><br> -->
+
+    </div>
+  </a>
+
+  <style>
+    @media (min-width: 768px){
+      .bg-gray-300{
+        background-color: red;
+      }
+    }
+  </style>
+
 <% end %>
-<%= link_to "Neues Tournier erstellen", new_tournament_path %>
+<%= link_to "Create New Tournament", new_tournament_path %>
