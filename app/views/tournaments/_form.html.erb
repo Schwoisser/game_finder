@@ -1,40 +1,48 @@
-<%= simple_form_for tournament do |f| %>
-  <div>
-    <h3>Create a Tournament</h3>
-    <h2>Choose a System</h2>
-    <%= f.association :game, collection: Game.order(:title), prompt: "Choose a Gamesystem" , label_method: :title, value_method: :id %>
+<div data-controller="multistep-form">
+  <%= simple_form_for tournament do |f| %>
+    <div data-multistep-form-target="steps">
+      <h3>Create a Tournament</h3>
+      <h2>Choose a System</h2>
+      <%= f.association :game, collection: Game.order(:title), prompt: "Choose a Gamesystem" , label_method: :title, value_method: :id %>
+    </div>
+    <div data-multistep-form-target="steps" class="hidden">
+      <h3>Create a Tournament</h3>
+      <h2>Choose a Scoring System</h2>
+      <!--TODO: Scoring System-->
+    </div>
+    <div data-multistep-form-target="steps" class="hidden">
+      <h3>Create a Tournament</h3>
+      <%= f.input :title %>
+      <%= f.input :location %>
+      <%= f.input :street %>
+      <%= f.input :zip_code %>
+      <%= f.input :city %>
+      <%= f.association :country, collection: Country.order(:name), prompt: "Choose a Country" , label_method: :name, value_method: :id %>
+      <%= f.input :start_date %>
+      <%= f.input :end_date %>
+      <%= f.input :max_player_number %>
+      <%= f.input :max_number_of_rounds %>
+    </div>
+    <div data-multistep-form-target="steps" class="hidden">
+      <h3>Create a Tournament</h3>
+      <%= f.input :tournament_type, collection:["Singles", "Team"] %> <!--TODO: Dropdown "Singles, Team"-->
+      <!--TODO: Best Painted Input-->
+      <%= f.input :armylist_deadline_date %>
+      <%= f.input :armylists_visible_date %>
+      <%= f.input :payment_type %>
+      <%= f.input :payment_deadline_date %>
+    </div>
+    <div data-multistep-form-target="steps" class="hidden">
+      <%= f.input :summary %>
+      <%= f.input :information %>
+      <%= f.input :procedure %>
+      <%= f.button :submit %>
+    </div>
+  <% end %>
+  <div class="flex flex-row mt-4">  
+    <div class="py-3.5 px-7 mr-2 bg-gray-300 rounded-sm hover-effect hidden" data-action="click->multistep-form#back" data-multistep-form-target="previous">Back</div>
+    <div class="py-3.5 px-7 bg-gray-300 rounded-sm hover-effect" data-action="click->multistep-form#next" data-multistep-form-target="proceed">Next</div>
   </div>
-  <div>
-    <h3>Create a Tournament</h3>
-    <h2>Choose a Scoring System</h2>
-    <!--TODO: Scoring System-->
+  <div style="height: 4rem">
   </div>
-  <div>
-    <h3>Create a Tournament</h3>
-    <%= f.input :title %>
-    <%= f.input :location %>
-    <%= f.input :street %>
-    <%= f.input :zip_code %>
-    <%= f.input :city %>
-    <%= f.association :country, collection: Country.order(:name), prompt: "Choose a Country" , label_method: :name, value_method: :id %>
-    <%= f.input :start_date %>
-    <%= f.input :end_date %>
-    <%= f.input :max_player_number %>
-    <%= f.input :max_number_of_rounds %>
-  </div>
-  <div>
-    <h3>Create a Tournament</h3>
-    <%= f.input :tournament_type, collection:["Singles", "Team"] %> <!--TODO: Dropdown "Singles, Team"-->
-    <!--TODO: Best Painted Input-->
-    <%= f.input :armylist_deadline_date %>
-    <%= f.input :armylists_visible_date %>
-    <%= f.input :payment_type %>
-    <%= f.input :payment_deadline_date %>
-  </div>
-  <div>
-    <%= f.input :summary %>
-    <%= f.input :information %>
-    <%= f.input :procedure %>
-    <%= f.button :submit %>
-  </div>
-<% end %>
+</div>

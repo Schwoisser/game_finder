@@ -15,15 +15,17 @@
     <%= turbo_include_tags %>
     <%= stylesheet_pack_tag 'stylesheets', media: 'all', 'data-turbolinks-track': 'reload' %>
     <link href="https://unpkg.com/tailwindcss@%5E2/dist/tailwind.min.css" rel="stylesheet">
+    <%= stylesheet_link_tag 'styles', media: 'all' %>
 
   </head>
 
   <body>
 
-    <div style="margin-left: 20px;">
-    <%= render :partial => 'layouts/header', locals: { } %>
-    <%= yield %>
+    <div class="viewport-margin">
+      <%= yield %>
     </div>
+
+    <%= render :partial => 'layouts/nav', locals: { } %>
     
   </body>
 </html>
