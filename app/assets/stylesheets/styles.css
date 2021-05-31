@@ -1,0 +1,43 @@
+    .giocaneernav{
+        display: flex;
+        flex-direction: row;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background-color: rgba(55,65,81,1);
+    }
+
+    .giocaneernav-item{
+        flex-grow: 1;
+        opacity: 1;
+        background-color: rgba(55,65,81,1);
+    }
+
+    .viewport-margin{
+        padding: 1rem;
+    }
+
+    .hover-effect:hover{
+        background-color: yellow;
+    }
+ 
+
+@media (min-width: 768px){
+
+    .giocaneernav{
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        left: 0;
+        height: 100%;
+        width: 5rem;
+    }
+
+    .giocaneernav-item{
+        flex-grow: 0;
+    }
+
+    .viewport-margin{
+        margin-left: 5rem;
+    }
+}
