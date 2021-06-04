@@ -36,13 +36,14 @@
       <%= f.input :summary %>
       <%= f.input :information %>
       <%= f.input :procedure %>
-      <%= f.button :submit %>
+      
     </div>
-  <% end %>
   <div class="flex flex-row mt-4">  
     <div class="py-3.5 px-7 mr-2 bg-gray-300 rounded-sm hover-effect hidden" data-action="click->multistep-form#back" data-multistep-form-target="previous">Back</div>
     <div class="py-3.5 px-7 bg-gray-300 rounded-sm hover-effect" data-action="click->multistep-form#next" data-multistep-form-target="proceed">Next</div>
+    <input type="submit" name="commit" value="Create Tournament" class="btn giocaneer-button py-3.5 px-7 ml-2 bg-gray-300 rounded-sm hidden" data-multistep-form-target="submit" data-disable-with="Create Tournament">
   </div>
+  <% end %>
   <div style="height: 4rem">
   </div>
 </div>

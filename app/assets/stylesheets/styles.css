@@ -1,3 +1,8 @@
+    h1 {
+        font-size: 1.25rem;
+        line-height: 1.75rem;
+    }
+    
     .giocaneernav{
         display: flex;
         flex-direction: row;
@@ -15,13 +20,18 @@
 
     .viewport-margin{
         padding: 1rem;
+        background-color: gray;
     }
 
     .hover-effect:hover{
         background-color: yellow;
     }
- 
-
+    .giocaneer-button {
+        background-color: gray;
+    }
+    .giocaneer-button:hover{
+        background-color: yellow;
+    }
 @media (min-width: 768px){
 
     .giocaneernav{

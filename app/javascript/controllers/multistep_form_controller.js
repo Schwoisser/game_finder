@@ -1,18 +1,18 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-    static targets = ["steps","proceed", "previous"];
+    static targets = ["steps","proceed", "previous", "submit"];
 
     connect() {
         // this.element.textContent = "Hello World!"
-        console.log("This Form connected = SUCCESS!!!!!!!!!!! :D");
-        console.log(this.stepsTargets);
-        for (let index = 0; index < this.stepsTargets.length; index++) {
-            const element = this.stepsTargets[index];
-            console.log(element.className.includes("hidden"))
-            element.hidden=false
-        }
-        console.log(this.proceedTarget)
+        // console.log("This Form connected = SUCCESS!!!!!!!!!!! :D");
+        // console.log(this.stepsTargets);
+        // for (let index = 0; index < this.stepsTargets.length; index++) {
+        //     const element = this.stepsTargets[index];
+        //     console.log(element.className.includes("hidden"))
+        //     element.hidden=false
+        // }
+        // console.log(this.proceedTarget)
         // this.longitudeTarget.value = "test";
     }
 
@@ -22,6 +22,7 @@ export default class extends Controller {
             const element = this.stepsTargets[index];
             if (index == (this.stepsTargets.length-2)) {
                 this.proceedTarget.classList.add('hidden')
+                this.submitTarget.classList.remove('hidden')
                 // break
             }
             console.log(element.className.includes("hidden"))
@@ -44,7 +45,8 @@ export default class extends Controller {
             const element = this.stepsTargets[index];            
             console.log(element.className.includes("hidden"))
             if (index == (this.stepsTargets.length - 1)) {
-                this.proceedTarget.classList.remove('hidden')                
+                this.proceedTarget.classList.remove('hidden')
+                this.submitTarget.classList.add('hidden')                
             }
             if (!element.className.includes("hidden")) {
                 element.classList.add('hidden');

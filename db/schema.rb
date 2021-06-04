@@ -56,8 +56,8 @@ ActiveRecord::Schema.define(version: 2021_05_22_102542) do
     t.datetime "start_date"
     t.text "title"
     t.text "description"
-    t.bigint "game_id"
-    t.bigint "tournament_id"
+    t.integer "game_id"
+    t.integer "tournament_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "tournament_round"
@@ -102,7 +102,7 @@ ActiveRecord::Schema.define(version: 2021_05_22_102542) do
   end
 
   create_table "player_groups", force: :cascade do |t|
-    t.bigint "creator_id"
+    t.bigint "organizer_id"
     t.text "title"
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
@@ -160,6 +160,7 @@ ActiveRecord::Schema.define(version: 2021_05_22_102542) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.float "latidude"
     t.float "longitude"
     t.float "latitude"
     t.index ["email"], name: "index_users_on_email", unique: true
