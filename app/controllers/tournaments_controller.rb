@@ -17,6 +17,7 @@ class TournamentsController < ApplicationController
     tournament = Tournament.create(tournament_params)
     tournament.organizer = @user
     tournament.save
+    Rails.logger.info(tournament.errors.full_messages)
     redirect_to action: "index"
   end
 
@@ -86,7 +87,7 @@ class TournamentsController < ApplicationController
   end
 
   def tournament_params
-    params.require(:tournament).permit(:start_date, :title, :description )
+    params.require(:tournament).permit(:start_date, :title, :description, :gamesystem )
   end
 
   def tournament_id_params
