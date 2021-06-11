@@ -4,6 +4,8 @@
 // that code so it'll be compiled.
 
 require("css/application.scss")
+require("jquery")
+
 
 import Rails from "@rails/ujs"
 import "@hotwired/turbo-rails"

@@ -1,0 +1,2 @@
+module BattleReportHelper
+end

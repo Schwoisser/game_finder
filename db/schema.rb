@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_22_102542) do
+ActiveRecord::Schema.define(version: 2021_06_11_121836) do
 
   create_table "armies", force: :cascade do |t|
     t.bigint "user_id"
@@ -44,10 +44,10 @@ ActiveRecord::Schema.define(version: 2021_05_22_102542) do
   end
 
   create_table "invitations", force: :cascade do |t|
-    t.text "message"
-    t.bigint "match_id"
-    t.bigint "sender_id"
-    t.bigint "receiver_id"
+    t.string "message", limit: 2500
+    t.integer "match_id"
+    t.integer "sender_id"
+    t.integer "receiver_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 2021_05_22_102542) do
   create_table "matches", force: :cascade do |t|
     t.datetime "start_date"
     t.text "title"
-    t.text "description"
+    t.string "description", limit: 1200
     t.integer "game_id"
     t.integer "tournament_id"
     t.datetime "created_at", precision: 6, null: false
@@ -78,11 +78,11 @@ ActiveRecord::Schema.define(version: 2021_05_22_102542) do
   end
 
   create_table "messages", force: :cascade do |t|
-    t.bigint "sender_id"
-    t.bigint "receiver_id"
-    t.bigint "tournament_id"
-    t.bigint "player_group_id"
-    t.text "message"
+    t.integer "sender_id"
+    t.integer "receiver_id"
+    t.integer "tournament_id"
+    t.integer "player_group_id"
+    t.string "message", limit: 2500
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -119,19 +119,19 @@ ActiveRecord::Schema.define(version: 2021_05_22_102542) do
   create_table "tournaments", force: :cascade do |t|
     t.datetime "start_date"
     t.text "title"
-    t.text "summary"
+    t.string "summary", limit: 1200
     t.integer "organizer_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.text "street"
-    t.text "location"
+    t.string "street", limit: 60
+    t.string "location", limit: 100
     t.text "special_rules"
     t.datetime "end_date"
     t.integer "max_player_number"
     t.integer "max_number_of_rounds", default: 3
     t.integer "current_round", default: 0
     t.integer "game_id", default: 0
-    t.text "zip_code"
+    t.string "zip_code", limit: 40
     t.integer "country_id"
     t.text "city"
     t.text "tournament_type"

@@ -2,6 +2,12 @@
         font-size: 1.25rem;
         line-height: 1.75rem;
     }
+
+    h4 {
+        font-size: 0.85rem;
+        line-height: 2rem;
+        font-weight: 700;
+    }
     
     .giocaneernav{
         display: flex;
@@ -20,17 +26,20 @@
 
     .viewport-margin{
         padding: 1rem;
-        background-color: gray;
+        /* background-color: gray; */
     }
 
     .hover-effect:hover{
         background-color: yellow;
     }
     .giocaneer-button {
-        background-color: gray;
+        background-color: #374151;
+        color: white;
+
     }
     .giocaneer-button:hover{
-        background-color: yellow;
+        background-color: #D1D5DB;
+        color:  #374151;
     }
 @media (min-width: 768px){
 
