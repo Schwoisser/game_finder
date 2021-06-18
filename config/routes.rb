@@ -7,6 +7,10 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   
   get "/profile", to: "profile#show"
+  # Reihenfolge beachten
+  get "/profile/edit", to: "profile#edit"
+  post "/profile/edit", to: "profile#update"
+  get "/profile/:id", to: "profile#show"
   resources "match"
   resources "message"
   resources "tournaments"

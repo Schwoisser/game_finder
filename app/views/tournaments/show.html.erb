@@ -1,6 +1,6 @@
   
   
-<div data-controller="tab" style="margin-left:9rem">
+<div class="view-width" data-controller="tab" style="">
   <div class="flex flex-row">
     <div class="bg-white p-2 rounded-t" data-tab-target="buttons" data-action="click->tab#switch" data-tab-number="0" >Overview</div>
     <div class="bg-white p-2 rounded-t bg-gray-200 mx-1" data-tab-target="buttons" data-action="click->tab#switch" data-tab-number="1">Notation</div>
@@ -9,104 +9,103 @@
 
   <div data-tab-target="tabs">
 
-  <div class="bg-white py-5 px-8 rounded-b rounded-tr float-left justify-between">
+  <div class="bg-white py-5 px-8 rounded-b rounded-tr float-left justify-between view-width">
 
-  <h1><%= @tournament.title %></h1>
-  <p><%= @tournament.game.title %></p>
+    <h1><%= @tournament.title %></h1>
+    <p><%= @tournament.game.title %></p>
   
-  <div class="flex flex-row"> 
+    <div class="flex flex-row justify-between"> 
 
-  <p class="max-w-md my-4" ><%= @tournament.summary %></p>
+    <p class="max-w-md my-4" ><%= simple_format(@tournament.summary) %></p>
 
 
-  <div class="my-4 ml-12 w-64">
-  
-    <div class="flex flex-row bg-gray-200 px-2 py-1">
-      <div class="" style="width: 8rem;">Organizer</div>
-      <div class="" style=""><%= @tournament.organizer.full_name %></div>    
-    </div>
+    <div class="my-4 ml-12 w-64">
     
-    <div class="flex flex-row px-2 py-1">
-      <div style="width: 8rem;">Location</div>
-      <p><%= @tournament.location%> </p>
-    </div>
+      <div class="flex flex-row bg-gray-200 px-2 py-1">
+        <div class="" style="width: 8rem;">Organizer</div>
+        <div class="" style=""><%= @tournament.organizer.full_name %></div>    
+      </div>
+      
+      <div class="flex flex-row px-2 py-1">
+        <div style="width: 8rem;">Location</div>
+        <p><%= @tournament.location%> </p>
+      </div>
 
-    <div class="flex flex-row px-2 py-1">
-      <div style="width: 8rem;"></div>
-      <p><%= @tournament.street %></p> 
-    </div>
+      <div class="flex flex-row px-2 py-1">
+        <div style="width: 8rem;"></div>
+        <p><%= @tournament.street %></p> 
+      </div>
 
-    <div class="flex flex-row px-2 py-1">
-      <div style="width: 8rem;"></div>
-      <p><%= @tournament.zip_code + " " + @tournament.city%></p>
-    </div>
-    
-    <div class="flex flex-row px-2 py-1">
-      <div style="width: 8rem;"></div>
-      <p><%= @tournament.country.name %></p>
-    </div>
+      <div class="flex flex-row px-2 py-1">
+        <div style="width: 8rem;"></div>
+        <p><%= @tournament.zip_code + " " + @tournament.city%></p>
+      </div>
+      
+      <div class="flex flex-row px-2 py-1">
+        <div style="width: 8rem;"></div>
+        <p><%= @tournament.country.name %></p>
+      </div>
 
-    <div class="flex flex-row bg-gray-200  px-2 py-1">
-      <div style="width: 8rem;">Start</div>
-      <p><%= @tournament.start_date.strftime("%d.%m.%y  %H:%M") %><p>
-    </div>
+      <div class="flex flex-row bg-gray-200  px-2 py-1">
+        <div style="width: 8rem;">Start</div>
+        <p><%= @tournament.start_date.strftime("%d.%m.%y  %H:%M") %><p>
+      </div>
 
-    <div class="flex flex-row px-2 py-1">
-      <div style="width: 8rem;">End</div>
-      <p><%= @tournament.end_date.strftime("%d.%m.%y  %H:%M")%><p>
-    </div>
+      <div class="flex flex-row px-2 py-1">
+        <div style="width: 8rem;">End</div>
+        <p><%= @tournament.end_date.strftime("%d.%m.%y  %H:%M")%><p>
+      </div>
 
-    <div class="flex flex-row  bg-gray-200 px-2 py-1">
-      <div style="width: 8rem;">Players</div>
-      <p><%= @tournament.users.count %> / <%= @tournament.max_player_number %><p>
-    </div>
+      <div class="flex flex-row  bg-gray-200 px-2 py-1">
+        <div style="width: 8rem;">Players</div>
+        <p><%= @tournament.users.count %> / <%= @tournament.max_player_number %><p>
+      </div>
 
-    <div class="flex flex-row px-2 py-1">
-      <div style="width: 8rem;">Tournament Type</div>
-      <p><%= @tournament.tournament_type %><p>
-    </div>
+      <div class="flex flex-row px-2 py-1">
+        <div style="width: 8rem;">Tournament Type</div>
+        <p><%= @tournament.tournament_type %><p>
+      </div>
 
-    <div class="flex flex-row bg-gray-200 px-2 py-1">
-      <div style="width: 8rem;">Payment Type</div>
-      <p><%= @tournament.payment_type %><p>
-    </div>
-
-
+      <div class="flex flex-row bg-gray-200 px-2 py-1">
+        <div style="width: 8rem;">Payment Type</div>
+        <p><%= @tournament.payment_type %><p>
+      </div>
 
 
-    <% if @tournament.users.include?(current_user) %>
-      <%= simple_form_for :tournament, :url => '/tournaments/leave' do |f| %>
-        <%= f.hidden_field :tournament_id, :value => @tournament.id %>
-        <%= f.button :submit, "Leave Tournament", class:"giocaneer-button p-2 rounded mt-3 w-full px-2" %>
-      <% end %>
-    <% else %>
-      <%= simple_form_for :tournament, :url => '/tournaments/join' do |f| %>
-        <%= f.hidden_field :tournament_id, :value => @tournament.id %>
-        <%= f.button :submit, "Join Tournament", class:"giocaneer-button p-2 rounded mt-3 w-full px-2" %>
-      <% end %>
-    <% end %>
 
-    </div>
 
+        <% if @tournament.users.include?(current_user) %>
+          <%= simple_form_for :tournament, :url => '/tournaments/leave' do |f| %>
+            <%= f.hidden_field :tournament_id, :value => @tournament.id %>
+            <%= f.button :submit, "Leave Tournament", class:"giocaneer-button p-2 rounded mt-3 w-full px-2" %>
+          <% end %>
+        <% else %>
+          <%= simple_form_for :tournament, :url => '/tournaments/join' do |f| %>
+            <%= f.hidden_field :tournament_id, :value => @tournament.id %>
+            <%= f.button :submit, "Join Tournament", class:"giocaneer-button p-2 rounded mt-3 w-full px-2" %>
+          <% end %>
+        <% end %>
+
+      </div>
     </div>
   </div>
 </div>
 <div class="hidden" data-tab-target="tabs">
-  <div class="bg-white py-5 px-8 rounded-b rounded-tr float-left justify-between">
-   <div class="flex flex-row"> 
+  <div class="bg-white py-5 px-8 rounded-b rounded-tr float-left justify-between view-width">
+   <div class="flex flex-row justify-between"> 
       <div class="max-w-md my-4 break-words" >
         <h4>Informationen</h4>
-        <%= @tournament.information %>
+        <%= simple_format(@tournament.information) %>
       </div>
       <div class="my-4 ml-12 w-64 break-words">
         <h4>Ablauf</h4>
-        <%= @tournament.procedure %>
+        <%= format_timeline(@tournament.procedure) %>
       </div>
     </div>
   </div>
 </div>
 <div class="hidden" data-tab-target="tabs">
-  <div class="bg-white py-5 px-8 rounded-b rounded-tr float-left justify-between">
+  <div class="bg-white py-5 px-8 rounded-b rounded-tr float-left justify-between view-width">
     <div class=" flex flex-col" style="width:752px;"> 
       <div class="flex flex-row" style="width:752px;"> 
         <h4 class="pl-3 border-r border-gray-300" style="width:25%">Name</h4>

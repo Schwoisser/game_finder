@@ -1,0 +1,25 @@
+
+<div class="bg-white py-5 px-8 rounded-b rounded-tr view-width">
+  <div class="flex flex-row justify-center">
+    <div class="bg-black" style="width: 48rem; height:24rem;"></div>
+  </div>
+
+  <div class="flex flex-row justify-between p-2">
+    <div class="flex flex-col justify-center">
+      <h1>555</h1>
+      <p>Active Players in your Area</p>
+    </div>
+    <div class="flex flex-col justify-center">
+      <h1>555</h1>
+      <p>Scheduled Matches in the next 24h</p>
+    </div>
+  </div>
+
+  <div class="giocaneer-button text-center p-2 rounded">Finde Players</div>
+
+  <% @tournaments.each do |tournament|%>
+    <div class="border border-gray-300 rounded my-2">
+    <%= render :partial => 'tournaments/index_item', locals: { tournament: tournament } %>
+    </div>
+  <% end %>
+</div>

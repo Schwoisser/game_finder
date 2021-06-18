@@ -1,0 +1,26 @@
+  
+  <a class="" href="<%= tournament_path(tournament) %>">
+    <div class="rounded bg-white py-1.5 px-2.5 flex flex-col" style="color:black">
+
+      <div class="flex flex-row justify-between">
+        <div class="pt-0.5 text-gray-500"> <%= tournament.start_date.strftime("%d.%m.%y") %> </div>
+        <div class="flex flex-row">
+          <div class="mx-1 rounded bg-red-400 px-1 mt-0.5"> <%= tournament.game.short_title%> </div>
+          <div class="ml-1 pt-0.5"> <%= tournament.users.size || 0%>/<%= tournament.max_player_number || 0%> </div>
+        </div>
+      </div>
+
+      <div>
+        <div> <%= tournament.title %> </div>
+      </div>
+
+      <div class="flex flex-row pb-0.5">
+        <div class="mr-1"> <%= tournament.country.try(:name) %> </div>
+        <div class="mx-1"> <%= tournament.zip_code %> </div>
+        <div class="ml-1"> <%= tournament.city %> </div>
+      </div>      
+
+      <!-- <%= tournament.end_date %><br> -->
+
+    </div>
+  </a>

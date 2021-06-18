@@ -8,7 +8,13 @@
         line-height: 2rem;
         font-weight: 700;
     }
-    
+
+    .max-view-width {
+        max-width: 51rem;
+    }
+    .view-width {
+        width: 51rem;
+    }
     .giocaneernav{
         display: flex;
         flex-direction: row;

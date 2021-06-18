@@ -6,8 +6,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_and_belongs_to_many :games
+  has_many :armies
 
   def full_name
-    "#{first_name} #{last_name}" 
+    "#{first_name} \"#{nick_name}\" #{last_name}" 
   end
 end

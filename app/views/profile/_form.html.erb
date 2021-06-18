@@ -1,0 +1,16 @@
+
+
+<div data-controller="location" class="">
+<%= form_for :user, url: "/profile/edit", method: :post, class:"" do |f| %>
+  <%= f.text_field :first_name, class:"flex flex-row" %>
+  <%= f.text_field :last_name, class:"flex flex-row" %>
+  <%= f.text_field :nick_name, class:"flex flex-row" %>
+  <input class="flex flex-row" data-location-target="longitude" type="text" value="<%= @user.longitude%>" name="user[longitude]" id="user_longitude">
+  <input class="flex flex-row" data-location-target="latitude" type="text" value="<%= @user.latitude%>" name="user[latitude]" id="user_latitude">
+  <div class="flex flex-row"  data-action="click->location#getLocation">Setzte Ort</div>
+  <%= f.submit %>
+<% end %>
+</div>
+
+
+

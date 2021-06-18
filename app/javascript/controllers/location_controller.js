@@ -11,6 +11,7 @@ export default class extends Controller {
   }
 
   getLocation() {
+    event.preventDefault();
     console.log(this)
     let that = this;
     if(navigator.geolocation) {
