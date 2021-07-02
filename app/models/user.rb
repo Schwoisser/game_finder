@@ -7,6 +7,7 @@ class User < ApplicationRecord
 
   has_and_belongs_to_many :games
   has_many :armies
+  has_many :battle_reports
 
   def full_name
     "#{first_name} \"#{nick_name}\" #{last_name}" 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_18_133058) do
+ActiveRecord::Schema.define(version: 2021_07_02_094617) do
 
   create_table "armies", force: :cascade do |t|
     t.bigint "user_id"
@@ -26,6 +26,8 @@ ActiveRecord::Schema.define(version: 2021_06_18_133058) do
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_battle_reports_on_user_id"
   end
 
   create_table "countries", force: :cascade do |t|

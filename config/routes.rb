@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources "message"
   resources "tournaments"
   resources "armies"
+  resources "battle_reports"
 
   post "/tournaments/join", to: "tournaments#join"
   post "/tournaments/leave", to: "tournaments#leave"
