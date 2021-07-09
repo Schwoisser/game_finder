@@ -5,37 +5,39 @@
         <h1 class="ml-2"><%= @user.full_name%></h1>
 
       </div>
-
-      <% last_game = @user.games.last %>
-
       <div class="flex flex-row justify-between">
         <h4 class="w-1/3">Games</h4>
         <h4 class="w-2/3">Armies</h4>
       </div>
+      <turbo-frame id="profile_games_armies">
 
-      <div class="border border-gray-500 rounded mb-3.5">
-        <% @user.games.each do |game| %>
-          <% unless game == last_game%>
-            <div class="p-2 border-b border-gray-500 flex flex-row justify-between">
-              <div class="w-1/3"><%= game.short_title %></div>
-              <div class="w-2/3">
-                <% @user.armies.each do |army|%> 
-                  <% if army.game == game %>
-                    <%= "#{army.army_faction} "%>
+        <div class="border border-gray-500 rounded mb-3.5">
+          <% @user.games.each do |game| %>
+              <div class="p-2 border-b border-gray-500 flex flex-row justify-between">
+                <div class="w-1/3 flex flex-row">
+                  <%= game.short_title %>
+
+                  <%= simple_form_for current_user, :url => '/profile/remove_game' do |f| %>
+                    <%= f.hidden_field  :game_id, :value => game.id%>
+                    <%= f.button :submit, "Löschen", class:"ml-2" %>
                   <% end %>
-                <% end %>
+                </div>
+                <div class="w-2/3">
+                  <% @user.armies.each do |army|%> 
+                    <% if army.game == game %>
+                      <%= "#{army.army_faction} "%>
+                    <% end %>
+                  <% end %>
+                </div>
               </div>
-            </div>
-          <% else %>
-            <div class="p-2"><%= game.short_title %></div>
           <% end %>
-        <% end %>
-      </div>
+        </div>
 
-      <%= simple_form_for current_user, :url => '/profile/add_game' do |f| %>
-        <%= f.input :games, collection: Game.order(:title), prompt: "Choose a Gamesystem" , label_method: :title, value_method: :id %>
-        <%= f.button :submit, "Add Gamesystem", class:"giocaneer-button p-2 rounded mt-3 w-full px-2" %>
-      <% end %>
+        <%= simple_form_for current_user, :url => '/profile/add_game' do |f| %>
+          <%= f.input :games, collection: Game.order(:title), prompt: "Choose a Gamesystem" , label_method: :title, value_method: :id %>
+          <%= f.button :submit, "Add Gamesystem", class:"giocaneer-button p-2 rounded mt-3 w-full px-2" %>
+        <% end %>
+      </turbo-frame>
       <a class="" href="<%= new_army_path %>">
         Create New Army
       </a>

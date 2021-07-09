@@ -12,18 +12,24 @@ Rails.application.routes.draw do
   post "/profile/edit", to: "profile#update"
   post "/profile/add_game", to: "profile#add_game"
   patch "/profile/add_game", to: "profile#add_game"
-  
+  patch "/profile/remove_game", to: "profile#remove_game"
+
   get "/profile/:id", to: "profile#show"
-  resources "match"
-  resources "message"
-  resources "tournaments"
-  resources "armies"
-  resources "battle_reports"
 
   post "/tournaments/join", to: "tournaments#join"
   post "/tournaments/leave", to: "tournaments#leave"
   post "/tournaments/pair", to: "tournaments#pair"
+  
+  get "/tournaments/:id/edit_pairing", to: "tournaments#edit_pairing"
+
   post "/tournaments/start_round", to: "tournaments#start_round"
+  resources "tournaments"
+
+  resources "match"
+  resources "message"
+  resources "armies"
+  resources "battle_reports"
+
   # resources "player_groups"
 
 end

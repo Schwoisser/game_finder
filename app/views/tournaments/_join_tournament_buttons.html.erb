@@ -61,6 +61,11 @@
       <%= f.button :submit, "Join Tournament", class:"giocaneer-button p-2 rounded mt-3 w-full px-2" %>
     <% end %>
   <% end %>
+
 </div>
 
 </turbo-frame>
+
+  <% if tournament.organizer == user %>
+    <a class="giocaneer-button p-2 rounded mt-3 w-full px-2 flex justify-center" href="/tournaments/<%= tournament.id%>/edit_pairing">Tournament Pairing</a>
+  <% end %>

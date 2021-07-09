@@ -77,8 +77,16 @@ class TournamentsController < ApplicationController
         puts match.tournament_id
         puts @tournament.matches
       end
-      # byebug
+      redirect_to action: "edit_pairing", id: tournament_id_params[:tournament_id]
     end
+  end
+
+  def edit_pairing
+    @tournament = Tournament.find(params[:id])
+  end
+
+  def update_pairing
+    @tournament = Tournament.find(params[:id])
   end
 
   def start_round

@@ -23,14 +23,19 @@ class MatchController < ApplicationController
     redirect_to action: "show", id: match.id
   end
 
+  def edit
+    @match = Match.find(params[:id])
+    render "edit"
+  end
 
   def update
-
+    @match = Match.find(params[:id])
+    @match.update(match_params)
   end
 
   private
 
   def match_params
-    params.require(:match).permit(:title, :description, :game_id)
+    params.require(:match).permit(:title, :description, :game_id, users:[])
   end
 end
