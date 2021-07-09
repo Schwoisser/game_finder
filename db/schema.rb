@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2021_06_25_095944) do
 
+
   create_table "armies", force: :cascade do |t|
     t.integer "user_id"
     t.integer "game_id"
@@ -27,6 +28,8 @@ ActiveRecord::Schema.define(version: 2021_06_25_095944) do
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_battle_reports_on_user_id"
   end
 
   create_table "countries", force: :cascade do |t|
@@ -110,7 +113,7 @@ ActiveRecord::Schema.define(version: 2021_06_25_095944) do
   end
 
   create_table "player_groups", force: :cascade do |t|
-    t.bigint "organizer_id"
+    t.bigint "creator_id"
     t.text "title"
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
