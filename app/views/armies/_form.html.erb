@@ -1,5 +1,7 @@
-<%= simple_form_for player_group do |f| %>
+<%= simple_form_for @army do |f| %>
   <%= f.input :title %>
-  <%= f.input :description %>
+  <%= f.association :game, collection: Game.order(:title), prompt: "Choose a Gamesystem" , label_method: :title, value_method: :id %>
+  <%= f.input :army_faction %>
+  <%= f.input :army_list %>
   <%= f.button :submit %>
 <% end %>

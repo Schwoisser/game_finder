@@ -21,15 +21,21 @@ class ArmiesController < ApplicationController
   end
 
   def edit
+    @army = Army.find(params[:id])
   end
 
   def update
+    @army = Army.find(params[:id])
+    if current_user.armies.include? @army
+      @army.update(army_params)
+    end
+    redirect_to action: "show", id: @army.id
   end
 
   def delete
   end
 
   def army_params
-    params.require(:player_group).permit(:game_id, :title, :description )
+    params.require(:army).permit(:game_id, :title, :army_list, :army_faction )
   end
 end

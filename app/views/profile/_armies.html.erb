@@ -1,0 +1,28 @@
+<% last_game = @user.games.last %>
+
+<div class="flex flex-row justify-between">
+  <h4 class="w-1/3">Games</h4>
+  <h4 class="w-2/3">Army Lists</h4>
+</div>
+
+<div class="border border-gray-500 rounded mb-3.5">
+  <% @user.games.each do |game| %>
+    <% unless game == last_game%>
+      <div class="p-2 border-b border-gray-500 flex flex-row justify-between">
+        <div class="w-1/3"><%= game.short_title %></div>
+        <div class="w-2/3">
+          <% @user.armies.each do |army|%> 
+            <% if army.game == game %>
+              <a href="<%= edit_army_path(army) %>" > <%= "#{army.army_faction} "%><%= "#{army.title} "%> </a>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    <% else %>
+      <div class="p-2"><%= game.short_title %></div>
+    <% end %>
+  <% end %>
+</div>
+<a class="" href="<%= new_army_path %>">
+  Create New Army
+</a>

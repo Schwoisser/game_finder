@@ -245,6 +245,7 @@ DEPENDENCIES
   simple_form
   spring
   sqlite3 (~> 1.4)
+  turbo-rails
   tzinfo-data
   web-console (>= 4.1.0)
   webdrivers

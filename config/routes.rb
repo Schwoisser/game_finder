@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   # Reihenfolge beachten
   get "/profile/edit", to: "profile#edit"
   post "/profile/edit", to: "profile#update"
+  post "/profile/add_game", to: "profile#add_game"
+  patch "/profile/add_game", to: "profile#add_game"
+  
   get "/profile/:id", to: "profile#show"
   resources "match"
   resources "message"

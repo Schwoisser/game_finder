@@ -17,10 +17,10 @@ export default class extends Controller {
         console.log(element)
         if(index == tab_number){
           // element.classList.remove('hidden')  
-          $(element).fadeIn(300)
+          $(element).fadeIn(100)
         }else{
           // element.classList.add('hidden')  
-          $(element).fadeOut(300)
+          $(element).fadeOut(0)
         }
       }
       

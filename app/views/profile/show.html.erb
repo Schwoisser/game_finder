@@ -1,77 +1,33 @@
-<div class="bg-white py-5 px-8 rounded-b rounded-tr view-width">
-
-  <div class="flex flex-row mb-3.5"> 
-    <div class="bg-black" style="width: 90px; height:90px;"></div>
-    <h1 class="ml-2"><%= @user.full_name%></h1>
-
-  </div>
-
-  <% last_game = @user.games.last %>
-
-  <div class="flex flex-row justify-between">
-    <h4 class="w-1/3">Games</h4>
-    <h4 class="w-2/3">Armies</h4>
-  </div>
-  <div class="border border-gray-500 rounded mb-3.5">
-  <% @user.games.each do |game| %>
-    <% unless game == last_game%>
-      <div class="p-2 border-b border-gray-500 flex flex-row justify-between">
-        <div class="w-1/3"><%= game.short_title %></div>
-        <div class="w-2/3">
-          <% @user.armies.each do |army|%> 
-            <% if army.game == game %>
-              <%= "#{army.title} "%>
-            <% end %>
-          <% end %>
-        </div>
-      </div>
-    <% else %>
-      <div class="p-2"><%= game.short_title %></div>
-    <% end %>
+<div class="view-width" data-controller="tab" style="">
+  <% if @user == current_user %>
+    <div class="flex flex-row">
+      <div class="bg-white p-2 rounded-t" data-tab-target="buttons" data-action="click->tab#switch" data-tab-number="0" >Your Profile</div>
+      <div class="bg-white p-2 rounded-t bg-gray-200 mx-1" data-tab-target="buttons" data-action="click->tab#switch" data-tab-number="1">Your Army Lists</div>
+      <div class="bg-white p-2 rounded-t bg-gray-200" data-tab-target="buttons" data-action="click->tab#switch" data-tab-number="2">Your Friends</div>
+    </div>
   <% end %>
-  </div>
-  <div class="flex flex-row">
-   <h4 class="w-1/3"> Player Type </h4>
-   <h4 class="w-1/3 ml-4"> Player Virtue </h4>
-  </div>
-  <div class="flex flex-row">
-     <div class="w-1/3"> <h4 class="bg-gray-400 px-2.5 rounded">Competetive</h4> </div>
-     <div class="w-1/3 ml-4"> <h4 class="bg-gray-400 px-2.5 rounded">Sociable</h4> </div>
-  </div>
-  <h4 class="mt-4">Awards</h4>
-  <div class="flex flex-row">
-    <div class="bg-black" style="width: 36px; height:36px;"></div>
-    <div class="flex flex-col ml-2.5">
-      <div> Award 1 </div>
-      <div class="text-gray-400"> Tournament Name </div>
+
+  <div data-tab-target="tabs">
+    <div class="bg-white py-5 px-8 rounded-b rounded-tr view-width">
+      <%= render :partial => 'profile', locals: {  } %>
     </div>
   </div>
 
-  <div class="flex flex-row">
-    <div class="bg-black" style="width: 36px; height:36px;"></div>
-    <div class="flex flex-col ml-2.5">
-      <div> Award 1 </div>
-      <div class="text-gray-400"> Tournament Name </div>
+<% if @user == current_user %>
+
+  <div class="hidden" data-tab-target="tabs">
+
+    <div class="bg-white py-5 px-8 rounded-b rounded-tr view-width">
+      <%= render :partial => 'armies', locals: {  } %>
     </div>
+
   </div>
 
-  <div class="flex flex-row">
-    <div class="bg-black" style="width: 36px; height:36px;"></div>
-    <div class="flex flex-col ml-2.5">
-      <div> Award 1 </div>
-      <div class="text-gray-400"> Tournament Name </div>
-    </div>
-  </div>
+  <div class="hidden" data-tab-target="tabs">
 
-  <h4 class="mt-4">Gallery</h4>
-  <div class="flex flex-row">
-    <div class="bg-black ml-2" style="width: 90px; height:60px;"></div>
-    <div class="bg-black ml-2" style="width: 90px; height:60px;"></div>
-    <div class="bg-black ml-2" style="width: 90px; height:60px;"></div>
-  </div>
-  <% if @user == current_user%>
-  <div class="mt-4">
-    <%= link_to "Bearbeiten", "/profile/edit" %>
+    <div class="bg-white py-5 px-8 rounded-b rounded-tr view-width">
+      <%= render :partial => 'friends', locals: {  } %>
+    </div>
   </div>
   <% end %>
 </div>

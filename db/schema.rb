@@ -10,15 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_18_133058) do
+ActiveRecord::Schema.define(version: 2021_06_25_095944) do
 
   create_table "armies", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "game_id"
+    t.integer "user_id"
+    t.integer "game_id"
     t.text "title"
-    t.text "description"
+    t.text "army_list"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "army_faction"
   end
 
   create_table "battle_reports", force: :cascade do |t|

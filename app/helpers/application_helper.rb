@@ -1,5 +1,6 @@
 module ApplicationHelper
   def format_timeline(time_line)
+    return "" unless time_line
     time_line.strip!
     time_line_array = time_line.split("\n")
     colorize = true

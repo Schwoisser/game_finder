@@ -1,4 +1,6 @@
 class Tournament < ApplicationRecord
+  after_update_commit { broadcast_replace_later_to 'join_tournament_buttons' }
+  # broadcasts_to ->(tournament) { :tournaments }
   has_many :matches
   has_many :messages
   belongs_to :game
