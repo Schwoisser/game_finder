@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_02_094617) do
+ActiveRecord::Schema.define(version: 2021_07_16_102544) do
 
   create_table "armies", force: :cascade do |t|
     t.integer "user_id"
@@ -34,6 +34,15 @@ ActiveRecord::Schema.define(version: 2021_07_02_094617) do
   create_table "countries", force: :cascade do |t|
     t.text "name"
     t.text "short_name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "friend_lists", force: :cascade do |t|
+    t.bigint "inviting_user_id", null: false
+    t.bigint "receiving_user_id", null: false
+    t.integer "status", default: 0
+    t.text "message", default: ""
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -112,7 +121,7 @@ ActiveRecord::Schema.define(version: 2021_07_02_094617) do
   end
 
   create_table "player_groups", force: :cascade do |t|
-    t.bigint "organizer_id"
+    t.bigint "creator_id"
     t.text "title"
     t.text "description"
     t.datetime "created_at", precision: 6, null: false

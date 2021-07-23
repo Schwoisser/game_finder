@@ -13,21 +13,31 @@
     </div>
   </div>
 
-<% if @user == current_user %>
+  <% if @user == current_user %>
 
-  <div class="hidden" data-tab-target="tabs">
+    <div class="hidden" data-tab-target="tabs">
 
-    <div class="bg-white py-5 px-8 rounded-b rounded-tr view-width">
-      <%= render :partial => 'armies', locals: {  } %>
+      <div class="bg-white py-5 px-8 rounded-b rounded-tr view-width">
+        <%= render :partial => 'armies', locals: {  } %>
+      </div>
+
     </div>
 
-  </div>
+    <div class="hidden" data-tab-target="tabs">
 
-  <div class="hidden" data-tab-target="tabs">
-
-    <div class="bg-white py-5 px-8 rounded-b rounded-tr view-width">
-      <%= render :partial => 'friends', locals: {  } %>
+      <div class="bg-white py-5 px-8 rounded-b rounded-tr view-width">
+        <%= render :partial => 'friends', locals: {  } %>
+      </div>
     </div>
-  </div>
+    <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
+  <% end %>
+
+  <% if @user != current_user %>
+    <%= simple_form_for @friend_list, url: "/profile/send_friend_request" do |f| %>
+      <div>Send friend request</div>
+      <%= f.input :message %>
+      <%=f.hidden_field :receiving_user_id, :value => @user.id %>
+      <%= f.button :submit %>
+    <% end %>
   <% end %>
 </div>

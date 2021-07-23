@@ -1,5 +1,19 @@
 # frozen_string_literal: true
 
+class TurboFailureApp < Devise::FailureApp
+  def respond
+    if request_format == :turbo_stream
+      redirect
+    else
+      super
+    end
+  end
+
+  def skip_format?
+    %w(html turbo_stream /).include? request_format.to_s
+  end
+end
+
 class TurboController < ApplicationController
   class Responder < ActionController::Responder
     def to_turbo_stream
@@ -297,6 +311,9 @@ Devise.setup do |config|
   # change the failure app, you can configure them inside the config.warden block.
   #
   # config.warden do |manager|
+  config.warden do |manager|
+    manager.failure_app = TurboFailureApp
+  end
   #   manager.intercept_401 = false
   #   manager.default_strategies(scope: :user).unshift :some_external_strategy
   # end

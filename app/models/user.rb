@@ -12,4 +12,12 @@ class User < ApplicationRecord
   def full_name
     "#{first_name} \"#{nick_name}\" #{last_name}" 
   end
+
+  def friend_list
+    FriendList.where("inviting_user_id = ? or receiving_user_id = ?", id, id).where(status: :accepted)
+  end
+
+  def friend_list_request
+    FriendList.where(receiving_user_id: id, status: :sent)
+  end
 end

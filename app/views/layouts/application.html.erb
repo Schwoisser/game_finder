@@ -12,7 +12,9 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbo-track': 'reload' %>
     <%= yield :head %>
-    <%= turbo_include_tags %>
+    <% if current_user %>
+      <%= turbo_include_tags %>
+    <% end %>
     <%= stylesheet_pack_tag 'stylesheets', media: 'all', 'data-turbolinks-track': 'reload' %>
     <link href="https://unpkg.com/tailwindcss@%5E2/dist/tailwind.min.css" rel="stylesheet">
     <%= stylesheet_link_tag 'styles', media: 'all' %>

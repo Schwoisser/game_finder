@@ -1,6 +1,7 @@
 class ProfileController < ApplicationController
   
   def show
+    @friend_list = FriendList.new
     unless params[:id]
       @user = current_user
     else
@@ -55,4 +56,16 @@ class ProfileController < ApplicationController
     params.require(:user).permit(:game_id)
   end
 
+  def send_friend_request
+    @receiving_user = User.find(friend_request_params[:receiving_user_id])
+    invite_summ = FriendList.where(inviting_user_id: current_user.id, receiving_user_id: @receiving_user.id).size
+    receive_summ = FriendList.where(receiving_user_id: current_user.id, inviting_user_id: @receiving_user.id).size
+    if 0 == (invite_summ + receive_summ)
+      FriendList.create(inviting_user: current_user, receiving_user: @receiving_user, message: friend_request_params[:message])
+    end  
+  end
+
+  def friend_request_params
+    params.require(:friend_list).permit(:receiving_user_id, :message)
+  end
 end

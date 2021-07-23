@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   post "/profile/add_game", to: "profile#add_game"
   patch "/profile/add_game", to: "profile#add_game"
   patch "/profile/remove_game", to: "profile#remove_game"
-
+  post "/profile/send_friend_request", to: "profile#send_friend_request"
   get "/profile/:id", to: "profile#show"
 
   post "/tournaments/join", to: "tournaments#join"
@@ -27,8 +27,11 @@ Rails.application.routes.draw do
 
   resources "match"
   resources "message"
+  post "/message/answer_friend_request", to: "message#answer_friend_request"
   resources "armies"
   resources "battle_reports"
+
+  
 
   # resources "player_groups"
 
