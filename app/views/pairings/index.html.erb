@@ -1,0 +1,57 @@
+
+<div class="bg-white py-5 px-8 rounded-b rounded-tr float-left justify-between view-width">
+<h4> <%= @tournament.title%> Round <%= @tournament.current_round %> / <%= @tournament.max_number_of_rounds%> </h4>
+
+<% if @tournament.round_started %>
+  <div data-controller="timer">
+    <div><%= @tournament.round_started_at.strftime("%d.%m.%y %H:%M:%S") %></div>
+    <div class="hidden" data-timer-target="started_at"><%= @tournament.round_started_at.strftime("%FT%T%:z") %></div>
+    
+    <div data-timer-target="timer"></div>
+  </div>
+<% end %>
+
+<turbo-frame id="tournament_pairing_<%= @tournament.id %>">
+
+<h4> TODO Scenario Additional Description Input Field </h4>
+
+  <% @tournament.matches.each do |match|%>
+    <% if match.tournament_round == (@tournament.current_round + 1) || (@tournament.round_started && (match.tournament_round == @tournament.current_round )) %>
+      <%= render :partial => 'show', locals: { match: match, tournament: @tournament } %>
+    <% end %>
+  <% end %>
+
+</turbo-frame>
+
+
+
+<% if !@tournament.round_started && !@tournament.ended %>
+  <%= simple_form_for :tournament, :url => "/tournaments/#{@tournament.id}/pairing/pair" do |f| %>
+    <%= f.hidden_field :tournament_id, :value => @tournament.id %>
+    <%= f.button :submit, "Generate Tournament Pairings", class:"giocaneer-button p-2 rounded mt-3 w-full px-2" %>
+  <% end %>
+<% end %>
+
+<% if !@tournament.round_started && !@tournament.ended %>
+  <%= simple_form_for :tournament, :url => "/tournaments/#{@tournament.id}/pairing/start_round" do |f| %>
+    <%= f.hidden_field :tournament_id, :value => @tournament.id %>
+    <%= f.button :submit, "Start Round", class:"giocaneer-button p-2 rounded mt-3 w-full px-2" %>
+  <% end %>
+<% end %>
+
+<% if (@tournament.current_round < @tournament.max_number_of_rounds) && @tournament.round_started && !@tournament.ended %>
+  <%= simple_form_for :tournament, :url => "/tournaments/#{@tournament.id}/pairing/end_round" do |f| %>
+    <%= f.hidden_field :tournament_id, :value => @tournament.id %>
+    <%= f.button :submit, "End Round", class:"giocaneer-button p-2 rounded mt-3 w-full px-2" %>
+  <% end %>
+<% end %>
+
+<% if (@tournament.current_round == @tournament.max_number_of_rounds) && @tournament.round_started && !@tournament.ended %>
+  <%= simple_form_for :tournament, :url => "/tournaments/#{@tournament.id}/pairing/end_tournament" do |f| %>
+    <%= f.hidden_field :tournament_id, :value => @tournament.id %>
+    <%= f.button :submit, "End Tournament", class:"giocaneer-button p-2 rounded mt-3 w-full px-2" %>
+  <% end %>
+<% end %>
+<br><a class="" href="/tournaments/<%= @tournament.id %>/pairing/new" %>New</a><br>
+
+<%= link_to "back to Tournament", tournament_path(@tournament) %>

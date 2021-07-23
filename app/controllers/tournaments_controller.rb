@@ -55,53 +55,7 @@ class TournamentsController < ApplicationController
     end
   end
 
-  def pair
-    @tournament = Tournament.find(tournament_id_params[:tournament_id])
-    if @tournament.organizer == current_user
-      puts @tournament.users
-      puts "##" * 10
-      shuffeld_users = @tournament.users.shuffle
-      while shuffeld_users.length > 0
-        user_one = shuffeld_users.pop
-        user_two = shuffeld_users.pop unless shuffeld_users.length == 0
-        match = Match.new(
-          title: user_one.full_name + " vs " + user_two.try(:full_name).to_s,
-          description: "",
-          game_id: @tournament.game.id,
-          tournament_id: @tournament.id,
-          tournament_round: @tournament.current_round + 1,
-        )
-        match.users << user_one
-        match.users << user_two if user_two
-        puts match.save
-        puts match.tournament_id
-        puts @tournament.matches
-      end
-      redirect_to action: "edit_pairing", id: tournament_id_params[:tournament_id]
-    end
-  end
 
-  def edit_pairing
-    @tournament = Tournament.find(params[:id])
-  end
-
-  def update_pairing
-    @tournament = Tournament.find(params[:id])
-  end
-
-  def start_round
-    @tournament = Tournament.find(tournament_id_params[:tournament_id])
-    if tournament_ready_for_new_round?(@tournament)
-      @tournament.current_round += 1
-      @tournament.save
-    end
-  end
-
-  def tournament_ready_for_new_round?(tournament)
-    tournament.organizer == current_user && 
-    (Match.where(tournament: tournament, tournament_round: tournament.current_round + 1).count > 0) && 
-    tournament.current_round < tournament.max_number_of_rounds
-  end
 
   def tournament_params
     params.require(:tournament).permit(:title, :summary, :game, :start_date, :end_date, :country,

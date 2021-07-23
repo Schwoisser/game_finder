@@ -18,9 +18,23 @@ Rails.application.routes.draw do
 
   post "/tournaments/join", to: "tournaments#join"
   post "/tournaments/leave", to: "tournaments#leave"
-  post "/tournaments/pair", to: "tournaments#pair"
   
-  get "/tournaments/:id/edit_pairing", to: "tournaments#edit_pairing"
+  get "/tournaments/:id/edit_pairing", to: "pairings#index"
+
+  get "/tournaments/:tournament_id/pairing/new", to: "pairings#new"
+  post "/tournaments/:tournament_id/pairing/create", to: "pairings#create"
+
+  get "/tournaments/:tournament_id/pairing/:match_id/edit", to: "pairings#edit"
+  patch "/tournaments/:tournament_id/pairing/:match_id/update", to: "pairings#update"
+
+  get "/tournaments/:tournament_id/pairing/:match_id/delete", to: "pairings#delete"
+
+  post "/tournaments/:tournament_id/pairing/pair", to: "pairings#pair"
+
+
+  post "/tournaments/:tournament_id/pairing/start_round", to: "pairings#start_round"
+  post "/tournaments/:tournament_id/pairing/end_round", to: "pairings#end_round"
+  post "/tournaments/:tournament_id/pairing/end_tournament", to: "pairings#end_tournament"
 
   post "/tournaments/start_round", to: "tournaments#start_round"
   resources "tournaments"

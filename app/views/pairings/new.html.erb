@@ -1,0 +1,8 @@
+  <%= @match.errors.full_messages%>
+  <%= simple_form_for @match, :url => "/tournaments/#{@tournament.id}/pairing/create" do |f| %>
+      Titel: <%= f.text_field :title %><br />
+      Beschreibung: <%= f.text_field :description %><br />
+      Spieler:
+      <%= f.association :users %>
+      <%= f.submit %>
+  <% end %>

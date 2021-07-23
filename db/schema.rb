@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_16_102544) do
+ActiveRecord::Schema.define(version: 2021_07_23_130019) do
 
   create_table "armies", force: :cascade do |t|
     t.integer "user_id"
@@ -121,7 +121,7 @@ ActiveRecord::Schema.define(version: 2021_07_16_102544) do
   end
 
   create_table "player_groups", force: :cascade do |t|
-    t.bigint "creator_id"
+    t.bigint "organizer_id"
     t.text "title"
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
@@ -160,6 +160,9 @@ ActiveRecord::Schema.define(version: 2021_07_16_102544) do
     t.datetime "payment_deadline_date"
     t.text "information"
     t.text "procedure"
+    t.boolean "round_started"
+    t.boolean "ended"
+    t.datetime "round_started_at"
   end
 
   create_table "tournaments_users", force: :cascade do |t|

@@ -1,0 +1,9 @@
+  <turbo-frame id="match_<%= match.id %>">
+    <div class="flex flex-row">
+      <% match.users.each do |user|%>
+        <div class="mr-3"> <%= user.full_name%> </div>
+      <% end%>
+    </div>
+    <a class="" href="/tournaments/<%= tournament.id %>/pairing/<%= match.id%>/edit" %>edit</a>
+    <a class="" href="/tournaments/<%= tournament.id %>/pairing/<%= match.id%>/delete" %>delete</a>
+  </turbo-frame>
