@@ -2,14 +2,7 @@
 <div class="bg-white py-5 px-8 rounded-b rounded-tr float-left justify-between view-width">
 <h4> <%= @tournament.title%> Round <%= @tournament.current_round %> / <%= @tournament.max_number_of_rounds%> </h4>
 
-<% if @tournament.round_started %>
-  <div data-controller="timer">
-    <div><%= @tournament.round_started_at.strftime("%d.%m.%y %H:%M:%S") %></div>
-    <div class="hidden" data-timer-target="started_at"><%= @tournament.round_started_at.strftime("%FT%T%:z") %></div>
-    
-    <div data-timer-target="timer"></div>
-  </div>
-<% end %>
+<%= render :partial => 'tournaments/tournament_timer', locals: { tournament: @tournament, user: current_user } %>
 
 <turbo-frame id="tournament_pairing_<%= @tournament.id %>">
 

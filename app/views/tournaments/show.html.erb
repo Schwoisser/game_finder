@@ -10,27 +10,22 @@
 
   <div data-tab-target="tabs">
 
-  <div class="bg-white py-5 px-8 rounded-b rounded-tr float-left justify-between view-width">
+    <div class="bg-white py-5 px-8 rounded-b rounded-tr float-left justify-between view-width">
 
-    <h1><%= @tournament.title %></h1>
-    <p><%= @tournament.game.title %></p>
-  
-    <div class="flex flex-row justify-between"> 
-
-      <div class="max-w-md my-4" >
-        <%= simple_format(@tournament.summary) %>
-      </div>
-
-
-      <div class="my-4 ml-12 w-64">
-        <%= render :partial => 'join_tournament_buttons', locals: { tournament: @tournament, user: current_user } %>
-      </div>
+        <% if @tournament.current_round == 0 || @tournament.ended%>
+          <%= render :partial => 'show_overview', locals: { tournament: @tournament, user: current_user } %>
+          <div class="my-4 ml-12 w-64">
+            <%= render :partial => 'join_tournament_buttons', locals: { tournament: @tournament, user: current_user } %>
+          </div>
+          <% else %>
+            <%= render :partial => 'show_overview_started', locals: { tournament: @tournament, user: current_user, matches: @matches } %>
+            <div class="my-5"></div>
+            <%= render :partial => 'join_tournament_buttons', locals: { tournament: @tournament, user: current_user } %>
+          <% end %>
 
     </div>
 
   </div>
-
-</div>
 
 <div class="hidden" data-tab-target="tabs">
   <div class="bg-white py-5 px-8 rounded-b rounded-tr float-left justify-between view-width">

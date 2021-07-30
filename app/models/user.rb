@@ -8,7 +8,8 @@ class User < ApplicationRecord
   has_and_belongs_to_many :games
   has_many :armies
   has_many :battle_reports
-
+  has_many :match_scorings, class_name: "MatchScoring"
+  
   def full_name
     "#{first_name} \"#{nick_name}\" #{last_name}" 
   end

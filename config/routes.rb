@@ -39,6 +39,10 @@ Rails.application.routes.draw do
   post "/tournaments/start_round", to: "tournaments#start_round"
   resources "tournaments"
 
+
+  patch "/match/match_scoring", to: "match#match_scoring"
+  post "/match/match_scoring", to: "match#match_scoring"
+  
   resources "match"
   resources "message"
   post "/message/answer_friend_request", to: "message#answer_friend_request"

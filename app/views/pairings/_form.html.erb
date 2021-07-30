@@ -1,12 +1,15 @@
 <turbo-frame id="match_<%= match.id %>">
-<%= simple_form_for match, :url => "/tournaments/#{@tournament.id}/pairing/#{match.id}/update" do |f| %>
+  <%= simple_form_for match, :url => "/tournaments/#{@tournament.id}/pairing/#{match.id}/update" do |f| %>
   
   Titel: <%= f.text_field :title %><br />
   Beschreibung: <%= f.text_field :description %><br />
-  Spieler: <%= f.association :users %>
-  <% if @tournament.round_started %>
-    <div>Ergebnis eintragen</div>
+  Spieler: <%= f.association :users, collection: @tournament.users, label_method: :full_name, value_method: :id%>
+
+
+    <%= f.submit %>
   <% end %>
-  <%= f.submit %>
-<% end %>
+
+  <% if @tournament.round_started %>
+      <%= render :partial => 'tournaments/match_scoring_form', locals: { tournament: @tournament, user: current_user, match: match } %>
+  <% end %>
 </turbo-frame>

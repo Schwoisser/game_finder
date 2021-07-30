@@ -1,0 +1,16 @@
+<h1><%= tournament.title %></h1>
+
+<%= render :partial => 'tournament_timer', locals: { tournament: tournament, user: current_user } %>
+
+<div class="mt-3">Your Current Tournament Match</h2>
+<% matches.each do |match| %>
+  <div> Round: <%= match.tournament_round %> </div>
+  <div> <%= match.title %> </div>
+  <%= render :partial => 'tournaments/match_scoring_form', locals: { tournament: @tournament, user: current_user, match: match } %>
+<% end %>
+
+<div class="mt-3"> All Tournament Matches</div>
+<% tournament.matches.each do |match| %>
+  <div> Round: <%= match.tournament_round %> </div>
+  <div> <%= match.title %> </div>
+<% end %>

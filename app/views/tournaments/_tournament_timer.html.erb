@@ -1,0 +1,8 @@
+<% if tournament.round_started %>
+  <div data-controller="timer">
+    <div><%= tournament.round_started_at.strftime("%d.%m.%y %H:%M:%S") %></div>
+    <div class="hidden" data-timer-target="started_at"><%= tournament.round_started_at.strftime("%FT%T%:z") %></div>
+    
+    <div data-timer-target="timer"></div>
+  </div>
+<% end %>

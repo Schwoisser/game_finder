@@ -5,13 +5,9 @@ class TournamentsController < ApplicationController
 
   def show
     @tournament = Tournament.find(params[:id])
-
-    # respond_to do |format|
-    #   format.turbo_stream do
-    #     render turbo_stream: turbo_stream.append(:comments, partial: "join_tournament_buttons",
-    #       locals: { tournament: @tournament, user: current_user })
-    #   end
-    # end
+    if @tournament.current_round != 0 && !@tournament.ended
+      @matches = Match.joins(:users).where(tournament: @tournament, users: [current_user])
+    end
   end
 
 

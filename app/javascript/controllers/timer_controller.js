@@ -30,7 +30,7 @@ export default class extends Controller {
 
     // Display the result in the element with id="demo"
     // console.log(real_this.started_atTarget)
-    $(real_this.timerTarget).text(days + "d " + hours + "h "
+    $(real_this.timerTarget).text(hours + "h "
     + minutes + "m " + seconds + "s ");
 
     // If the count down is finished, write some text

@@ -1,0 +1,13 @@
+  <% match.match_scorings.each do |match_scoring| %>
+  <%= match_scoring.user.full_name%>
+  <turbo-frame id="match_scoring<%= match_scoring.id %>">
+    <%= simple_form_for :match_scoring, :url => '/match/match_scoring' do |f| %>
+      <%= f.hidden_field :tournament_id, :value => tournament.id %>
+      <%= f.hidden_field :match_id, :value => match.id %>
+      <%= f.hidden_field :user_id, :value => current_user.id %>
+      <%= f.hidden_field :match_scoring_id, :value => match_scoring.id %>
+      <%= f.input_field :match_score, as: :numeric, :value => match_scoring.match_score, as: :numeric %>
+      <%= f.button :submit, "Add Match score", class:"giocaneer-button p-2 rounded mt-3 w-full px-2" %>
+    <% end %>
+</turbo-frame>
+  <% end %>

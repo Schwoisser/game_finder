@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_23_130019) do
+ActiveRecord::Schema.define(version: 2021_07_30_100714) do
 
   create_table "armies", force: :cascade do |t|
     t.integer "user_id"
@@ -94,6 +94,7 @@ ActiveRecord::Schema.define(version: 2021_07_23_130019) do
     t.bigint "match_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "match_score"
   end
 
   create_table "messages", force: :cascade do |t|
