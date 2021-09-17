@@ -1,0 +1,45 @@
+<div class=" flex flex-col" style="width:752px;"> 
+  <div class="flex flex-row" style="width:752px;">
+      <div class=" flex flex-col text-left" style="width:376px;"> 
+      Filter by Game
+      </div>
+      <div class=" flex flex-col text-left" style="width:376px;"> 
+        <% "Show as" %>
+      </div>
+  </div> 
+  <div class="flex flex-row mb-4" style="width:752px;">
+
+    <div class=" flex flex-col text-left" style="width:376px;"> 
+      <select>
+        <% Game.all.each do |game|%>
+          <option value=”<%= game.id %>”><%= game.title %></option>
+        <% end %>
+      </select>
+    </div>
+
+    <div class=" flex flex-col text-left" style="width:376px;">
+
+    </div>
+
+  </div>
+  <% matches.each do |match|%>
+  <div class="flex flex-row mt-2" style="width:752px;">
+    <div class=" flex flex-col text-left" style="width:50px;">
+      <div class="m-1" style="height:30px; width:30px; background-color: black; border-radius: 5rem;"></div>
+    </div>
+    <div class=" flex flex-col text-left" style="width:552px;">
+      <div class="flex flex-row text-left" style="width:552px;">
+        <%= match.title %>
+      </div>
+      <div class="flex flex-row" style="width:552px;">
+
+         <%= match.game.short_title  %>
+
+      </div>
+    </div>
+    <div class=" flex flex-col text-left" style="width:100px;">
+      <%= distance = current_user.distance_from(match, :units => :kms).to_i %>km
+    </div>
+  </div>
+  <% end %>
+</div> 

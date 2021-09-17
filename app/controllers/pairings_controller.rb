@@ -110,8 +110,7 @@ class PairingsController < ApplicationController
 
   def tournament_ready_for_new_round?(tournament)
     tournament.organizer == current_user && 
-    (Match.where(tournament: tournament, tournament_round: tournament.current_round + 1).count > 0) && 
-    tournament.current_round < tournament.max_number_of_rounds
+    (Match.where(tournament: tournament, tournament_round: tournament.current_round + 1).count > 0) && tournament.current_round < tournament.max_number_of_rounds
   end
 
 

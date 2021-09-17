@@ -16,6 +16,11 @@ Rails.application.routes.draw do
   post "/profile/send_friend_request", to: "profile#send_friend_request"
   get "/profile/:id", to: "profile#show"
 
+  # matchmaking
+  get "/play", to:"player_finder#index"
+  # get "/matchmaking", to:"match_finder#index"
+
+
   post "/tournaments/join", to: "tournaments#join"
   post "/tournaments/leave", to: "tournaments#leave"
   
@@ -43,6 +48,8 @@ Rails.application.routes.draw do
   patch "/match/match_scoring", to: "match#match_scoring"
   post "/match/match_scoring", to: "match#match_scoring"
   
+
+
   resources "match"
   resources "message"
   post "/message/answer_friend_request", to: "message#answer_friend_request"

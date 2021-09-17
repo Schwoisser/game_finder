@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_30_100714) do
+ActiveRecord::Schema.define(version: 2021_09_17_121714) do
 
   create_table "armies", force: :cascade do |t|
     t.integer "user_id"
@@ -80,6 +80,8 @@ ActiveRecord::Schema.define(version: 2021_07_30_100714) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "tournament_round"
+    t.float "longitude"
+    t.float "latitude"
   end
 
   create_table "matches_player_attributes", force: :cascade do |t|
