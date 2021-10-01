@@ -9,10 +9,10 @@
   </div> 
   <div class="flex flex-row mb-4" style="width:752px;">
 
-    <div class=" flex flex-col text-left" style="width:376px;"> 
-      <select>
+    <div class=" flex flex-col text-left" style="width:376px;" data-controller="filter"> 
+      <select data-action="change->filter#change">
         <% Game.all.each do |game|%>
-          <option value=”<%= game.id %>”><%= game.title %></option>
+          <option data-target-filter="select"  value="<%= game.id %>"><%= game.title %></option>
         <% end %>
       </select>
     </div>
@@ -22,6 +22,10 @@
     </div>
 
   </div>
+    <turbo-frame id="matches">
+    <% Game.all.each do |game|%>
+      <a href="/play?id=<%= game.id %>"><%= game.short_title %></a>
+    <% end %>
   <% matches.each do |match|%>
   <div class="flex flex-row mt-2" style="width:752px;">
     <div class=" flex flex-col text-left" style="width:50px;">
@@ -42,4 +46,5 @@
     </div>
   </div>
   <% end %>
+</turbo-frame>
 </div> 

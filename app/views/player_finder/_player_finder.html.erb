@@ -9,10 +9,10 @@
   </div> 
   <div class="flex flex-row mb-4" style="width:752px;">
 
-    <div class=" flex flex-col text-left" style="width:376px;"> 
-      <select>
+    <div class=" flex flex-col text-left" style="width:376px;" data-controller="filter"> 
+      <select data-action="change->filter#change">
         <% Game.all.each do |game|%>
-          <option value=”<%= game.id %>”><%= game.title %></option>
+          <option data-target-filter="select"  value="<%= game.id %>"><%= game.title %></option>
         <% end %>
       </select>
     </div>
@@ -22,12 +22,16 @@
     </div>
 
   </div>
+  <turbo-frame id="players">
+    <% Game.all.each do |game|%>
+      <a href="/play?id=<%= game.id %>"><%= game.short_title %></a>
+    <% end %>
   <% users.each do |user|%>
-  <div class="flex flex-row mt-2" style="width:752px;">
-    <div class=" flex flex-col text-left" style="width:50px;">
+  <div class="flex flex-row mt-2 light_hover p-1 rounded " style="width:752px;" data-controller="toggle">
+    <div class=" flex flex-col text-left" style="width:50px;" data-action="click->toggle#toggle">
       <div class="m-1" style="height:30px; width:30px; background-color: black; border-radius: 5rem;"></div>
     </div>
-    <div class=" flex flex-col text-left" style="width:552px;">
+    <div class=" flex flex-col text-left" style="width:552px;"  data-action="click->toggle#toggle" data-toggle-target="toggled">
       <div class="flex flex-row text-left" style="width:552px;">
         <%= user.full_name %>
       </div>
@@ -37,9 +41,12 @@
 
       </div>
     </div>
-    <div class=" flex flex-col text-left" style="width:100px;">
+    <div class=" flex flex-col text-left" style="width:100px;" data-action="click->toggle#toggle" data-toggle-target="toggled">
       <%= distance = current_user.distance_from(user, :units => :kms).to_i %>km
     </div>
+    <div class="giocaneer-button rounded mx-2 p-2 hidden" data-toggle-target="toggled">Invite to play</div>
+    <a href="/profile/<%= user.id %>" class="inverse-giocaneer-button rounded mx-2 p-2 hidden" data-toggle-target="toggled">See Profile</a>
   </div>
   <% end %>
+  </turbo-frame>
 </div> 

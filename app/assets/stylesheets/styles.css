@@ -46,6 +46,18 @@
         background-color: #D1D5DB !important;
         color:  #374151 !important;
     }
+
+    .inverse-giocaneer-button {
+        background-color: #D1D5DB !important;
+        color: #374151 !important;
+    }
+    .inverse-giocaneer-button:hover{
+        background-color: #374151 !important; 
+        color:  white!important;
+    }
+    .light_hover:hover {
+        background-color: #D1D5DB !important; 
+    }
 @media (min-width: 768px){
 
     .giocaneernav{
