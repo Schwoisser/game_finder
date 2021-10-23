@@ -27,18 +27,23 @@
       <a href="/play?id=<%= game.id %>"><%= game.short_title %></a>
     <% end %>
   <% matches.each do |match|%>
-  <div class="flex flex-row mt-2" style="width:752px;">
-    <div class=" flex flex-col text-left" style="width:50px;">
-      <div class="m-1" style="height:30px; width:30px; background-color: black; border-radius: 5rem;"></div>
+  <div class="flex flex-row mt-2" style="width:752px;" data-controller="toggle" data-action="click->toggle#toggle">
+    <div class=" flex flex-col text-left" style="width:50px;" data-action="click->toggle#toggle">
+      <div class="m-1" style="height:30px; width:30px; background-color: black; border-radius: 5rem;" data-action="click->toggle#toggle"></div>
     </div>
     <div class=" flex flex-col text-left" style="width:552px;">
-      <div class="flex flex-row text-left" style="width:552px;">
+
+      <div class="flex flex-row text-left" style="width:552px;" data-toggle-target="toggled">
         <%= match.title %>
       </div>
-      <div class="flex flex-row" style="width:552px;">
+      <div class="flex flex-row" style="width:552px;" data-toggle-target="toggled">
 
          <%= match.game.short_title  %>
 
+      </div>
+      <div class="flex flex-row text-left hidden" style="width:552px;" data-toggle-target="toggled">
+        <div class="giocaneer-button flex flex-col text-left rounded mx-2 p-2 hidden" data-toggle-target="toggled">Join</div>
+        <a href="/match/<%= match.id %>" class="inverse-giocaneer-button flex flex-col text-left rounded mr-2 p-2 hidden" data-toggle-target="toggled">View Match</a>
       </div>
     </div>
     <div class=" flex flex-col text-left" style="width:100px;">

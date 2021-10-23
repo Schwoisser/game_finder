@@ -1,0 +1,254 @@
+$background: #f9f6de;
+$background-container: #cfcbb0;
+$background-container-border: #857b75;
+$background-container-item-a: #eae7d2;
+$background-container-item-b: #e2ddba;
+$backgound-dark: #1d201b;
+$background-dark-hover: #292c28;
+$backgound-dark-selected: #cfd9c8;
+$backgound-button: #f4efe3;
+
+$shadow-bright: #f2f1e5;
+$shadow-dark: #adaa93;
+
+
+
+$text: #1b201b;
+$text-secondary: #767676;
+$text-bright: #ecffdf;
+$font-size-headline: 1rem;
+
+
+body {
+    font-family: 'Saira Regular';
+}
+
+.button {
+    //display: flex;
+    position:relative;
+    background-color: $backgound-button;
+    padding: 0.5rem 0.75rem 0.5rem 0.75rem;
+    margin: 1rem 1rem 1rem 0.75rem;
+    max-width: 20rem;
+    border-color: $background-container-border;
+    border-width: 2px;  
+    box-shadow: inset 2px -2px 0px $shadow-dark,
+                inset -2px 2px 0px white;  
+}
+
+.button:hover {
+    background-color: $shadow-dark;
+    cursor: pointer;
+    box-shadow: none;
+}
+
+.button-corner{
+    content: "";
+    position:absolute;
+    right: 6px;
+    bottom: -3px;
+    margin:-10px;
+    width:18px;
+    height:30px;
+    transform:rotate(50deg);
+    background-color:$background-container; /* to see where it is */
+    border-left-color: $background-container-border;
+    border-left-width: 2px;
+    box-shadow: -2px 0px 0px $shadow-dark;
+    //box-shadow: -2px 0px 0px #ffff;
+}
+
+
+.basic-box {
+    background-color: $background-container;
+    border-width:  2px;
+    border-color: $background-container-border;
+    position: relative;
+    box-shadow: inset 2px -2px 0px $shadow-dark,
+                 inset -2px 2px 0px $shadow-bright;
+    /* overflow:hidden; */
+
+  /*   width: 200px;
+    min-height: 200px;
+    -webkit-clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 35px, 85% 0);
+    clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 35px, 85% 0); */
+/*     background: green; */
+}
+.basic-box:after {
+    content: "";
+    position:absolute;
+    right: 0;
+    top: 0;
+    margin:-20px;
+    width:40px;
+    height:40px;
+    transform:rotate(45deg);
+    background-color:$background; /* to see where it is */
+    border-bottom-color: $background-container-border;
+    border-bottom-width: 2px;
+    box-shadow: 0 2px 0px #ffff;
+}
+.basic-box-headline {
+    margin-left: 0.75rem;
+    margin-top: 0.75rem;
+    font-size: $font-size-headline;
+    color: $text;
+}
+
+.basic-box-image-container {
+    display: block;
+    //flex-grow: 1;
+    max-width: 360px;
+    width: auto;
+    margin-left: 0.75rem;
+    margin-right: 0.75rem;
+    margin-top: 0.75rem;
+    margin-bottom: 0.75rem;
+    border-color: $shadow-bright;
+    border-width: 1px;    
+}
+
+.basic-box-image {
+    margin: 0;
+    width: 100%;
+    
+}
+.basic-box-image-label {
+    margin: 0;
+    width: 100%;
+    height: 3.5rem;
+    background-color: $backgound-dark;
+    font-size: $font-size-headline;
+    color: $text-bright;
+    padding: 0.6rem 0.75rem 0.6rem 0.75rem;
+    line-height: 1.25rem;
+    display: flex;
+    //justify-content: space-between;
+}
+
+.basic-box-label-text {
+    width: 93%;
+    flex-grow: 9;
+
+}
+.basic-box-label-arrow {
+    width: 7%;
+    height: 100%;
+    flex-grow: 1;
+    align-items: flex-end;
+    justify-content: end; 
+}
+
+.basic-list-container {
+    width: 100%;
+}
+
+.basic-list-item {
+    display: block;
+    width: calc(100%-4px);
+    margin-right: 2px;
+    margin-left: 2px;
+    padding: 0.5rem 0.75rem 0.5rem 0.75rem;
+}
+
+.basic-list-item:nth-child( even ) {
+    background-color: $background-container-item-a;
+    color: $text;
+}
+
+.basic-list-item:nth-child( odd ) {
+    background-color: $background-container-item-b;
+    color: $text;
+}
+
+.basic-list-item:nth-child( even ):hover {
+    background-color: $shadow-bright;
+    color: $text;
+}
+
+.basic-list-item:nth-child( odd ):hover {
+    background-color: $shadow-bright;
+    color: $text;
+}
+
+h1 {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+}
+
+h4 {
+    font-size: 0.85rem;
+    line-height: 2rem;
+    font-weight: 700;
+}
+
+.bg-main {
+  background-color:$background;
+}
+
+.max-view-width {
+    max-width: 51rem;
+}
+.view-width {
+    width: 51rem;
+}
+.giocaneernav{
+    display: flex;
+    flex-direction: row;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: $backgound-dark;
+}
+
+.giocaneernav-item{
+    flex-grow: 0;
+    opacity: 1;
+    background-color: $backgound-dark;
+}
+.giocaneernav-item:hover{
+    background-color: $background-dark-hover;
+}
+
+.viewport-margin{
+    padding: 1rem;
+    /* background-color: gray; */
+}
+
+.hover-effect:hover{
+    background-color: yellow;
+}
+.giocaneer-button {
+    background-color: #374151 !important;
+    color: white !important;
+}
+.giocaneer-button:hover{
+    background-color: #D1D5DB !important;
+    color:  #374151 !important;
+}
+
+.inverse-giocaneer-button {
+    background-color: #D1D5DB !important;
+    color: #374151 !important;
+}
+.inverse-giocaneer-button:hover{
+    background-color: #374151 !important; 
+    color:  white!important;
+}
+.light_hover:hover {
+    background-color: #D1D5DB !important; 
+}
+@media (min-width: 768px){
+
+.giocaneernav{
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    left: 0;
+    height: 100%;
+    width: 5rem;
+}
+.viewport-margin{
+    margin-left: 5rem;
+}
+}

@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   root "main#index"
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  get "elements", to: "main#elements"
   
   get "/profile", to: "profile#show"
   # Reihenfolge beachten
