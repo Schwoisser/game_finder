@@ -21,13 +21,14 @@
 
   </head>
 
-  <body class="bg-main">
+  <body class="bg-main relative">
 
-    <div class="viewport-margin max-view-width" style="margin-left:14rem">
+    <div class="viewport-margin max-view-width ">
       <%= yield %>
+      <div style="height: 61px;"></div>
     </div>
 
     <%= render :partial => 'layouts/nav', locals: { } %>
-    
+
   </body>
 </html>

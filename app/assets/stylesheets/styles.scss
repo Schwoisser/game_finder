@@ -11,6 +11,8 @@ $backgound-button: #f4efe3;
 $shadow-bright: #f2f1e5;
 $shadow-dark: #adaa93;
 
+$dark-red: #7C0202;
+
 
 
 $text: #1b201b;
@@ -21,15 +23,42 @@ $font-size-headline: 1rem;
 
 body {
     font-family: 'Saira Regular';
+    color: $text;
+    font-size: 0.85em;
+    line-height: 1.4;
+    height: 100%;
+}
+
+a, a:visited, a:hover, a:active {
+    color: inherit;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.scrollbar-hidden::-webkit-scrollbar {
+    display: none;
+}
+  
+/* Hide scrollbar for IE, Edge add Firefox */
+.scrollbar-hidden {
+-ms-overflow-style: none;
+scrollbar-width: none; /* Firefox */
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
 }
 
 .button {
-    //display: flex;
+    display: flex;
+    justify-content: center;
     position:relative;
     background-color: $backgound-button;
     padding: 0.5rem 0.75rem 0.5rem 0.75rem;
     margin: 1rem 1rem 1rem 0.75rem;
+    min-width: 80%;
     max-width: 20rem;
+    
     border-color: $background-container-border;
     border-width: 2px;  
     box-shadow: inset 2px -2px 0px $shadow-dark,
@@ -74,23 +103,26 @@ body {
     clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 35px, 85% 0); */
 /*     background: green; */
 }
+
 .basic-box:after {
     content: "";
-    position:absolute;
-    right: 0;
+    position: absolute;
+    right: -5px;
     top: 0;
-    margin:-20px;
-    width:40px;
-    height:40px;
-    transform:rotate(45deg);
-    background-color:$background; /* to see where it is */
-    border-bottom-color: $background-container-border;
+    margin: -7px;
+    width: 30px;
+    height: 20px;
+    transform: rotate(45deg);
+    background-color: #f9f6de;
+    border-bottom-color: #857b75;
     border-bottom-width: 2px;
     box-shadow: 0 2px 0px #ffff;
 }
+
 .basic-box-headline {
     margin-left: 0.75rem;
     margin-top: 0.75rem;
+    margin-bottom: 0.75rem;
     font-size: $font-size-headline;
     color: $text;
 }
@@ -98,11 +130,11 @@ body {
 .basic-box-image-container {
     display: block;
     //flex-grow: 1;
-    max-width: 360px;
+    max-width: 320px;
     width: auto;
     margin-left: 0.75rem;
     margin-right: 0.75rem;
-    margin-top: 0.75rem;
+    // margin-top: 0.75rem;
     margin-bottom: 0.75rem;
     border-color: $shadow-bright;
     border-width: 1px;    
@@ -111,12 +143,11 @@ body {
 .basic-box-image {
     margin: 0;
     width: 100%;
-    
 }
 .basic-box-image-label {
     margin: 0;
     width: 100%;
-    height: 3.5rem;
+    height: 3.7rem;
     background-color: $backgound-dark;
     font-size: $font-size-headline;
     color: $text-bright;
@@ -129,9 +160,11 @@ body {
 .basic-box-label-text {
     width: 93%;
     flex-grow: 9;
-
+    padding-bottom: 0.2rem;
 }
+
 .basic-box-label-arrow {
+    padding-top: 0.15rem;
     width: 7%;
     height: 100%;
     flex-grow: 1;
@@ -148,7 +181,11 @@ body {
     width: calc(100%-4px);
     margin-right: 2px;
     margin-left: 2px;
-    padding: 0.5rem 0.75rem 0.5rem 0.75rem;
+
+    padding-left: 0.7rem ;
+    padding-right: 0.7rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
 }
 
 .basic-list-item:nth-child( even ) {
@@ -182,12 +219,30 @@ h4 {
     font-weight: 700;
 }
 
+.big-number {
+    font-size: 2rem;
+    line-height: 1.5rem;    
+}
+
 .bg-main {
   background-color:$background;
 }
 
+.bg-dark {
+    background-color: $backgound-dark;
+}
+
+
+.bg-dark-red {
+    background-color: $dark-red;
+}
+
+.text-bright {
+    color: $text-bright;
+}
+
 .max-view-width {
-    max-width: 51rem;
+    width: auto;
 }
 .view-width {
     width: 51rem;
@@ -196,13 +251,17 @@ h4 {
     display: flex;
     flex-direction: row;
     position: fixed;
-    bottom: 0;
+    bottom: 0rem;
+    left: 0;
+    margin: auto;
     width: 100%;
     background-color: $backgound-dark;
+    // height: 61px;
+    z-index: 1030;
 }
 
 .giocaneernav-item{
-    flex-grow: 0;
+    flex-grow: 1;
     opacity: 1;
     background-color: $backgound-dark;
 }
@@ -238,17 +297,33 @@ h4 {
 .light_hover:hover {
     background-color: #D1D5DB !important; 
 }
+// @media (max-width: 768px){
+// }
+
 @media (min-width: 768px){
 
-.giocaneernav{
-    display: flex;
-    flex-direction: column;
-    position: fixed;
-    left: 0;
-    height: 100%;
-    width: 5rem;
-}
-.viewport-margin{
-    margin-left: 5rem;
-}
+    .giocaneernav{
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        left: 0;
+        height: 100%;
+        width: 5rem;
+    }
+
+    .giocaneernav-item{
+        flex-grow: 0;
+        opacity: 1;
+        background-color: $backgound-dark;
+    }
+    .viewport-margin{
+        margin-left: 14rem;
+    }
+    .max-view-width {
+        max-width: 51rem;
+    }
+
+    .basic-box-image-container {
+        margin-right: 0;  
+    }
 }
