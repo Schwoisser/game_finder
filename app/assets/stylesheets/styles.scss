@@ -422,8 +422,8 @@ h4 {
         
     }
     
-    .tab-navigation-corner {
-        // content: "";
+    .tab-navigation-corner:after {
+        content: "";
         position: absolute;
         top: 0.5rem;
         margin: -7px;
