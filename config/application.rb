@@ -18,5 +18,7 @@ module GameFinder
     #
     # config.time_zone = "Central Time (US & Canada)"
     config.eager_load_paths << Rails.root.join("app/commands")
+    config.assets.enabled = true  
+    config.assets.paths << "#{Rails.root}/app/assets/fonts"  
   end
 end

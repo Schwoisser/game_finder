@@ -1,0 +1,334 @@
+$background: #f9f6de;
+$background-container: #cfcbb0;
+$background-container-border: #857b75;
+$background-container-item-a: #eae7d2;
+$background-container-item-b: #e2ddba;
+$backgound-dark: #1d201b;
+$background-dark-hover: #292c28;
+$backgound-dark-selected: #cfd9c8;
+$backgound-button: #f4efe3;
+
+$shadow-bright: #f2f1e5;
+$shadow-dark: #adaa93;
+
+$dark-red: #7C0202;
+
+
+
+$text: #1b201b;
+$text-secondary: #767676;
+$text-bright: #ecffdf;
+$font-size-headline: 1rem;
+
+
+body {
+    font-family: 'Saira Regular';
+    color: $text;
+    font-size: 0.85em;
+    line-height: 1.4;
+    height: 100%;
+}
+
+a, a:visited, a:hover, a:active {
+    color: inherit;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.scrollbar-hidden::-webkit-scrollbar {
+    display: none;
+}
+  
+/* Hide scrollbar for IE, Edge add Firefox */
+.scrollbar-hidden {
+-ms-overflow-style: none;
+scrollbar-width: none; /* Firefox */
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    position:relative;
+    background-color: $backgound-button;
+    padding: 0.5rem 0.75rem 0.5rem 0.75rem;
+    margin: 1rem 1rem 1rem 0.75rem;
+    min-width: 80%;
+    max-width: 20rem;
+    
+    border-color: $background-container-border;
+    border-width: 2px;  
+    box-shadow: inset 2px -2px 0px $shadow-dark,
+                inset -2px 2px 0px white;  
+}
+
+.button:hover {
+    background-color: $shadow-dark;
+    cursor: pointer;
+    box-shadow: none;
+}
+
+.button-corner{
+    content: "";
+    position:absolute;
+    right: 6px;
+    bottom: -3px;
+    margin:-10px;
+    width:18px;
+    height:30px;
+    transform:rotate(50deg);
+    background-color:$background-container; /* to see where it is */
+    border-left-color: $background-container-border;
+    border-left-width: 2px;
+    box-shadow: -2px 0px 0px $shadow-dark;
+    //box-shadow: -2px 0px 0px #ffff;
+}
+
+
+.basic-box {
+    background-color: $background-container;
+    border-width:  2px;
+    border-color: $background-container-border;
+    position: relative;
+    box-shadow: inset 2px -2px 0px $shadow-dark,
+                 inset -2px 2px 0px $shadow-bright;
+    /* overflow:hidden; */
+
+  /*   width: 200px;
+    min-height: 200px;
+    -webkit-clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 35px, 85% 0);
+    clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 35px, 85% 0); */
+/*     background: green; */
+}
+
+.basic-box:after {
+    content: "";
+    position: absolute;
+    right: -5px;
+    top: 0;
+    margin: -7px;
+    width: 30px;
+    height: 20px;
+    transform: rotate(45deg);
+    background-color: #f9f6de;
+    border-bottom-color: #857b75;
+    border-bottom-width: 2px;
+    box-shadow: 0 2px 0px #ffff;
+}
+
+.basic-box-headline {
+    margin-left: 0.75rem;
+    margin-top: 0.75rem;
+    margin-bottom: 0.75rem;
+    font-size: $font-size-headline;
+    color: $text;
+}
+
+.basic-box-image-container {
+    display: block;
+    //flex-grow: 1;
+    max-width: 320px;
+    width: auto;
+    margin-left: 0.75rem;
+    margin-right: 0.75rem;
+    // margin-top: 0.75rem;
+    margin-bottom: 0.75rem;
+    border-color: $shadow-bright;
+    border-width: 1px;    
+}
+
+.basic-box-image {
+    margin: 0;
+    width: 100%;
+}
+.basic-box-image-label {
+    margin: 0;
+    width: 100%;
+    height: 3.7rem;
+    background-color: $backgound-dark;
+    font-size: $font-size-headline;
+    color: $text-bright;
+    padding: 0.6rem 0.75rem 0.6rem 0.75rem;
+    line-height: 1.25rem;
+    display: flex;
+    //justify-content: space-between;
+}
+
+.basic-box-label-text {
+    width: 93%;
+    flex-grow: 9;
+    padding-bottom: 0.2rem;
+}
+
+.basic-box-label-arrow {
+    padding-top: 0.15rem;
+    width: 7%;
+    height: 100%;
+    flex-grow: 1;
+    align-items: flex-end;
+    justify-content: end; 
+}
+
+.basic-list-container {
+    width: 100%;
+}
+
+.basic-list-item {
+    display: block;
+    width: calc(100%-4px);
+    margin-right: 2px;
+    margin-left: 2px;
+
+    padding-left: 0.7rem ;
+    padding-right: 0.7rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.basic-list-item:nth-child( even ) {
+    background-color: $background-container-item-a;
+    color: $text;
+}
+
+.basic-list-item:nth-child( odd ) {
+    background-color: $background-container-item-b;
+    color: $text;
+}
+
+.basic-list-item:nth-child( even ):hover {
+    background-color: $shadow-bright;
+    color: $text;
+}
+
+.basic-list-item:nth-child( odd ):hover {
+    background-color: $shadow-bright;
+    color: $text;
+}
+
+h1 {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+}
+
+h4 {
+    font-size: 0.85rem;
+    line-height: 2rem;
+    font-weight: 700;
+}
+
+.big-number {
+    font-size: 2rem;
+    line-height: 1.5rem;    
+}
+
+.bg-main {
+  background-color:$background;
+}
+
+.bg-dark {
+    background-color: $backgound-dark;
+}
+
+
+.bg-dark-red {
+    background-color: $dark-red;
+}
+
+.text-bright {
+    color: $text-bright;
+}
+
+.max-view-width {
+    width: auto;
+}
+.view-width {
+    width: 51rem;
+}
+.giocaneernav{
+    display: flex;
+    flex-direction: row;
+    position: fixed;
+    bottom: 0rem;
+    left: 0;
+    margin: auto;
+    width: 100%;
+    background-color: $backgound-dark;
+    // height: 61px;
+    z-index: 1030;
+}
+
+.giocaneernav-item{
+    flex-grow: 1;
+    opacity: 1;
+    background-color: $backgound-dark;
+}
+.giocaneernav-item:hover{
+    background-color: $background-dark-hover;
+}
+
+.viewport-margin{
+    padding: 1rem;
+    /* background-color: gray; */
+}
+
+.hover-effect:hover{
+    background-color: yellow;
+}
+.giocaneer-button {
+    background-color: #374151 !important;
+    color: white !important;
+}
+.giocaneer-button:hover{
+    background-color: #D1D5DB !important;
+    color:  #374151 !important;
+}
+
+.inverse-giocaneer-button {
+    background-color: #D1D5DB !important;
+    color: #374151 !important;
+}
+.inverse-giocaneer-button:hover{
+    background-color: #374151 !important; 
+    color:  white!important;
+}
+.light_hover:hover {
+    background-color: #D1D5DB !important; 
+}
+// @media (max-width: 768px){
+// }
+
+@media (min-width: 768px){
+
+    .giocaneernav{
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        left: 0;
+        height: 100%;
+        width: 5rem;
+    }
+
+    .giocaneernav-item{
+        flex-grow: 0;
+        opacity: 1;
+        background-color: $backgound-dark;
+        width: 5rem;
+        // justify-content: center;
+        // justify-items: center;
+        // justify-self: center;
+        align-self: center;
+    }
+    .viewport-margin{
+        margin-left: 14rem;
+    }
+    .max-view-width {
+        max-width: 51rem;
+    }
+
+    .basic-box-image-container {
+        margin-right: 0;  
+    }
+}

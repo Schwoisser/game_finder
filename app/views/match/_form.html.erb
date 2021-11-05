@@ -1,6 +1,26 @@
 <%= form_for :match, url: match_index_path, method: :post do |f| %>
   Titel: <%= f.text_field :title %><br />
   Beschreibung: <%= f.text_field :description %><br />
+  Spieler Anzahl: <%= f.text_field :max_player_number %><br />
+  Datum: <%= f.date_select :start_date, start_year: Time.now.year %><br />
   <%= f.collection_select :game_id, user.games, :id, :title %>
+  <%= f.hidden_field :status, :value => @match.status %>
+
+  <% if @invited_user %>
+    <div class="hidden">
+  <% end %>
+
+  <%= f.collection_check_boxes :match_scorings, @users, :id, :full_name do |user| %>
+    <% if @invited_user.id == user.object.id %> 
+      <%= user.check_box(checked: true) %> <%= user.label %>
+    <% else %>
+      <%= user.check_box %> <%= user.label %>
+    <% end %>
+  <% end %>
+
+  <% if @invited_user %>
+    </div>
+  <% end %>
+
   <%= f.submit %>
 <% end %>

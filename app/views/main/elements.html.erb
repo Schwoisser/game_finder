@@ -1,0 +1,32 @@
+<br>
+<br>
+
+<div class="basic-box">
+  <div class="basic-box-headline">H1 Headline with Basic Box</div>
+
+  <a href="/" class="basic-box-image-container">
+    <div class="basic-box-image">
+       <%= image_tag 'test.jpg' %>
+    </div>
+    <div class="basic-box-image-label">
+      <div class="basic-box-label-text">Test Text Text Text Text Text Text Text Text Text Text Text Text Text</div>
+      <div class="basic-box-label-arrow">
+        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-chevron-compact-right" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z"/>
+        </svg>
+      </div>
+    </div>  
+  </a>
+
+  <div class="basic-list-container">
+    <% ["lorem", "ipusm", "test"].each do |text|%>
+      <a href="/" class="basic-list-item">
+        <%= text %>
+      </a>
+    <% end %>
+  </div>
+
+  <div class="button"> Join Game 
+    <div class="button-corner"></div>
+  </div>
+</div>

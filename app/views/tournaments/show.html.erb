@@ -13,8 +13,10 @@
     <div class="bg-white py-5 px-8 rounded-b rounded-tr float-left justify-between view-width">
 
         <% if @tournament.current_round == 0 || @tournament.ended%>
-          <%= render :partial => 'show_overview', locals: { tournament: @tournament, user: current_user } %>
-          <div class="my-4 ml-12 w-64">
+          <div class="float-left">
+            <%= render :partial => 'show_overview', locals: { tournament: @tournament, user: current_user } %>
+          </div>
+          <div class="float-left my-4 ml-12 w-64">
             <%= render :partial => 'join_tournament_buttons', locals: { tournament: @tournament, user: current_user } %>
           </div>
           <% else %>
