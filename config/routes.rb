@@ -53,6 +53,7 @@ Rails.application.routes.draw do
 
 
   resources "match"
+  get "invite/:id", to: "match#invite"
   resources "message"
   post "/message/answer_friend_request", to: "message#answer_friend_request"
   resources "armies"

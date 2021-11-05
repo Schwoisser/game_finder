@@ -1,2 +1,10 @@
 <h1> <%= @match.title%> </h1>
 <h1> <%= @match.description%> </h1>
+
+  Spieler Anzahl: <%= @match.max_player_number %><br />
+  Datum: <%= @match.start_date %><br />
+  <%= @match.game.title %><br />
+  <%= @match.status %><br />
+  <% @match.match_scorings.each do |scoring| %>
+    <%= scoring.user.full_name %> <%= scoring.accepted %><br />
+  <% end %>

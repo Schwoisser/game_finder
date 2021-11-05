@@ -44,8 +44,8 @@
     <div class=" flex flex-col text-left" style="width:100px;" data-action="click->toggle#toggle" data-toggle-target="toggled">
       <%= distance = current_user.distance_from(user, :units => :kms).to_i %>km
     </div>
-    <div class="giocaneer-button rounded mx-2 p-2 hidden" data-toggle-target="toggled">Invite to play</div>
-    <a href="/profile/<%= user.id %>" class="inverse-giocaneer-button rounded mx-2 p-2 hidden" data-toggle-target="toggled">See Profile</a>
+    <a class="giocaneer-button rounded mx-2 p-2 hidden"         href="/invite/<%= user.id %>"  target="_top" data-toggle-target="toggled">Invite to play</a>
+    <a class="inverse-giocaneer-button rounded mx-2 p-2 hidden" href="/profile/<%= user.id %>" target="_top" data-toggle-target="toggled">See Profile</a>
   </div>
   <% end %>
   </turbo-frame>

@@ -315,6 +315,11 @@ h4 {
         flex-grow: 0;
         opacity: 1;
         background-color: $backgound-dark;
+        width: 5rem;
+        // justify-content: center;
+        // justify-items: center;
+        // justify-self: center;
+        align-self: center;
     }
     .viewport-margin{
         margin-left: 14rem;

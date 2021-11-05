@@ -11,8 +11,9 @@ class PlayerFinderController < ApplicationController
     end
     Rails.logger.info(selected_game)
     @users = User.joins(:games).where(games: [selected_game]).by_distance(:origin => current_user)[1..13] || []
-    @matches = Match.where(game: selected_game).by_distance(:origin => current_user)[1..13] || []
+    @matches = Match.where(game: selected_game, status: "open").by_distance(:origin => current_user)[1..13] || []
     Rails.logger.info(@users)
+    @users = @users.excluding(current_user)
     Rails.logger.info(@matches)
     # # Turbo stream response or html
     respond_to do |format|

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_17_121714) do
+ActiveRecord::Schema.define(version: 2021_11_05_112809) do
 
   create_table "armies", force: :cascade do |t|
     t.integer "user_id"
@@ -82,6 +82,10 @@ ActiveRecord::Schema.define(version: 2021_09_17_121714) do
     t.integer "tournament_round"
     t.float "longitude"
     t.float "latitude"
+    t.integer "user_id"
+    t.string "status", default: "open"
+    t.integer "max_player_number", default: 2000
+    t.index ["user_id"], name: "index_matches_on_user_id"
   end
 
   create_table "matches_player_attributes", force: :cascade do |t|
@@ -92,11 +96,12 @@ ActiveRecord::Schema.define(version: 2021_09_17_121714) do
   end
 
   create_table "matches_users", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "match_id"
+    t.integer "user_id"
+    t.integer "match_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "match_score"
+    t.integer "match_score"
+    t.boolean "accepted", default: false
   end
 
   create_table "messages", force: :cascade do |t|

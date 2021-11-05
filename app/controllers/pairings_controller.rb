@@ -69,6 +69,7 @@ class PairingsController < ApplicationController
           game_id: @tournament.game.id,
           tournament_id: @tournament.id,
           tournament_round: @tournament.current_round + 1,
+          status: "closed"
         )
         match.users << user_one
         match.users << user_two if user_two
