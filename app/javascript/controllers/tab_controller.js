@@ -28,9 +28,12 @@ export default class extends Controller {
         const element = this.buttonsTargets[index];
         console.log(element)
         if(index == tab_number){
-          element.classList.remove('bg-gray-200')  
+          element.classList.remove('tab-navigation-item')  
+          element.classList.add('tab-navigation-item-active')
+          
         }else{
-          element.classList.add('bg-gray-200')  
+          element.classList.remove('tab-navigation-item-active')  
+          element.classList.add('tab-navigation-item')
         }
       }
     } 

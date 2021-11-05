@@ -247,6 +247,58 @@ h4 {
 .view-width {
     width: 51rem;
 }
+
+.tab-navigation {
+    display: flex;
+    flex-direction: row;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: white;
+    width: 100%;
+    justify-content: center;
+}
+
+.tab-navigation-container{
+    margin-top: 0.75rem; 
+    justify-content: left;
+    display: flex;
+    flex-direction: row;
+}
+
+.tab-navigation-item {
+    margin-right: 20px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 0;
+}
+
+.tab-navigation-item-active {
+    margin-right: 20px;
+    background-color: $backgound-dark;
+    color: $text-bright;
+    padding-top: 8px;
+    padding-bottom: 8px;   
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 0;
+}
+
+.tab-navigation-corner{
+    // content: "";
+    position: absolute;
+    top: 0.5rem;
+    margin: -7px;
+    width: 30px;
+    height: 18px;
+    left: 50%;
+    transform: rotate(45deg) translate(-60%, 122%);
+    background-color: #fff;
+    z-index: 999999;
+}
+
 .giocaneernav{
     display: flex;
     flex-direction: row;
@@ -309,6 +361,7 @@ h4 {
         left: 0;
         height: 100%;
         width: 5rem;
+        z-index: 1000;
     }
 
     .giocaneernav-item{
@@ -331,4 +384,55 @@ h4 {
     .basic-box-image-container {
         margin-right: 0;  
     }
+
+    .tab-navigation {
+        display: flex;
+        flex-direction: row;
+        position: fixed;
+        left: 0;
+        top: 0;
+        background-color: white;
+        width: 100%;
+        justify-content: left;
+    }
+
+    .tab-navigation-container{
+        margin-left: 15rem; 
+    }
+
+    .tab-navigation-item {
+        margin-right: 20px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        padding-left: 15px;
+        padding-right: 15px;
+        margin-top: 0;
+    }
+    
+    .tab-navigation-item-active {
+        margin-right: 20px;
+        background-color: $backgound-dark;
+        color: $text-bright;
+        padding-top: 8px;
+        padding-bottom: 8px;   
+        padding-left: 15px;
+        padding-right: 15px;
+        margin-top: 0;
+        // 
+        
+    }
+    
+    .tab-navigation-corner {
+        // content: "";
+        position: absolute;
+        top: 0.5rem;
+        margin: -7px;
+        width: 30px;
+        height: 22px;
+        transform: rotate(45deg);
+        background-color: #fff;
+        z-index: 999999;
+        left: 19.35rem;
+    }
+
 }
