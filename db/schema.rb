@@ -96,11 +96,11 @@ ActiveRecord::Schema.define(version: 2021_11_05_112809) do
   end
 
   create_table "matches_users", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "match_id"
+    t.bigint "user_id"
+    t.bigint "match_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "match_score"
+    t.bigint "match_score"
     t.boolean "accepted", default: false
   end
 
