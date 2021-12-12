@@ -23,6 +23,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'devise'
 gem 'simple_form'
 gem 'geokit-rails'
+# gem 'leaflet-rails'
 
 gem "hotwire-rails", "~> 0.1.3"
 gem 'turbo-rails'

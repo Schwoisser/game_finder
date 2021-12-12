@@ -1,26 +1,54 @@
-<%= form_for :match, url: match_index_path, method: :post do |f| %>
-  Titel: <%= f.text_field :title %><br />
-  Beschreibung: <%= f.text_field :description %><br />
-  Spieler Anzahl: <%= f.text_field :max_player_number %><br />
-  Datum: <%= f.date_select :start_date, start_year: Time.now.year %><br />
-  <%= f.collection_select :game_id, user.games, :id, :title %>
-  <%= f.hidden_field :status, :value => @match.status %>
 
-  <% if @invited_user %>
-    <div class="hidden">
+<div class="basic-box">
+  <div class="basic-box-headline">Spieler zu einem Match einladen</div>
+
+  <%= form_for :match, url: match_index_path, method: :post do |f| %>
+    <div class="basic_form">
+      <label class="basic_form_label">Spielsystem</label>
+      <%= f.collection_select(:game_id, user.games, :id, :title,  :options => { :class => 'basic_form_input' }) %>
+
+      <label class="basic_form_label">Titel:</label> 
+      <%= f.text_field :title, placeholder: "Titel der Nachricht" %>
+
+      <label class="basic_form_label">Ort:</label> 
+      <%= render :partial => 'layouts/location_selector' %>
+      <div class="flex flex-row">
+        <div class="basic_form w-32">
+          <label class="basic_form_label">Spieler Anzahl:</label>
+          <%= f.text_field :max_player_number %>
+        </div>
+        <div class="basic_form" style="width: 15.75rem;">
+          <label class="basic_form_label">Datum/Uhrzeit:</label>
+          <%= f.datetime_field :start_date, start_year: Time.now.year %>
+        </div>
+      </div>
+      <%= f.hidden_field :status, :value => @match.status %>
+      <%= f.hidden_field :longitude %>
+      <%= f.hidden_field :latitude %>
+
+
+      <% if @invited_user %>
+        <div class="hidden">
+      <% end %>
+      <label class="basic_form_label"> Spieler auswählen:</label>
+      <%= f.collection_check_boxes :match_scorings, @users, :id, :full_name do |user| %>
+        <% if @invited_user.id == user.object.id %> 
+          <%= user.check_box(checked: true) %> <%= user.label %>
+        <% else %>
+          <%= user.check_box %> <%= user.label %>
+        <% end %>
+      <% end %>
+
+      <% if @invited_user %>
+        </div>
+      <% end %>
+
+      <label class="basic_form_label">Nachricht:</label> 
+      <%= f.text_area :description, "rows" => 5, placeholder: "Text der Nachricht"  %>
+        <%= f.submit(class: "") %>
+      <div class="button"> 
+        <div class="button-corner"></div>
+      </div>
+  </div>
   <% end %>
-
-  <%= f.collection_check_boxes :match_scorings, @users, :id, :full_name do |user| %>
-    <% if @invited_user.id == user.object.id %> 
-      <%= user.check_box(checked: true) %> <%= user.label %>
-    <% else %>
-      <%= user.check_box %> <%= user.label %>
-    <% end %>
-  <% end %>
-
-  <% if @invited_user %>
-    </div>
-  <% end %>
-
-  <%= f.submit %>
-<% end %>
+</div>

@@ -63,12 +63,13 @@ class InvitationsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_invitation
-      @invitation = Invitation.find(params[:id])
-    end
+  def set_invitation
+    @invitation = Invitation.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def invitation_params
-      params.require(:invitation).permit(:message, :match_id, :sender_id, :reference, :receiver_id, :reference)
-    end
+  # Only allow a list of trusted parameters through.
+  def invitation_params
+    params.require(:invitation).permit(:message, :match_id, :sender_id, :reference, :receiver_id, :reference)
+  end
+  
 end
