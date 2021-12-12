@@ -76,7 +76,7 @@ class MatchController < ApplicationController
   private
 
   def match_params
-    params.require(:match).permit(:title, :description, :game_id, :max_player_number, :start_date, :status, match_scorings:[], users:[])
+    params.require(:match).permit(:title, :description, :game_id, :max_player_number, :start_date, :status, :longitude, :latitude, match_scorings:[], users:[])
   end
 
   def match_scoring_params

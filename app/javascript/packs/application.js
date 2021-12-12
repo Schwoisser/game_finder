@@ -6,6 +6,11 @@
 require("css/application.scss")
 require("jquery")
 
+// import 'leaflet/dist/leaflet.css';
+// import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.webpack.css';
+
+// import L from 'leaflet';
+// import 'leaflet-defaulticon-compatibility';
 
 import Rails from "@rails/ujs"
 import "@hotwired/turbo-rails"

@@ -18,19 +18,29 @@ $dark-red: #7C0202;
 $text: #1b201b;
 $text-secondary: #767676;
 $text-bright: #ecffdf;
-$font-size-headline: 1rem;
+
+$font-size-sm: 0.875rem;
+$font-size-md: 1rem;
+
+$font-size-lg: 1.125rem;
+$font-size-xxl: 2rem;
+
 
 
 body {
     font-family: 'Saira Regular';
     color: $text;
-    font-size: 0.85em;
+    font-size: $font-size-sm;
     line-height: 1.4;
     height: 100%;
 }
 
 a, a:visited, a:hover, a:active {
     color: inherit;
+}
+
+input, textarea, select {
+    padding: 0.5rem 0.75rem 0.5rem 0.75rem;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -48,6 +58,29 @@ scrollbar-width: none; /* Firefox */
     display: flex;
     justify-content: center;
 }
+
+.basic_form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.basic_form>input, .basic_form>select, .basic_form>textarea {
+    flex-direction: row;
+    // min-width: 80%;
+    justify-content: center;
+    position:relative;
+    margin: 0 0.5rem 0.5rem 0.75rem;
+    border-radius: 6px;
+    max-width: 360px;
+    min-height: 44px;
+    font-size: $font-size-md;
+}
+
+.basic_form_label {
+    margin: 0.5rem 0.5rem 0 0.75rem;
+    flex-direction: row;
+}
+
 
 .button {
     display: flex;
@@ -69,6 +102,19 @@ scrollbar-width: none; /* Firefox */
     background-color: $shadow-dark;
     cursor: pointer;
     box-shadow: none;
+}
+
+.button:hover>.button_hover_effect {
+    background-color: $shadow-dark;
+    cursor: pointer;
+    box-shadow: none;
+}
+
+.button>* {
+    background-color: $backgound-button;
+    cursor: pointer;
+    box-shadow: none;
+    padding: 0;
 }
 
 .button-corner{
@@ -123,7 +169,7 @@ scrollbar-width: none; /* Firefox */
     margin-left: 0.75rem;
     margin-top: 0.75rem;
     margin-bottom: 0.75rem;
-    font-size: $font-size-headline;
+    font-size: $font-size-md;
     color: $text;
 }
 
@@ -149,7 +195,7 @@ scrollbar-width: none; /* Firefox */
     width: 100%;
     height: 3.7rem;
     background-color: $backgound-dark;
-    font-size: $font-size-headline;
+    font-size: $font-size-md;
     color: $text-bright;
     padding: 0.6rem 0.75rem 0.6rem 0.75rem;
     line-height: 1.25rem;
@@ -209,18 +255,18 @@ scrollbar-width: none; /* Firefox */
 }
 
 h1 {
-    font-size: 1.25rem;
+    font-size: $font-size-lg;
     line-height: 1.75rem;
 }
 
 h4 {
-    font-size: 0.85rem;
+    font-size: $font-size-sm;
     line-height: 2rem;
     font-weight: 700;
 }
 
 .big-number {
-    font-size: 2rem;
+    font-size: $font-size-xxl;
     line-height: 1.5rem;    
 }
 
