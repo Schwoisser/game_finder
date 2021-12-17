@@ -1,9 +1,10 @@
 class ProfileController < ApplicationController
   
   def show
-    @friend_list = FriendList.new
     unless params[:id]
       @user = current_user
+      @friend_list = FriendList.where(inviting_user: current_user, status: :accepted).or(FriendList.where(receiving_user: current_user, status: :accepted))
+      @friend_invites = FriendList.where(receiving_user: current_user, status: :sent)
     else
       @user = User.find(params[:id])
     end

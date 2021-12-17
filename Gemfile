@@ -27,7 +27,7 @@ gem 'geokit-rails'
 
 gem "hotwire-rails", "~> 0.1.3"
 gem 'turbo-rails'
-
+gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 
 # Use Redis adapter to run Action Cable in production
 gem 'redis', '~> 4.0'

@@ -96,11 +96,11 @@ ActiveRecord::Schema.define(version: 2021_11_05_112809) do
   end
 
   create_table "matches_users", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "match_id"
+    t.bigint "user_id"
+    t.bigint "match_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "match_score"
+    t.bigint "match_score"
     t.boolean "accepted", default: false
   end
 
@@ -129,7 +129,7 @@ ActiveRecord::Schema.define(version: 2021_11_05_112809) do
   end
 
   create_table "player_groups", force: :cascade do |t|
-    t.bigint "creator_id"
+    t.bigint "organizer_id"
     t.text "title"
     t.text "description"
     t.datetime "created_at", precision: 6, null: false

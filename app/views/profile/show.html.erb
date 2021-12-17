@@ -26,13 +26,13 @@
     <div class="hidden" data-tab-target="tabs">
 
       <div class="bg-white py-5 px-8 rounded-b rounded-tr view-width">
-        <%= render :partial => 'friends', locals: {  } %>
+        <%= render :partial => 'friends', locals: { friend_list: @friend_list,  friend_invites: @friend_invites } %>
       </div>
     </div>
     <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
   <% end %>
 
-  <% if @user != current_user %>
+  <% if ((@user != current_user) && !(FriendList.where(inviting_user: current_user , receiving_user: @user))) %>
     <%= simple_form_for @friend_list, url: "/profile/send_friend_request" do |f| %>
       <div>Send friend request</div>
       <%= f.input :message %>

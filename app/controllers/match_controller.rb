@@ -73,6 +73,16 @@ class MatchController < ApplicationController
     render "new"
   end
 
+  def accept_invite
+    @user = current_user
+    @match_scoring = MatchScoring.find(params[:id])
+    if @match_scoring.user == @user
+      @match_scoring.accepted = true
+      @match_scoring.save
+    end
+    redirect_to "/"
+  end
+
   private
 
   def match_params
