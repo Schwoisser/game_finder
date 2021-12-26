@@ -4,6 +4,9 @@ class MainController < ApplicationController
         @tournaments = Tournament.all
         @invited_games = MatchScoring.where(user_id: @user.id, accepted: false)
         @upcoming_games = MatchScoring.where(user_id: @user.id, accepted: true)
+
+        @users_in_area_number = User.joins(:games).by_distance(:origin => current_user)[1..13].size
+        @matches_in_area_number = Match.where(status: "open").by_distance(:origin => current_user)[1..13].size
     end 
 
     def elements

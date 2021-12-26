@@ -10,6 +10,11 @@
   <div class="flex flex-row"  data-action="click->location#getLocation">Setzte Ort</div>
   <%= f.submit %>
 <% end %>
+
+<%= simple_form_for current_user, :url => '/profile/add_game' do |f| %>
+  <%= f.input :games, collection: Game.order(:title), prompt: "Choose a Gamesystem" , label_method: :title, value_method: :id %>
+  <%= f.button :submit, "Add Gamesystem", class:"giocaneer-button p-2 rounded mt-3 w-full px-2" %>
+<% end %> 
 </div>
 
 

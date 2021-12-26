@@ -1,14 +1,14 @@
-<div class="view-width" data-controller="tab" style="">
+<div class="view-width" data-controller="tab" style="width: 100% !important;">
   <% if @user == current_user %>
-    <div class="flex flex-row">
-      <div class="bg-white p-2 rounded-t" data-tab-target="buttons" data-action="click->tab#switch" data-tab-number="0" >Your Profile</div>
-      <div class="bg-white p-2 rounded-t bg-gray-200 mx-1" data-tab-target="buttons" data-action="click->tab#switch" data-tab-number="1">Your Army Lists</div>
-      <div class="bg-white p-2 rounded-t bg-gray-200" data-tab-target="buttons" data-action="click->tab#switch" data-tab-number="2">Your Friends</div>
+    <div class="tab-navigation" > 
+      <div class="tab-navigation-item-active" data-tab-target="buttons" data-action="click->tab#switch" data-tab-number="0" >Your Profile</div>
+      <div class="tab-navigation-item" data-tab-target="buttons" data-action="click->tab#switch" data-tab-number="1">Your Army Lists</div>
+      <div class="tab-navigation-item" data-tab-target="buttons" data-action="click->tab#switch" data-tab-number="2">Your Friends</div>
     </div>
   <% end %>
 
   <div data-tab-target="tabs">
-    <div class="bg-white py-5 px-8 rounded-b rounded-tr view-width">
+    <div class="py-5 px-8 rounded-b rounded-tr view-width">
       <%= render :partial => 'profile', locals: {  } %>
     </div>
   </div>
@@ -17,7 +17,7 @@
 
     <div class="hidden" data-tab-target="tabs">
 
-      <div class="bg-white py-5 px-8 rounded-b rounded-tr view-width">
+      <div class="py-5 px-8 rounded-b rounded-tr view-width">
         <%= render :partial => 'armies', locals: {  } %>
       </div>
 
@@ -25,7 +25,7 @@
 
     <div class="hidden" data-tab-target="tabs">
 
-      <div class="bg-white py-5 px-8 rounded-b rounded-tr view-width">
+      <div class="py-5 px-8 rounded-b rounded-tr view-width">
         <%= render :partial => 'friends', locals: { friend_list: @friend_list,  friend_invites: @friend_invites } %>
       </div>
     </div>

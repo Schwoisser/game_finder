@@ -3,10 +3,10 @@ $background-container: #cfcbb0;
 $background-container-border: #857b75;
 $background-container-item-a: #eae7d2;
 $background-container-item-b: #e2ddba;
-$backgound-dark: #1d201b;
+$background-dark: #1d201b;
 $background-dark-hover: #292c28;
-$backgound-dark-selected: #cfd9c8;
-$backgound-button: #f4efe3;
+$background-dark-selected: #cfd9c8;
+$background-button: #f4efe3;
 
 $shadow-bright: #f2f1e5;
 $shadow-dark: #adaa93;
@@ -33,6 +33,23 @@ body {
     font-size: $font-size-sm;
     line-height: 1.4;
     height: 100%;
+}
+
+.caption {
+    font-family: 'Saira Semi Bold';
+}
+
+.border-light {
+    padding: 0.125rem 0.75rem 0.5rem 0.75rem;
+    margin: 1rem 1rem 1rem 0;
+    border-width: 1px;
+    border-color: $background-container-item-b;
+}
+
+.border-light:hover {
+    border-width: 1px;
+    border-color: $background-container-item-b;
+    background-color: $background-container-item-b;
 }
 
 a, a:visited, a:hover, a:active {
@@ -86,7 +103,7 @@ scrollbar-width: none; /* Firefox */
     display: flex;
     justify-content: center;
     position:relative;
-    background-color: $backgound-button;
+    background-color: $background-button;
     padding: 0.5rem 0.75rem 0.5rem 0.75rem;
     margin: 1rem 1rem 1rem 0.75rem;
     min-width: 80%;
@@ -111,7 +128,7 @@ scrollbar-width: none; /* Firefox */
 }
 
 .button>* {
-    background-color: $backgound-button;
+    background-color: $background-button;
     cursor: pointer;
     box-shadow: none;
     padding: 0;
@@ -133,6 +150,34 @@ scrollbar-width: none; /* Firefox */
     //box-shadow: -2px 0px 0px #ffff;
 }
 
+.button-secondary {
+    background-color: $background-container-item-b;
+    display: flex;
+    justify-content: center;
+    position:relative;
+    padding: 0.5rem 0.75rem 0.5rem 0.75rem;
+    margin: 1rem 1rem 1rem 0.75rem;
+    min-width: 80%;
+    max-width: 20rem;
+}
+.button-secondary:hover {
+    background-color: $shadow-dark;
+}
+
+.button-secondary-corner {
+    content: "";
+    position:absolute;
+    right: 6px;
+    bottom: -3px;
+    margin:-10px;
+    width:18px;
+    height:30px;
+    transform:rotate(50deg);
+    background-color:$background; /* to see where it is */
+    // border-left-color: $background-container-border;
+    // border-left-width: 2px;
+    // box-shadow: -2px 0px 0px $shadow-dark;
+}
 
 .basic-box {
     background-color: $background-container;
@@ -194,7 +239,7 @@ scrollbar-width: none; /* Firefox */
     margin: 0;
     width: 100%;
     height: 3.7rem;
-    background-color: $backgound-dark;
+    background-color: $background-dark;
     font-size: $font-size-md;
     color: $text-bright;
     padding: 0.6rem 0.75rem 0.6rem 0.75rem;
@@ -275,7 +320,7 @@ h4 {
 }
 
 .bg-dark {
-    background-color: $backgound-dark;
+    background-color: $background-dark;
 }
 
 
@@ -313,7 +358,7 @@ h4 {
 }
 
 .tab-navigation-item {
-    margin-right: 20px;
+    // margin-right: 20px;
     padding-top: 8px;
     padding-bottom: 8px;
     padding-left: 15px;
@@ -322,8 +367,8 @@ h4 {
 }
 
 .tab-navigation-item-active {
-    margin-right: 20px;
-    background-color: $backgound-dark;
+    // margin-right: 20px;
+    background-color: $background-dark;
     color: $text-bright;
     padding-top: 8px;
     padding-bottom: 8px;   
@@ -348,12 +393,12 @@ h4 {
 .giocaneernav{
     display: flex;
     flex-direction: row;
-    position: fixed;
+    // position: fixed;
     bottom: 0rem;
     left: 0;
     margin: auto;
     width: 100%;
-    background-color: $backgound-dark;
+    background-color: $background-dark;
     // height: 61px;
     z-index: 1030;
 }
@@ -361,7 +406,7 @@ h4 {
 .giocaneernav-item{
     flex-grow: 1;
     opacity: 1;
-    background-color: $backgound-dark;
+    background-color: $background-dark;
 }
 .giocaneernav-item:hover{
     background-color: $background-dark-hover;
@@ -413,7 +458,7 @@ h4 {
     .giocaneernav-item{
         flex-grow: 0;
         opacity: 1;
-        background-color: $backgound-dark;
+        background-color: $background-dark;
         width: 5rem;
         // justify-content: center;
         // justify-items: center;
@@ -434,12 +479,12 @@ h4 {
     .tab-navigation {
         display: flex;
         flex-direction: row;
-        position: fixed;
+        // position: fixed;
         left: 0;
         top: 0;
         background-color: white;
         width: 100%;
-        justify-content: left;
+        // justify-content: left;
     }
 
     .tab-navigation-container{
@@ -447,7 +492,7 @@ h4 {
     }
 
     .tab-navigation-item {
-        margin-right: 20px;
+        // margin-right: 20px;
         padding-top: 8px;
         padding-bottom: 8px;
         padding-left: 15px;
@@ -456,8 +501,8 @@ h4 {
     }
     
     .tab-navigation-item-active {
-        margin-right: 20px;
-        background-color: $backgound-dark;
+        // margin-right: 20px;
+        background-color: $background-dark;
         color: $text-bright;
         padding-top: 8px;
         padding-bottom: 8px;   
