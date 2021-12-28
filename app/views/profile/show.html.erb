@@ -2,8 +2,8 @@
   <% if @user == current_user %>
     <div class="tab-navigation" > 
       <div class="tab-navigation-item-active" data-tab-target="buttons" data-action="click->tab#switch" data-tab-number="0" >Your Profile</div>
-      <div class="tab-navigation-item" data-tab-target="buttons" data-action="click->tab#switch" data-tab-number="1">Your Army Lists</div>
-      <div class="tab-navigation-item" data-tab-target="buttons" data-action="click->tab#switch" data-tab-number="2">Your Friends</div>
+     <!-- <div class="tab-navigation-item" data-tab-target="buttons" data-action="click->tab#switch" data-tab-number="1">Your Army Lists</div> -->
+      <div class="tab-navigation-item" data-tab-target="buttons" data-action="click->tab#switch" data-tab-number="2">Messages</div>
     </div>
   <% end %>
 
@@ -26,10 +26,17 @@
     <div class="hidden" data-tab-target="tabs">
 
       <div class="py-5 px-8 rounded-b rounded-tr view-width">
-        <%= render :partial => 'friends', locals: { friend_list: @friend_list,  friend_invites: @friend_invites } %>
+        <%= render :partial => 'messages', locals: { friend_list: @friend_list,  friend_invites: @friend_invites } %>
       </div>
     </div>
-    <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
+    
+
+    <div class="button-container">
+      <a class="button" rel="nofollow" data-method="delete" href="/users/sign_out">Logout
+        <div class="button-corner bg-main"></div>
+      </a>
+    </div>
+
   <% end %>
 
   <% if ((@user != current_user) && !(FriendList.where(inviting_user: current_user , receiving_user: @user))) %>

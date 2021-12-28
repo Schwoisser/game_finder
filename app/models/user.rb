@@ -11,6 +11,8 @@ class User < ApplicationRecord
   has_many :match_scorings, class_name: "MatchScoring"
   has_many :matches
 
+  has_and_belongs_to_many :player_attributes
+
   def has_coordinates?
     longitude && latitude
   end

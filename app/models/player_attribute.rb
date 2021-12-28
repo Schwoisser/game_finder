@@ -1,4 +1,3 @@
-class PlayerGroup < ApplicationRecord
-  has_many :users
-  has_many :matches
+class PlayerAttribute < ApplicationRecord
+  has_and_belongs_to_many :users
 end

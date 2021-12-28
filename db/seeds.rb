@@ -14,3 +14,14 @@ user.games = Game.all
 user2.games = Game.all
 user.save
 user2.save
+
+
+PlayerAttribute.create!(title: "Sociable")
+PlayerAttribute.create!(title: "Helpful")
+PlayerAttribute.create!(title: "Knowledgeable")
+PlayerAttribute.create!(title: "Good Painter")
+PlayerAttribute.create!(title: "Fair Player")
+
+
+
+

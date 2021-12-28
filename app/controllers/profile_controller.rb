@@ -8,6 +8,13 @@ class ProfileController < ApplicationController
     else
       @user = User.find(params[:id])
     end
+
+    @player_attribute_count = PlayerAttributeCount.where(user: @user).order(votes: :desc).first
+    if @player_attribute_count
+      @player_attribute_title = @player_attribute_count.player_attribute.title
+    else
+      @player_attribute_title ="-"
+    end
   end
 
   def edit
@@ -17,7 +24,7 @@ class ProfileController < ApplicationController
   def update
     @user = current_user
     @user.update(user_params)
-    redirect_to action: "show", id: @user.id
+    redirect_to "profile/"
   end
 
   def new
@@ -47,7 +54,7 @@ class ProfileController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :nick_name, :longitude, :latitude )
+    params.require(:user).permit(:first_name, :last_name, :nick_name, :longitude, :latitude, :info )
   end
   def add_game_params
     params.require(:user).permit(:games)
