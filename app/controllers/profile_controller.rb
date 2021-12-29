@@ -5,6 +5,10 @@ class ProfileController < ApplicationController
       @user = current_user
       @friend_list = FriendList.where(inviting_user: current_user, status: :accepted).or(FriendList.where(receiving_user: current_user, status: :accepted))
       @friend_invites = FriendList.where(receiving_user: current_user, status: :sent)
+      # TODO FriendList + Last Message (tuples)
+      # link auf messages new mit user id
+      # message / user_id -> alles nachrichten mit dem user
+      # + message new form
     else
       @user = User.find(params[:id])
     end
@@ -69,8 +73,9 @@ class ProfileController < ApplicationController
     invite_summ = FriendList.where(inviting_user_id: current_user.id, receiving_user_id: @receiving_user.id).size
     receive_summ = FriendList.where(receiving_user_id: current_user.id, inviting_user_id: @receiving_user.id).size
     if 0 == (invite_summ + receive_summ)
-      FriendList.create(inviting_user: current_user, receiving_user: @receiving_user, message: friend_request_params[:message])
+      FriendList.create!(inviting_user: current_user, receiving_user: @receiving_user, message: friend_request_params[:message])
     end  
+    redirect_to "/profile/" + @receiving_user.id.to_s
   end
 
   def friend_request_params

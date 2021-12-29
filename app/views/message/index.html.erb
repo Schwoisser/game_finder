@@ -1,5 +1,5 @@
 <% @user.friend_list.each do |friend| %>
-
+  <%= friend.attributes %>
 <% end %>
 
 <% FriendList.where(receiving_user_id: current_user.id, status: :sent).each do |friend_request| %>

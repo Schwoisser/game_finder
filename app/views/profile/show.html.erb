@@ -37,14 +37,15 @@
       </a>
     </div>
 
-  <% end %>
-
-  <% if ((@user != current_user) && !(FriendList.where(inviting_user: current_user , receiving_user: @user))) %>
-    <%= simple_form_for @friend_list, url: "/profile/send_friend_request" do |f| %>
-      <div>Send friend request</div>
-      <%= f.input :message %>
-      <%=f.hidden_field :receiving_user_id, :value => @user.id %>
-      <%= f.button :submit %>
+  
+  <% else %>
+    <% if ((@user != current_user) && ( FriendList.where(inviting_user: current_user , receiving_user: @user).size == 0 ) && ( FriendList.where(inviting_user: @user, receiving_user: current_user).size == 0 )) %>
+      <% @friend_list = FriendList.new %>
+        <%= simple_form_for @friend_list, url: "/profile/send_friend_request" do |f| %>
+        <%= f.input :message %>
+        <%=f.hidden_field :receiving_user_id, :value => @user.id %>
+        <%= f.button :submit, "Send Friend Request", class: "button" %>
+      <% end %>
     <% end %>
   <% end %>
 </div>
