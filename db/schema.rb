@@ -10,7 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2022_01_08_141713) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
@@ -40,9 +39,6 @@ ActiveRecord::Schema.define(version: 2022_01_08_141713) do
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
-=======
-ActiveRecord::Schema.define(version: 2021_12_28_153204) do
->>>>>>> 5076095eab66d60b35ecb4e18b4cf9964a53fd93
 
   create_table "armies", force: :cascade do |t|
     t.integer "user_id"
@@ -167,7 +163,7 @@ ActiveRecord::Schema.define(version: 2021_12_28_153204) do
   end
 
   create_table "player_groups", force: :cascade do |t|
-    t.bigint "organizer_id"
+    t.bigint "creator_id"
     t.text "title"
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
