@@ -8,9 +8,15 @@
   <input class="flex flex-row" data-location-target="longitude" type="text" value="<%= @user.longitude%>" name="user[longitude]" id="user_longitude">
   <input class="flex flex-row" data-location-target="latitude" type="text" value="<%= @user.latitude%>" name="user[latitude]" id="user_latitude">
   <div class="flex flex-row"  data-action="click->location#getLocation">Setzte Ort</div>
+  <% if @user.image.attached? %>
+    <img width="320" height="240" src="<%= (url_for(@user.image)) %>" >
+  <% end %>
+  <br>
+  <%= f.file_field :image %><br>
   <%= f.submit %>
 <% end %>
-
+<a class=!" href="<%= profile_path %>"> Back
+</a>
 <%= simple_form_for current_user, :url => '/profile/add_game' do |f| %>
   <%= f.input :games, collection: Game.order(:title), prompt: "Choose a Gamesystem" , label_method: :title, value_method: :id %>
   <%= f.button :submit, "Add Gamesystem", class:"giocaneer-button p-2 rounded mt-3 w-full px-2" %>

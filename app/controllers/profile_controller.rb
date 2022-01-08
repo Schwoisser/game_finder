@@ -47,7 +47,7 @@ class ProfileController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :nick_name, :longitude, :latitude )
+    params.require(:user).permit(:first_name, :last_name, :nick_name, :longitude, :latitude, :image )
   end
   def add_game_params
     params.require(:user).permit(:games)

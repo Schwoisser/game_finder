@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :battle_reports
   has_many :match_scorings, class_name: "MatchScoring"
   has_many :matches
+  has_one_attached :image, :dependent => :destroy
 
   def has_coordinates?
     longitude && latitude
