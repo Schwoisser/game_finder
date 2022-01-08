@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2022_01_08_141713) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
@@ -39,6 +40,9 @@ ActiveRecord::Schema.define(version: 2022_01_08_141713) do
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
+=======
+ActiveRecord::Schema.define(version: 2021_12_28_153204) do
+>>>>>>> 5076095eab66d60b35ecb4e18b4cf9964a53fd93
 
   create_table "armies", force: :cascade do |t|
     t.integer "user_id"
@@ -113,7 +117,6 @@ ActiveRecord::Schema.define(version: 2022_01_08_141713) do
     t.integer "user_id"
     t.string "status", default: "open"
     t.integer "max_player_number", default: 2000
-    t.string "address", limit: 2000
     t.string "country", limit: 2000
     t.string "city", limit: 2000
     t.string "street", limit: 2000
@@ -129,12 +132,13 @@ ActiveRecord::Schema.define(version: 2022_01_08_141713) do
   end
 
   create_table "matches_users", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "match_id"
+    t.bigint "user_id"
+    t.bigint "match_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "match_score"
+    t.bigint "match_score"
     t.boolean "accepted", default: false
+    t.boolean "rated", default: false
   end
 
   create_table "messages", force: :cascade do |t|
@@ -159,6 +163,7 @@ ActiveRecord::Schema.define(version: 2022_01_08_141713) do
     t.bigint "player_attribute_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "votes", default: 0
   end
 
   create_table "player_groups", force: :cascade do |t|
@@ -226,6 +231,7 @@ ActiveRecord::Schema.define(version: 2022_01_08_141713) do
     t.float "longitude"
     t.float "latitude"
     t.string "nick_name"
+    t.string "info", limit: 2000
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

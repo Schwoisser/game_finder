@@ -1,0 +1,25 @@
+<% unrated_matches.each do |match_scoring| %>
+    <% if match_scoring.match.start_date < 4.hours.ago && match_scoring.match.start_date > 4.days.ago && match_scoring.match.tournament == nil && match_scoring.match.match_scorings.size == 2 %>
+        <div class="basic-box">
+        
+            <div class="basic-box-headline">Your Game on <%= match_scoring.match.start_date %> </div>
+            <h4 class="basic-box-headline">Rate your opponent.</h4>
+            <% other_user_id = MatchScoring.where(match_id: match_scoring.match.id).where("user_id != ?", current_user.id).first.user_id %>
+            <div class="flex flex-row p-2 justify-center "></div>
+                <% PlayerAttribute.all.each do |player_attribute| %>
+                    <a class="" href="/player_rating/<%= other_user_id %>/<%= match_scoring.match.id %>/<%= match_scoring.id %>/<%= player_attribute.id %>">
+                        <div class="button"><%= player_attribute.title %>
+                            <div class="button-corner"></div>
+                        </div>
+                    </a>
+                <% end %>    
+
+
+                <div class="button"> None of the above
+                    <div class="button-corner"></div>
+                </div>
+
+            <br>
+        </div>
+    <% end %>
+<% end %>

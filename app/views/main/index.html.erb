@@ -30,6 +30,12 @@
   <%= render :partial => 'invitation', locals: { invited_games: @invited_games } %>
 <% end %>
 
+Unrated matches:
+<%= @unrated_matches.size %>
+<% if @unrated_matches.size > 0 %>
+  <%= render :partial => 'unrated_matches', locals: { unrated_matches: @unrated_matches } %>
+<% end %>
+
 <div class="basic-box mt-6">
   <div class="basic-box-headline">News</div>
   <div class="flex flex-wrap">

@@ -46,6 +46,9 @@ Rails.application.routes.draw do
   post "/tournaments/start_round", to: "tournaments#start_round"
   resources "tournaments"
 
+  get "/player_rating/:user_id/:match_id/:match_scoring_id/:player_attribute_id", to: "player_rating#create"
+
+  get "/set_as_rated/:match_scoring_id", to: "player_rating#set_as_rated"
 
   patch "/match/match_scoring", to: "match#match_scoring"
   post "/match/match_scoring", to: "match#match_scoring"

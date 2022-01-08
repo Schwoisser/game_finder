@@ -40,13 +40,19 @@ body {
 }
 
 .border-light {
+    border-width: 1px;
+    border-color: $background-container-item-b;
+    padding: 0.125rem 0.75rem 0.5rem 0.75rem;
+}
+
+.border-light-hover {
     padding: 0.125rem 0.75rem 0.5rem 0.75rem;
     margin: 1rem 1rem 1rem 0;
     border-width: 1px;
     border-color: $background-container-item-b;
 }
 
-.border-light:hover {
+.border-light-hover:hover {
     border-width: 1px;
     border-color: $background-container-item-b;
     background-color: $background-container-item-b;

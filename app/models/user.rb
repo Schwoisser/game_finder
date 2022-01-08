@@ -12,6 +12,8 @@ class User < ApplicationRecord
   has_many :matches
   has_one_attached :image, :dependent => :destroy
 
+  has_and_belongs_to_many :player_attributes
+
   def has_coordinates?
     longitude && latitude
   end
