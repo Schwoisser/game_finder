@@ -9,6 +9,7 @@ export default class extends Controller {
       console.log("After Break")
       const tab_number = event.currentTarget.dataset["tabNumber"]
       console.log(tab_number)
+      console.log("this.tabsTargets")
       console.log(this.tabsTargets)
       console.log(this.buttonsTargets)
 

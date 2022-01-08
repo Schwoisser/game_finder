@@ -9,16 +9,12 @@
     </div>
   </div>
 
-  <div data-tab-target="tabs">
-    <div class="bg-white py-5 px-8 rounded-b rounded-tr float-left justify-between view-width">
+  <div class="mt-16 basic-box" data-tab-target="tabs">
       <%= render :partial => 'player_finder', locals: { users: @users } %>
-    </div>
   </div>
 
-  <div class="hidden" data-tab-target="tabs">
-    <div class="bg-white py-5 px-8 rounded-b rounded-tr float-left justify-between view-width">
+  <div class="hidden mt-16 basic-box" data-tab-target="tabs">
       <%= render :partial => 'games_finder', locals: { matches: @matches } %>
-    </div>
   </div>
 
 </div>

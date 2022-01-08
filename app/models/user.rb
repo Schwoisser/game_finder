@@ -10,6 +10,13 @@ class User < ApplicationRecord
   has_many :battle_reports
   has_many :match_scorings, class_name: "MatchScoring"
   has_many :matches
+  has_one_attached :image, :dependent => :destroy
+
+  has_and_belongs_to_many :player_attributes
+
+  def has_coordinates?
+    longitude && latitude
+  end
   
   def full_name
     "#{first_name} \"#{nick_name}\" #{last_name}" 

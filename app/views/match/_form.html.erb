@@ -10,6 +10,25 @@
       <label class="basic_form_label">Titel:</label> 
       <%= f.text_field :title, placeholder: "Titel der Nachricht" %>
 
+      <label class="basic_form_label hidden">Land:</label> 
+      <%= f.text_field :country, placeholder: "Land", value: "Deutschland", class:"hidden"  %>
+
+      <label class="basic_form_label">Straße:</label> 
+      <%= f.text_field :street, placeholder: "Straße Hausnummer" %>
+
+      <div class="flex flex-row">
+        <div class="basic_form w-28">
+          <label class="basic_form_label">Postleitzahl:</label> 
+          <%= f.text_field :zip, placeholder: "12345" %>
+        </div>
+        <div class="basic_form" style="width: 16.75rem;">
+          <label class="basic_form_label">Stadt:</label> 
+          <%= f.text_field :city, placeholder: "Stadt" %>
+        </div>
+      </div>
+
+
+
       <label class="basic_form_label">Ort:</label> 
       <%= render :partial => 'layouts/location_selector' %>
       <div class="flex flex-row">
@@ -30,12 +49,14 @@
       <% if @invited_user %>
         <div class="hidden">
       <% end %>
-      <label class="basic_form_label"> Spieler auswählen:</label>
+      <label class="basic_form_label"> Spieler im Umkreis auswählen:</label>
       <%= f.collection_check_boxes :match_scorings, @users, :id, :full_name do |user| %>
-        <% if @invited_user.id == user.object.id %> 
+        <% if @invited_user && @invited_user.id == user.object.id %> 
           <%= user.check_box(checked: true) %> <%= user.label %>
         <% else %>
-          <%= user.check_box %> <%= user.label %>
+          <%= user.check_box %> <%= user.label %> 
+
+            <%= distance = current_user.distance_from(user.object, :units => :kms).to_i %>km
         <% end %>
       <% end %>
 

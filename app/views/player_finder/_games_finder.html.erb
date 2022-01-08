@@ -1,55 +1,49 @@
-<div class=" flex flex-col" style="width:752px;"> 
-  <div class="flex flex-row" style="width:752px;">
-      <div class=" flex flex-col text-left" style="width:376px;"> 
-      Filter by Game
-      </div>
-      <div class=" flex flex-col text-left" style="width:376px;"> 
-        <% "Show as" %>
-      </div>
-  </div> 
-  <div class="flex flex-row mb-4" style="width:752px;">
 
-    <div class=" flex flex-col text-left" style="width:376px;" data-controller="filter"> 
-      <select data-action="change->filter#change">
-        <% Game.all.each do |game|%>
-          <option data-target-filter="select"  value="<%= game.id %>"><%= game.title %></option>
-        <% end %>
-      </select>
+<turbo-frame id="matches">
+
+    <div class="m-4">
+      <a class="<% if @user_games %> giocaneer-button <% else %> inverse-giocaneer-button <% end %> px-2 py-1 rounded mr-2" href="/play" >My Games </a>
+      <% Game.all.each do |game|%>
+        <a class="<% if @selected_game == game %> giocaneer-button <% else %> inverse-giocaneer-button <% end %> px-2 py-1 rounded mr-1" href="/play?id=<%= game.id %>"><%= game.short_title %></a>
+      <% end %>
     </div>
+  
+  <div class="basic-list-container">
+    <% matches.each do |match|%>
+    <div class="basic-list-item" data-controller="toggle">
+      <div class="flex flex-row" data-action="click->toggle#toggle">
+        <div class=" flex flex-col text-left" style="width:50px;">
+          <% if match.user && match.user.image.attached? %>
+            <img style="border-radius: 100%; height: 30px; width: 30px;"  src="<%= (url_for(match.user.image)) %>" >
+          <% else %>
+            <div class="m-1" style="height:30px; width:30px; background-color: white; border-radius: 5rem;"></div>
+          <% end %>
+        </div>
+        <div class=" flex flex-col text-left" style="width:552px;">
 
-    <div class=" flex flex-col text-left" style="width:376px;">
+          <div class="flex flex-row text-left" style="width:552px;" data-toggle-target="toggled">
+            <%= match.title %>
+          </div>
+          <div class="flex flex-row" style="width:552px;" data-toggle-target="toggled">
 
+            <%= match.game.short_title  %>
+
+          </div>
+          <div class="flex flex-row text-left hidden" style="width:552px;" data-toggle-target="toggled">
+            <div class="giocaneer-button flex flex-col text-left rounded mx-2 p-2 hidden" data-toggle-target="toggled">Join</div>
+            <a href="/match/<%= match.id %>" target="_top" class="inverse-giocaneer-button flex flex-col text-left rounded mr-2 p-2 hidden" data-toggle-target="toggled">View Match</a>
+          </div>
+        </div>
+        <div class=" flex flex-col text-left" style="width:100px;">
+          <%= distance = current_user.distance_from(match, :units => :kms).to_i %>km
+        </div>
+      </div>
     </div>
-
-  </div>
-    <turbo-frame id="matches">
-    <% Game.all.each do |game|%>
-      <a href="/play?id=<%= game.id %>"><%= game.short_title %></a>
     <% end %>
-  <% matches.each do |match|%>
-  <div class="flex flex-row mt-2" style="width:752px;" data-controller="toggle" data-action="click->toggle#toggle">
-    <div class=" flex flex-col text-left" style="width:50px;" data-action="click->toggle#toggle">
-      <div class="m-1" style="height:30px; width:30px; background-color: black; border-radius: 5rem;" data-action="click->toggle#toggle"></div>
-    </div>
-    <div class=" flex flex-col text-left" style="width:552px;">
-
-      <div class="flex flex-row text-left" style="width:552px;" data-toggle-target="toggled">
-        <%= match.title %>
-      </div>
-      <div class="flex flex-row" style="width:552px;" data-toggle-target="toggled">
-
-         <%= match.game.short_title  %>
-
-      </div>
-      <div class="flex flex-row text-left hidden" style="width:552px;" data-toggle-target="toggled">
-        <div class="giocaneer-button flex flex-col text-left rounded mx-2 p-2 hidden" data-toggle-target="toggled">Join</div>
-        <a href="/match/<%= match.id %>" target="_top" class="inverse-giocaneer-button flex flex-col text-left rounded mr-2 p-2 hidden" data-toggle-target="toggled">View Match</a>
-      </div>
-    </div>
-    <div class=" flex flex-col text-left" style="width:100px;">
-      <%= distance = current_user.distance_from(match, :units => :kms).to_i %>km
-    </div>
   </div>
-  <% end %>
 </turbo-frame>
-</div> 
+
+  <a class="button mt-2" href="/match/new"  target="_top" data-toggle-target="toggled">
+      Create new Match
+      <div class="button-corner"></div>
+  </a>

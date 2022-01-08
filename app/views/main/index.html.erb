@@ -7,22 +7,34 @@
   <div class="flex flex-row p-2 justify-center ">
 
     <div class="p-2 flex flex-col items-center">
-      <h1 class="bg-dark text-bright flex inline-flex py-2.5 px-3 big-number">555</h1>
+      <h1 class="bg-dark text-bright flex inline-flex py-2.5 px-3 big-number"><%= @users_in_area_number %></h1>
       <p class="w-32 text-center mt-2">Active Players<br> in your Area</p>
     </div>
 
     <div class="p-2 flex flex-col items-center">
-      <h1 class="bg-dark text-bright flex inline-flex py-2.5 px-3 big-number">555</h1>
+      <h1 class="bg-dark text-bright flex inline-flex py-2.5 px-3 big-number"><%= @matches_in_area_number %></h1>
       <p class="w-32 text-center mt-2">Scheduled Matches<br> in the next 24h</p>
     </div>
 
   </div>
-  <div class="button-container">
-    <div class="button">Find Players
-      <div class="button-corner"></div>
+  <a class="" href="/play">
+    <div class="button-container">
+      <div class="button">Find Players
+        <div class="button-corner"></div>
+      </div>
     </div>
-  </div>
+  </a>
 </div>
+
+<% if @invited_games.size > 0 %>
+  <%= render :partial => 'invitation', locals: { invited_games: @invited_games } %>
+<% end %>
+
+Unrated matches:
+<%= @unrated_matches.size %>
+<% if @unrated_matches.size > 0 %>
+  <%= render :partial => 'unrated_matches', locals: { unrated_matches: @unrated_matches } %>
+<% end %>
 
 <div class="basic-box mt-6">
   <div class="basic-box-headline">News</div>
@@ -58,6 +70,20 @@
 </div>
 
 <div class="mt-6  basic-box">
+  <div class="basic-box-headline">UPCOMING MATCHES</div>
+  <div class="basic-list-container">
+    <% @upcoming_games.each do |match_scoring|%>
+      <div class="ml-5 mb-3">
+        <% @match = match_scoring.match %>
+        <%= render :template => "match/show"%>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+<!--
+<div class="mt-6  basic-box">
   <div class="basic-box-headline">UPCOMING TOURNAMENTS</div>
   <div class="basic-list-container">
     <% @tournaments.each do |tournament|%>
@@ -67,3 +93,6 @@
     <% end %>
   </div>
 </div>
+
+-->
+

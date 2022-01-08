@@ -11,6 +11,7 @@ export default class extends Controller {
     }
 
     toggle() {
+      console.log("toggle")
       for (let index = 0; index < this.toggledTargets.length; index++) {
         const element = this.toggledTargets[index]; 
         // console.log(element)

@@ -73,10 +73,30 @@ class MatchController < ApplicationController
     render "new"
   end
 
+  def accept_invite
+    @user = current_user
+    @match_scoring = MatchScoring.find(params[:id])
+    if @match_scoring.user == @user
+      @match_scoring.accepted = true
+      @match_scoring.save
+    end
+    redirect_to "/"
+  end
+
+  def decline_invite
+    @user = current_user
+    @match_scoring = MatchScoring.find(params[:id])
+    if @match_scoring.user == @user
+      @match_scoring.delete
+      # @match_scoring.save
+    end
+    redirect_to "/"
+  end
+
   private
 
   def match_params
-    params.require(:match).permit(:title, :description, :game_id, :max_player_number, :start_date, :status, :longitude, :latitude, match_scorings:[], users:[])
+    params.require(:match).permit(:title, :description, :game_id, :max_player_number, :start_date, :status, :longitude, :latitude, :address, match_scorings:[], users:[])
   end
 
   def match_scoring_params

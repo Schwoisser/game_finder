@@ -1,0 +1,24 @@
+<div class="basic-box mt-5">
+    <div class="basic-box-headline">Invitations to play</div>
+    <div class="ml-5">
+        <% invited_games.each do |match_scoring| %>
+            <% @match = match_scoring.match %>
+            <%= render :template => "match/show"%>
+        <a class="" href="/accept_invite/<%= match_scoring.id %>">
+            <div class="button-container">
+            <div class="button">Accept Invitation
+                <div class="button-corner"></div>
+            </div>
+            </div>
+        </a>
+        <a class="" href="/decline_invite/<%= match_scoring.id %>">
+            <div class="button-container">
+            <div class="button">Decline Invitation
+                <div class="button-corner"></div>
+            </div>
+            </div>
+        </a>
+    <% end %>
+  </div>
+
+</div>

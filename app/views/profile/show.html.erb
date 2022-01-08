@@ -1,14 +1,15 @@
-<div class="view-width" data-controller="tab" style="">
+<div class="view-width" data-controller="tab" style="width: 100% !important;">
   <% if @user == current_user %>
-    <div class="flex flex-row">
-      <div class="bg-white p-2 rounded-t" data-tab-target="buttons" data-action="click->tab#switch" data-tab-number="0" >Your Profile</div>
-      <div class="bg-white p-2 rounded-t bg-gray-200 mx-1" data-tab-target="buttons" data-action="click->tab#switch" data-tab-number="1">Your Army Lists</div>
-      <div class="bg-white p-2 rounded-t bg-gray-200" data-tab-target="buttons" data-action="click->tab#switch" data-tab-number="2">Your Friends</div>
+    <div class="tab-navigation" > 
+      <div class="tab-navigation-item-active" data-tab-target="buttons" data-action="click->tab#switch" data-tab-number="0" >Your Profile</div>
+     <!-- <div class="tab-navigation-item" data-tab-target="buttons" data-action="click->tab#switch" data-tab-number="1">Your Army Lists</div> -->
+      <div class="tab-navigation-item" data-tab-target="buttons" data-action="click->tab#switch" data-tab-number="2">Messages</div>
+
     </div>
   <% end %>
 
   <div data-tab-target="tabs">
-    <div class="bg-white py-5 px-8 rounded-b rounded-tr view-width">
+    <div class="py-5 px-8 rounded-b rounded-tr view-width">
       <%= render :partial => 'profile', locals: {  } %>
     </div>
   </div>
@@ -17,7 +18,7 @@
 
     <div class="hidden" data-tab-target="tabs">
 
-      <div class="bg-white py-5 px-8 rounded-b rounded-tr view-width">
+      <div class="py-5 px-8 rounded-b rounded-tr view-width">
         <%= render :partial => 'armies', locals: {  } %>
       </div>
 
@@ -25,19 +26,27 @@
 
     <div class="hidden" data-tab-target="tabs">
 
-      <div class="bg-white py-5 px-8 rounded-b rounded-tr view-width">
-        <%= render :partial => 'friends', locals: {  } %>
+      <div class="py-5 px-8 rounded-b rounded-tr view-width">
+        <%= render :partial => 'messages', locals: { friend_list: @friend_list,  friend_invites: @friend_invites } %>
       </div>
     </div>
-    <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
-  <% end %>
+    
 
-  <% if @user != current_user %>
-    <%= simple_form_for @friend_list, url: "/profile/send_friend_request" do |f| %>
-      <div>Send friend request</div>
-      <%= f.input :message %>
-      <%=f.hidden_field :receiving_user_id, :value => @user.id %>
-      <%= f.button :submit %>
+    <div class="button-container">
+      <a class="button" rel="nofollow" data-method="delete" href="/users/sign_out">Logout
+        <div class="button-corner bg-main"></div>
+      </a>
+    </div>
+
+  
+  <% else %>
+    <% if ((@user != current_user) && ( FriendList.where(inviting_user: current_user , receiving_user: @user).size == 0 ) && ( FriendList.where(inviting_user: @user, receiving_user: current_user).size == 0 )) %>
+      <% @friend_list = FriendList.new %>
+        <%= simple_form_for @friend_list, url: "/profile/send_friend_request" do |f| %>
+        <%= f.input :message %>
+        <%=f.hidden_field :receiving_user_id, :value => @user.id %>
+        <%= f.button :submit, "Send Friend Request", class: "button" %>
+      <% end %>
     <% end %>
   <% end %>
 </div>
