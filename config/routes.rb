@@ -55,11 +55,15 @@ Rails.application.routes.draw do
   
 
 
+  
   resources "match"
   get "invite/:id", to: "match#invite"
   get "accept_invite/:id", to: "match#accept_invite"
   get "decline_invite/:id", to: "match#decline_invite"
+
+  get "message/send_to/:id", to: "message#send_to"
   resources "message"
+
   post "/message/answer_friend_request", to: "message#answer_friend_request"
   resources "armies"
   resources "battle_reports"

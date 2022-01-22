@@ -5,12 +5,26 @@ class MessageController < ApplicationController
     #  @messages = Message.where(receiver_id: @user.id)
   end
 
+  def send_to
+    @message = Message.new()
+    @receiving_user = User.find(params[:id])
+
+    @messages = Message.where(sender: current_user, receiver: @receiving_user).or(Message.where(sender: @receiving_user, receiver: current_user)).order('created_at asc')
+  end
+
   def create
+    #TODO check if Friend
     @user = current_user
     message = Message.create(message_params)
     message.sender = @user
     message.save
-    redirect_to action: "index"
+    #redirect_to action: "index"
+
+    @message = Message.new()
+    @receiving_user = User.find(params[:id])
+    @messages = Message.where(sender: current_user, receiver: @receiving_user).or(Message.where(sender: @receiving_user, receiver: current_user)).order('created_at asc')
+
+    render "send_to"
   end
 
 

@@ -1,5 +1,8 @@
 <%= form_for :message, url: message_index_path, method: :post do |f| %>
-  Nachricht: <%= f.text_field :message %><br />
-  <%= f.collection_select :receiver_id, User.all, :id, :full_name %>
+  Nachricht an <%= receiving_user.full_name %>
+  <br>
+  <%= f.text_field :message %><br />
+  <%= f.hidden_field :receiver_id, :value => receiving_user.id %>
+  <br>
   <%= f.submit %>
 <% end %>

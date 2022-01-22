@@ -1,20 +1,26 @@
 <div class="view-width" data-controller="tab" style="width: 100% !important;">
   <% if @user == current_user %>
     <div class="tab-navigation" > 
-      <div class="tab-navigation-item-active" data-tab-target="buttons" data-action="click->tab#switch" data-tab-number="0" >Your Profile</div>
+      <div class="<% unless @tab && @tab != "tab" %> tab-navigation-item-active <% else %> tab-navigation-item <% end %>" data-tab-target="buttons" data-action="click->tab#switch" data-tab-number="0" >Your Profile</div>
+      <div class="<% unless @tab == "messages" %> tab-navigation-item <% else %> tab-navigation-item-active <% end %>" data-tab-target="buttons" data-action="click->tab#switch" data-tab-number="1">Messages</div>
      <!-- <div class="tab-navigation-item" data-tab-target="buttons" data-action="click->tab#switch" data-tab-number="1">Your Army Lists</div> -->
-      <div class="tab-navigation-item" data-tab-target="buttons" data-action="click->tab#switch" data-tab-number="2">Messages</div>
 
     </div>
   <% end %>
 
-  <div data-tab-target="tabs">
+  <div class="<% if @tab && @tab != "tab" %> hidden <% end %>" data-tab-target="tabs">
     <div class="py-5 px-8 rounded-b rounded-tr view-width">
       <%= render :partial => 'profile', locals: {  } %>
     </div>
   </div>
 
   <% if @user == current_user %>
+
+    <div class="<% unless @tab == "messages" %> hidden <% end %>" data-tab-target="tabs">
+      <div class="py-5 px-8 rounded-b rounded-tr view-width">
+        <%= render :partial => 'messages', locals: { friend_list: @friend_list,  friend_invites: @friend_invites, friend_list_users: @friend_list_users } %>
+      </div>
+    </div>
 
     <div class="hidden" data-tab-target="tabs">
 
@@ -24,19 +30,10 @@
 
     </div>
 
-    <div class="hidden" data-tab-target="tabs">
 
-      <div class="py-5 px-8 rounded-b rounded-tr view-width">
-        <%= render :partial => 'messages', locals: { friend_list: @friend_list,  friend_invites: @friend_invites } %>
-      </div>
-    </div>
     
 
-    <div class="button-container">
-      <a class="button" rel="nofollow" data-method="delete" href="/users/sign_out">Logout
-        <div class="button-corner bg-main"></div>
-      </a>
-    </div>
+
 
   
   <% else %>

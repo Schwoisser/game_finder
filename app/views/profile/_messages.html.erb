@@ -1,9 +1,38 @@
-<% @friend_list.each do |friend| %>
-  <%= friend.attributes %>
+<br><br>
+<% @friend_list_users.each do |user| %>
+  <a class="p-2 flex flex-row dark_hover" href="message/send_to/<%= user.id %>" >
+    <div class="flex flex-row" >
+      <div class=" flex flex-col text-left" style="width:80px;" >
+        <% if user.image.attached? %>
+          <img style="border-radius: 100%; height: 30px; width: 30px;"  src="<%= (url_for(user.image)) %>" >
+        <% else %>
+          <div class="m-1" style="height:30px; width:30px; background-color: white; border-radius: 5rem;"></div>
+        <% end %>
+      </div>
+
+      
+      <div class=" flex flex-col text-left" style="width:552px;">
+        <div class="flex flex-row text-left" style="width:552px;">
+          <%= user.full_name %>
+        </div>
+        <% last_message =  Message.where(sender: current_user, receiver: user).or(Message.where(sender: user, receiver: current_user)).order('created_at asc').last %>
+        <div class="flex flex-row" style="width:552px;">
+          <% if last_message %>
+          <%= last_message.message %>
+          <% end %>
+        </div>
+      </div>
+      <div class=" flex flex-col text-left" style="width:100px;">
+      <% if last_message %>
+        <%= last_message.created_at.strftime("%d.%m.%Y") %>
+        <% end %>
+      </div>
+      </div>
+  </a>
 <% end %>
 
 <% @friend_invites.each do |friend_request| %>
-<div><%= friend_request.inviting_user.full_name %></div>
+  <div><%= friend_request.inviting_user.full_name %></div>
     <%= simple_form_for friend_request, url: "/message/answer_friend_request" do |f| %>
       <div>Send friend request</div>
       <%=f.hidden_field :status, :value => "accepted" %>
@@ -17,5 +46,3 @@
       <%= f.button :submit %>
     <% end %>
 <% end %>
-
-<%= link_to "Neue Nachricht", new_message_path %>
