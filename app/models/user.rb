@@ -6,6 +6,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_and_belongs_to_many :games
+  has_and_belongs_to_many :languages
   has_many :armies
   has_many :battle_reports
   has_many :match_scorings, class_name: "MatchScoring"

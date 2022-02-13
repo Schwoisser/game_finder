@@ -1,4 +1,7 @@
 <br><br>
+<% if @friend_list_users && @friend_list_users.size == 0%>
+<h4> Suche dir Freunde um mit ihnen Nachrichten auszutauschen </h4>
+<% end %>
 <% @friend_list_users.each do |user| %>
   <a class="p-2 flex flex-row dark_hover" href="message/send_to/<%= user.id %>" >
     <div class="flex flex-row" >
@@ -46,3 +49,8 @@
       <%= f.button :submit %>
     <% end %>
 <% end %>
+
+
+  <a href="/play">
+    <h4> Füge Freunde hinzu </h4>
+  </a>

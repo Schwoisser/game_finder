@@ -27,6 +27,12 @@
   <%= f.input :games, collection: Game.order(:title), prompt: "Choose a Gamesystem" , label_method: :title, value_method: :id %>
   <%= f.button :submit, "Add Gamesystem", class:"giocaneer-button p-2 rounded mt-3 w-full px-2" %>
 <% end %> 
+
+<%= simple_form_for current_user, :url => '/profile/add_language' do |f| %>
+  <%= f.input :languages, collection: Language.order(:name), prompt: "Choose a Language" , label_method: :name, value_method: :id %>
+  <%= f.button :submit, "Add Language", class:"giocaneer-button p-2 rounded mt-3 w-full px-2" %>
+<% end %> 
+
 </div>
 
 

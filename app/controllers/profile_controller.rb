@@ -66,9 +66,34 @@ class ProfileController < ApplicationController
     render "show"
   end
 
+  def add_language
+    @user = current_user
+    Rails.logger.info params
+    Rails.logger.info add_language_params
+    language = Language.find(add_language_params[:languages])
+    Rails.logger.info language.inspect
+    unless current_user.languages.include? language
+      current_user.languages += [language]
+      Rails.logger.info current_user.inspect
+      current_user.save
+      render "show"
+    end
+  end
+
+  def remove_language
+    @user = current_user
+    language = Language.find(remove_language_params[:language_id])
+    if current_user.languages.include? language
+      current_user.languages.delete language
+    end
+    render "show"
+  end
+
   def user_params
     params.require(:user).permit(:first_name, :last_name, :nick_name, :longitude, :latitude, :info, :image  )
   end
+
+
   def add_game_params
     params.require(:user).permit(:games)
   end
@@ -76,6 +101,17 @@ class ProfileController < ApplicationController
   def remove_game_params
     params.require(:user).permit(:game_id)
   end
+
+
+  def add_language_params
+    params.require(:user).permit(:languages)
+  end
+
+  def remove_language_params
+    params.require(:user).permit(:language_id)
+  end
+
+
 
   def send_friend_request
     @receiving_user = User.find(friend_request_params[:receiving_user_id])

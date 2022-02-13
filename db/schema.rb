@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_08_141713) do
+ActiveRecord::Schema.define(version: 2022_02_05_111126) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -99,6 +99,19 @@ ActiveRecord::Schema.define(version: 2022_01_08_141713) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "languages", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "languages_users", force: :cascade do |t|
+    t.bigint "language_id"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "matches", force: :cascade do |t|
     t.datetime "start_date"
     t.text "title"
@@ -164,7 +177,7 @@ ActiveRecord::Schema.define(version: 2022_01_08_141713) do
   end
 
   create_table "player_groups", force: :cascade do |t|
-    t.bigint "creator_id"
+    t.bigint "organizer_id"
     t.text "title"
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
