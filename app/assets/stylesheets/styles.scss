@@ -8,6 +8,8 @@ $background-dark-hover: #292c28;
 $background-dark-selected: #cfd9c8;
 $background-button: #f4efe3;
 
+$border-secondary: #B2A69E;
+
 $shadow-bright: #f2f1e5;
 $shadow-dark: #adaa93;
 
@@ -303,6 +305,32 @@ scrollbar-width: none; /* Firefox */
 .basic-list-item:nth-child( odd ):hover {
     background-color: $shadow-bright;
     color: $text;
+}
+
+.notification-box {
+    position: relative;
+    background-color: white;
+    border-color: $border-secondary;
+    border-width: 1px;
+}
+
+.notification-box:after {
+    content: "";
+    position: absolute;
+    right: -5px;
+    top: 0;
+    margin: -7px;
+    width: 30px;
+    height: 20px;
+    transform: rotate(45deg);
+    background-color: $background;
+    border-bottom-color: #857b75;
+    border-bottom-width: 1px;
+    box-shadow: 0 2px 0px #ffff;
+}
+
+.notification-text {
+    font-size: $font-size-md;
 }
 
 h1 {
