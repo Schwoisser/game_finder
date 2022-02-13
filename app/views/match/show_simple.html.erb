@@ -1,13 +1,21 @@
-<h1 class="caption"> <%= @match.title%> </h1>
+<div class="notification-wrapper pb-2 rounded-lg">
+<h2 class="notification-wrapper-caption mx-3 pt-2"> <%= @match.title%> </h2>
 <!-- <h1> <%= @match.description%> </h1> -->
 
 <!--  Spieler Anzahl: <%= @match.max_player_number %><br /> -->
-<p class="notification-text">
+<p class="notification-wrapper-text mx-3 pt-2">
   <%= @match.street %> | <%= @match.zip %><br />
-  Datum: <%= @match.start_date %><br />
+  Datum: <%= @match.start_date %>
 <!--  <%= @match.game.title %><br /> -->
 <!-- >  <%= @match.status %><br /> -->
 <!--  <% @match.match_scorings.each do |scoring| %> -->
 <!--    <%= scoring.user.full_name %> <%= scoring.accepted %> -->
+    <div class="notification-wrapper-arrow">
+        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-chevron-compact-right" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z"/>
+        </svg>
+    </div>
+
 </p>
+</div>
   <% end %>

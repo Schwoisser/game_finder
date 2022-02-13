@@ -7,6 +7,7 @@ $background-dark: #1d201b;
 $background-dark-hover: #292c28;
 $background-dark-selected: #cfd9c8;
 $background-button: #f4efe3;
+$background-wrapper: #ededed;
 
 $border-secondary: #B2A69E;
 
@@ -333,9 +334,45 @@ scrollbar-width: none; /* Firefox */
     font-size: $font-size-md;
 }
 
+.notification-wrapper {
+    background-color: $background-wrapper;
+    display: block;
+    max-width: 500px;
+    position: relative;
+}
+
+.notification-wrapper-arrow {
+    padding-top: 0.5rem;
+    width: 8%;
+    height: 100%;
+    flex-grow: 1;
+    align-items: flex-end;
+    justify-content: end;
+    margin: auto;
+    margin-left: auto;
+    position: absolute;
+    right: 8px;
+    top: 26%;
+}
+
+.notification-wrapper-caption {
+    width: 86%;
+    font-family: 'Saira Semi Bold';
+}
+
+.notification-wrapper-text {
+    width: 86%;
+    font-size: $font-size-md;
+}
+
 h1 {
     font-size: $font-size-lg;
     line-height: 1.75rem;
+}
+
+h2 {
+    font-size: $font-size-md;
+    line-height: 1.4rem;
 }
 
 h4 {
@@ -563,5 +600,36 @@ h4 {
         z-index: 999999;
         left: 19.35rem;
     }
+
+    .notification-wrapper {
+        background-color: $background-wrapper;
+        display: flex;
+        max-width: 500px;
+        position: static;
+    }
+
+    .notification-wrapper-arrow {
+        padding-top: 0.5rem;
+        width: 8%;
+        height: 100%;
+        flex-grow: 1;
+        align-items: flex-end;
+        justify-content: end;
+        margin: auto;
+        margin-left: auto;
+        position: static;
+    }
+
+    .notification-wrapper-caption {
+        width: 24%;
+        font-family: 'Saira Semi Bold';
+    }
+
+    .notification-wrapper-text {
+        width: 68%;
+        font-size: $font-size-md;
+    }
+
+    
 
 }
