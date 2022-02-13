@@ -73,7 +73,7 @@ Unrated matches:
   <div class="basic-box-headline">UPCOMING MATCHES</div>
   <div class="basic-list-container">
     <% @upcoming_games.each do |match_scoring|%>
-      <div class="ml-5 mb-3">
+      <div class="mx-3 mb-3">
         <% @match = match_scoring.match %>
         <%= render :template => "match/show_simple"%>
       </div>
