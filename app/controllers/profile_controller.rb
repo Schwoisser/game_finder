@@ -37,7 +37,7 @@ class ProfileController < ApplicationController
   def update
     @user = current_user
     @user.update(user_params)
-    redirect_to "profile/"
+    redirect_to "/profile"
   end
 
   def new
@@ -53,7 +53,7 @@ class ProfileController < ApplicationController
     game = Game.find(add_game_params[:games])
     unless current_user.games.include? game
       current_user.games += [game]
-      render "show"
+      render "edit"
     end
   end
 
@@ -63,7 +63,7 @@ class ProfileController < ApplicationController
     if current_user.games.include? game
       current_user.games.delete game
     end
-    render "show"
+    render "edit"
   end
 
   def add_language
@@ -76,7 +76,7 @@ class ProfileController < ApplicationController
       current_user.languages += [language]
       Rails.logger.info current_user.inspect
       current_user.save
-      render "show"
+      render "edit"
     end
   end
 
@@ -86,7 +86,7 @@ class ProfileController < ApplicationController
     if current_user.languages.include? language
       current_user.languages.delete language
     end
-    render "show"
+    render "edit"
   end
 
   def user_params

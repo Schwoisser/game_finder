@@ -23,16 +23,59 @@
 <% end %>
 <a class=!" href="<%= profile_path %>"> Back
 </a>
-<%= simple_form_for current_user, :url => '/profile/add_game' do |f| %>
-  <%= f.input :games, collection: Game.order(:title), prompt: "Choose a Gamesystem" , label_method: :title, value_method: :id %>
-  <%= f.button :submit, "Add Gamesystem", class:"giocaneer-button p-2 rounded mt-3 w-full px-2" %>
-<% end %> 
+<br><br><br><br>
+<turbo-frame id="profile_games_armies">
 
-<%= simple_form_for current_user, :url => '/profile/add_language' do |f| %>
-  <%= f.input :languages, collection: Language.order(:name), prompt: "Choose a Language" , label_method: :name, value_method: :id %>
-  <%= f.button :submit, "Add Language", class:"giocaneer-button p-2 rounded mt-3 w-full px-2" %>
-<% end %> 
+  <div class="basic-box">
+    <div class="basic-box-headline"> Spielsysteme</div>
+    <% @user.games.each do |game| %>
+        <div class="basic-list-item caption">
+            <%= simple_form_for current_user, :url => '/profile/remove_game' do |f| %>
+              <%= f.hidden_field :game_id, value: game.id %>
+              <%= f.button :submit, "#{game.title} entfernen", class:"giocaneer-button p-2 ml-2 rounded mt-3 w-full px-2" %>
+            <% end %> 
+              <% @user.armies.each do |army|%> 
+              <%# <div class="basic-list-item caption"> %>
+              <% if army.game == game %>
+                  <%= "#{army.army_faction} "%><br> 
+              <% end %>
+              <%# </div> %>
+            <% end %> 
+        </div>
+      <% end %>
+    </div>
+<br><br>
+  <%= simple_form_for current_user, :url => '/profile/add_game' do |f| %>
+    <%= f.input :games, collection: Game.order(:title), prompt: "Choose a Gamesystem" , label_method: :title, value_method: :id %>
+    <%= f.button :submit, "Add Gamesystem", class:"giocaneer-button p-2 rounded mt-3 w-full px-2" %>
+  <% end %> 
+</turbo-frame>
+<br><br>
+<turbo-frame id="profile_languages">
 
+  <div class="flex flex-row width-100">
+    <div class="flex flex-col border-light-hover">
+      <h4 class="">Languages</h4>
+      <% @user.languages.each do |language| %>
+          <div class="flex flex-row"> 
+            <img style="height: 20px; width: 20px;"  src="<%= (url_for(language.flag_image)) %>" >
+            <div class=""> <%=  %> </div>
+
+            <%= simple_form_for current_user, :url => '/profile/remove_language' do |f| %>
+              <%= f.hidden_field :language_id, value: language.id %>
+              <%= f.button :submit, "#{language.name} entfernen", class:"giocaneer-button p-2 ml-2 rounded mt-3 w-full px-2" %>
+            <% end %> 
+          </div>
+      <% end %>
+    </div>
+  </div>
+<br><br>
+  <%= simple_form_for current_user, :url => '/profile/add_language' do |f| %>
+    <%= f.input :languages, collection: Language.order(:name), prompt: "Choose a Language" , label_method: :name, value_method: :id %>
+    <%= f.button :submit, "Add Language", class:"giocaneer-button p-2 rounded mt-3 w-full px-2" %>
+  <% end %> 
+</turbo-frame>
+<br><br>
 </div>
 
 
