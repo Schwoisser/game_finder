@@ -23,9 +23,11 @@
 
   <body class="bg-main relative">
 
-    <div class="viewport-margin max-view-width ">
-      <%= yield %>
-      <div style="height: 61px;"></div>
+    <div class="viewport-margin">
+      <div class="max-view-width ">
+        <%= yield %>
+        <div style="height: 61px;"></div>
+      </div>
     </div>
 
     <%= render :partial => 'layouts/nav', locals: { } %>
