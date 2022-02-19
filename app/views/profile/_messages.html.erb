@@ -1,6 +1,4 @@
 <br><br>
-<%= turbo_stream_from current_user %>
-<% end %>
 
 <% if @friend_list_users && @friend_list_users.size == 0%>
 <h4> Suche dir Freunde um mit ihnen Nachrichten auszutauschen </h4>
@@ -33,7 +31,7 @@
         <%= last_message.created_at.strftime("%d.%m.%Y") %>
         <% end %>
       </div>
-      </div>
+    </div>
   </a>
 <% end %>
 

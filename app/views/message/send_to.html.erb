@@ -1,7 +1,0 @@
-<br>
-<%= link_to "Zurück zu Messages", profile_path+"?tab=messages" %>
-<br>
-<br>
-<%= render :partial => 'messages', locals: { messages: @messages, receiving_user: @receiving_user } %>
-
-<%= render :partial => 'form', locals: { user: @user, receiving_user: @receiving_user } %>

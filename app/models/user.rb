@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  include Turbo::Broadcastable
+  
   acts_as_mappable :lat_column_name => :latitude, :lng_column_name => :longitude
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

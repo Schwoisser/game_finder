@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_05_111126) do
+ActiveRecord::Schema.define(version: 2022_02_19_104902) do
+
+  create_table "action_text_rich_texts", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "body"
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
+  end
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -126,6 +136,7 @@ ActiveRecord::Schema.define(version: 2022_02_05_111126) do
     t.integer "user_id"
     t.string "status", default: "open"
     t.integer "max_player_number", default: 2000
+    t.string "address", limit: 2000
     t.string "country", limit: 2000
     t.string "city", limit: 2000
     t.string "street", limit: 2000
@@ -141,11 +152,11 @@ ActiveRecord::Schema.define(version: 2022_02_05_111126) do
   end
 
   create_table "matches_users", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "match_id"
+    t.integer "user_id"
+    t.integer "match_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "match_score"
+    t.integer "match_score"
     t.boolean "accepted", default: false
     t.boolean "rated", default: false
   end
@@ -176,7 +187,7 @@ ActiveRecord::Schema.define(version: 2022_02_05_111126) do
   end
 
   create_table "player_groups", force: :cascade do |t|
-    t.bigint "creator_id"
+    t.bigint "organizer_id"
     t.text "title"
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
