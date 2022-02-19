@@ -1,24 +1,40 @@
-<div class="basic-box mt-5">
+<div class="notification-box mt-5">
     <div class="basic-box-headline">Invitations to play</div>
-    <div class="ml-5">
+    <!-- <div class="ml-5"> -->
         <% invited_games.each do |match_scoring| %>
             <% @match = match_scoring.match %>
-            <%= render :template => "match/show"%>
+            <!-- <%= render :template => "match/show"%> -->
+        <!-- <h2> <%= @match.title%> </h2>> -->
+
+    
+        <div class="notification-wrapper pb-2 mx-3 rounded-lg">
+            <h2 class="notification-wrapper-caption mx-3 pt-2"> <%= @match.title%> </h2>
+                <!-- <h1> <%= @match.description%> </h1> -->
+                <!--  Spieler Anzahl: <%= @match.max_player_number %><br /> -->
+            <p class="notification-wrapper-text mx-3 pt-2">
+                <%= @match.street %> | <%= @match.zip %><br />
+                Datum: <%= @match.start_date %>
+            </p>
+        </div>
+    
+
+        <p class="notification-wrapper-text mx-3 pt-2"> <%= @match.description%> </p>
+
         <a class="" href="/accept_invite/<%= match_scoring.id %>">
-            <div class="button-container">
-            <div class="button">Accept Invitation
-                <div class="button-corner"></div>
+            <!-- <div class="button-secondary"> -->
+            <div class="button-secondary">Accept Invitation
+                <div class="button-secondary-corner"></div>
             </div>
-            </div>
+            <!-- </div> -->
         </a>
         <a class="" href="/decline_invite/<%= match_scoring.id %>">
-            <div class="button-container">
-            <div class="button">Decline Invitation
-                <div class="button-corner"></div>
+            <!-- <div class="button-container"> -->
+            <div class="button-secondary-decline">Decline Invitation
+                <div class="button-secondary-decline-corner"></div>
             </div>
-            </div>
+            <!-- </div> -->
         </a>
     <% end %>
-  </div>
+  <!-- </div> -->
 
 </div>

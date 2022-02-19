@@ -165,10 +165,11 @@ scrollbar-width: none; /* Firefox */
     justify-content: center;
     position:relative;
     padding: 0.5rem 0.75rem 0.5rem 0.75rem;
-    margin: 1rem 1rem 1rem 0.75rem;
+    margin: 0.75rem 0.75rem 0.75rem 0.75rem;
     min-width: 80%;
     max-width: 20rem;
 }
+
 .button-secondary:hover {
     background-color: $shadow-dark;
 }
@@ -177,12 +178,47 @@ scrollbar-width: none; /* Firefox */
     content: "";
     position:absolute;
     right: 6px;
-    bottom: -3px;
+    bottom: -1px;
     margin:-10px;
-    width:18px;
+    width:15px;
     height:30px;
     transform:rotate(50deg);
-    background-color:$background; /* to see where it is */
+    background-color: white; /* to see where it is */
+    // border-left-color: $background-container-border;
+    // border-left-width: 2px;
+    // box-shadow: -2px 0px 0px $shadow-dark;
+}
+
+.on-background {
+    background-color: $background;
+}
+
+.button-secondary-decline {
+    background-color: white;
+    border-color: $border-secondary;
+    border-width: 1px;
+    display: flex;
+    justify-content: center;
+    position:relative;
+    box-sizing: border-box;
+    padding: 0.5rem 0.75rem 0.5rem 0.75rem;
+    margin: 0.75rem 0.75rem 0.75rem 0.75rem;
+    min-width: 80%;
+    max-width: 20rem;
+}
+
+.button-secondary-decline-corner {
+    content: "";
+    position:absolute;
+    right: 8px;
+    bottom: -1px;
+    margin:-10px;
+    width:15px;
+    height:28px;
+    transform:rotate(50deg);
+    background-color: white; /* to see where it is */
+    border-left-color: $border-secondary;
+    border-left-width: 1px;
     // border-left-color: $background-container-border;
     // border-left-width: 2px;
     // box-shadow: -2px 0px 0px $shadow-dark;
@@ -337,7 +373,7 @@ scrollbar-width: none; /* Firefox */
 .notification-wrapper {
     background-color: $background-wrapper;
     display: block;
-    max-width: 500px;
+    max-width: 43rem;
     position: relative;
 }
 
@@ -405,6 +441,9 @@ h4 {
 
 .max-view-width {
     width: auto;
+    max-width: 44.5rem;
+    margin-left: auto;
+    margin-right: auto;
 }
 .view-width {
     width: 51rem;
@@ -472,6 +511,7 @@ h4 {
     background-color: $background-dark;
     // height: 61px;
     z-index: 1030;
+    position: fixed;
 }
 
 .giocaneernav-item{
@@ -544,7 +584,7 @@ h4 {
         margin-left: 14rem;
     }
     .max-view-width {
-        max-width: 51rem;
+        max-width: 44.5rem;
     }
 
     .basic-box-image-container {
@@ -604,7 +644,7 @@ h4 {
     .notification-wrapper {
         background-color: $background-wrapper;
         display: flex;
-        max-width: 500px;
+        max-width: 43rem;
         position: static;
     }
 
@@ -630,6 +670,54 @@ h4 {
         font-size: $font-size-md;
     }
 
-    
+    .max-view-width {
+        max-width: 44.5rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .viewport-margin {
+        margin-left: 5rem;
+    }
+
+    .button-secondary {
+        background-color: $background-container-item-b;
+        display: flex;
+        justify-content: center;
+        position:relative;
+        padding: 0.5rem 0.75rem 0.5rem 0.75rem;
+        margin: 0.75rem 0.75rem 0.75rem 0.75rem;
+        width: 50%;
+        min-width: 10rem;
+        max-width: 20rem;
+        float: left;
+    }
+
+    .button-secondary-decline {
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        position:relative;
+        padding: 0.5rem 0.75rem 0.5rem 0.75rem;
+        margin: 0.75rem 0.75rem 0.75rem 0.75rem;
+        width: 50%;
+        min-width: 10rem;
+        max-width: 20rem;
+        /* float: left; */
+    }
+
+}
+
+@media (min-width: 1025px){
+
+    .max-view-width {
+        max-width: 44.5rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .viewport-margin {
+        margin-left: 5rem;
+    }
 
 }
