@@ -31,6 +31,8 @@ gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 
 # Use Redis adapter to run Action Cable in production
 gem 'redis', '~> 4.0'
+
+gem 'mysql2'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

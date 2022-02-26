@@ -21,7 +21,7 @@
         <% last_message =  Message.where(sender: current_user, receiver: user).or(Message.where(sender: user, receiver: current_user)).order('created_at asc').last %>
         <div class="flex flex-row" style="width:552px;">
           <% if last_message %>
-          <%= last_message.message %>
+            <%= last_message.message %>
           <% end %>
         </div>
       </div>
