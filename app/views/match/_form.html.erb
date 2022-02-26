@@ -1,27 +1,27 @@
 
-<div class="basic-box">
-  <div class="basic-box-headline">Spieler zu einem Match einladen</div>
+<div class="basic-box" >
+  <div class="basic-box-headline basic-box-form" style="max-width: 624px;padding-left: 1rem; padding-right: 1rem;">Spieler zu einem Match einladen</div>
 
   <%= form_for :match, url: match_index_path, method: :post do |f| %>
-    <div class="basic_form">
+    <div class="basic_form basic-box-form">
       <label class="basic_form_label">Spielsystem</label>
       <%= f.collection_select(:game_id, user.games, :id, :title,  :options => { :class => 'basic_form_input' }) %>
 
       <label class="basic_form_label">Titel:</label> 
-      <%= f.text_field :title, placeholder: "Titel der Nachricht" %>
+      <%= f.text_field :title, placeholder: "Titel der Nachricht", class:"basic-box-form-input" %>
 
       <label class="basic_form_label hidden">Land:</label> 
       <%= f.text_field :country, placeholder: "Land", value: "Deutschland", class:"hidden"  %>
 
       <label class="basic_form_label">Straße:</label> 
-      <%= f.text_field :street, placeholder: "Straße Hausnummer" %>
+      <%= f.text_field :street, placeholder: "Straße Hausnummer", class:"basic-box-form-input" %>
 
-      <div class="flex flex-row">
-        <div class="basic_form w-28">
+      <div class="flex flex-row" style="max-width: 620px;" >
+        <div class="basic_form" style="width: 40%;">
           <label class="basic_form_label">Postleitzahl:</label> 
-          <%= f.text_field :zip, placeholder: "12345" %>
+          <%= f.text_field :zip, placeholder: "12345", class:"basic-box-form-input" %>
         </div>
-        <div class="basic_form" style="width: 16.75rem;">
+        <div class="basic_form" style="width: 60%;">
           <label class="basic_form_label">Stadt:</label> 
           <%= f.text_field :city, placeholder: "Stadt" %>
         </div>
@@ -31,14 +31,15 @@
 
       <label class="basic_form_label">Ort:</label> 
       <%= render :partial => 'layouts/location_selector' %>
-      <div class="flex flex-row">
-        <div class="basic_form w-32">
+
+      <div class="flex flex-row" style="max-width: 620px;">
+        <div class="basic_form" style="width: 40%;">
           <label class="basic_form_label">Spieler Anzahl:</label>
           <%= f.text_field :max_player_number %>
         </div>
-        <div class="basic_form" style="width: 15.75rem;">
+        <div class="basic_form" style="width: 60%;">
           <label class="basic_form_label">Datum/Uhrzeit:</label>
-          <%= f.datetime_field :start_date, start_year: Time.now.year %>
+          <%= f.datetime_field :start_date, start_year: Time.now.year, min: Date.today %>
         </div>
       </div>
       <%= f.hidden_field :status, :value => @match.status %>
@@ -49,15 +50,20 @@
       <% if @invited_user %>
         <div class="hidden">
       <% end %>
-      <label class="basic_form_label"> Spieler im Umkreis auswählen:</label>
-      <%= f.collection_check_boxes :match_scorings, @users, :id, :full_name do |user| %>
-        <% if @invited_user && @invited_user.id == user.object.id %> 
-          <%= user.check_box(checked: true) %> <%= user.label %>
-        <% else %>
-          <%= user.check_box %> <%= user.label %> 
+      <label class="basic_form_label" style="margin-bottom: 0.5rem;"> Spieler im Umkreis auswählen:</label>
 
-            <%= distance = current_user.distance_from(user.object, :units => :kms).to_i %>km
-        <% end %>
+      <%= f.collection_check_boxes :match_scorings, @users, :id, :full_name do |user| %>
+        <div class="flex flex-row" style="max-width: 620px; margin-bottom: 0.25rem;">
+          <% if @invited_user && @invited_user.id == user.object.id %> 
+            <%= user.check_box(checked: true) %> <%= user.label %>
+          <% else %>
+            <div class="ml-3"></div>
+            <%= user.check_box %>
+            <div class="ml-1"></div> 
+            <%= user.label %>
+            <div class="ml-3"> <%= distance = current_user.distance_from(user.object, :units => :kms).to_i %>km </div>
+          <% end %>
+        </div>
       <% end %>
 
       <% if @invited_user %>
@@ -65,7 +71,7 @@
       <% end %>
 
       <label class="basic_form_label">Nachricht:</label> 
-      <%= f.text_area :description, "rows" => 5, placeholder: "Text der Nachricht"  %>
+      <%= f.text_area :description, "rows" => 5, placeholder: "Text der Nachricht", class:"basic-box-form-input"  %>
         <%= f.submit(class: "") %>
       <div class="button"> 
         <div class="button-corner"></div>

@@ -95,7 +95,7 @@ scrollbar-width: none; /* Firefox */
     // min-width: 80%;
     justify-content: center;
     position:relative;
-    margin: 0 0.5rem 0.5rem 0.75rem;
+    margin: 0 0.75rem 0.5rem 0.75rem;
     border-radius: 6px;
     max-width: 360px;
     min-height: 44px;
@@ -562,6 +562,26 @@ h4 {
 }
 // @media (max-width: 768px){
 // }
+
+.basic-box-form-input {
+    // margin-right: auto !important; 
+    // margin-left: auto !important;
+    max-width: 600px !important; 
+}
+
+.basic-box-form {
+    max-width: 620px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.location-map {
+    max-width: 600px;
+    width: auto;
+    height: 300px;
+    margin-right: 0.75rem;
+}
+  
 
 @media (min-width: 768px){
 
