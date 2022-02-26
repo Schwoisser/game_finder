@@ -1,0 +1,21 @@
+<% @user.friend_list.each do |friend| %>
+  <%= friend.attributes %>
+<% end %>
+
+<% FriendList.where(receiving_user_id: current_user.id, status: :sent).each do |friend_request| %>
+<div><%= friend_request.inviting_user.full_name %></div>
+    <%= simple_form_for @friend_list, url: "/message/answer_friend_request" do |f| %>
+      <div>Send friend request</div>
+      <%=f.hidden_field :status, :value => "accepted" %>
+      <%=f.hidden_field :inviting_user_id, :value => friend_request.inviting_user.id %>
+      <%= f.button :submit %>
+    <% end %>
+    <%= simple_form_for @friend_list, url: "/message/answer_friend_request" do |f| %>
+      <div>Send friend request</div>
+      <%=f.hidden_field :status, :value => "declined" %>
+      <%=f.hidden_field :inviting_user_id, :value => friend_request.inviting_user.id %>
+      <%= f.button :submit %>
+    <% end %>
+<% end %>
+
+<%= link_to "Neue Nachricht", new_message_path %>
