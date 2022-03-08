@@ -24,9 +24,10 @@ class ProfileController < ApplicationController
 
     @player_attribute_count = PlayerAttributeCount.where(user: @user).order(votes: :desc).first
     if @player_attribute_count
-      @player_attribute_title = @player_attribute_count.player_attribute.title
+      @player_attribute = PlayerAttribute.find(@player_attribute_count.player_attribute_id)
+      @player_attribute_title = @player_attribute.title
     else
-      @player_attribute_title ="-"
+      @player_attribute_title ="none yet"
     end
   end
 

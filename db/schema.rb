@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_19_104902) do
+ActiveRecord::Schema.define(version: 2022_03_08_121359) do
 
   create_table "action_text_rich_texts", charset: "utf8mb4", force: :cascade do |t|
     t.string "name", null: false
@@ -148,6 +148,8 @@ ActiveRecord::Schema.define(version: 2022_02_19_104902) do
     t.bigint "player_attribute_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_matches_player_attributes_on_user_id"
   end
 
   create_table "matches_users", charset: "utf8mb4", force: :cascade do |t|

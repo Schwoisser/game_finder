@@ -34,16 +34,18 @@
     
 
 
-
-  
   <% else %>
+
     <% if ((@user != current_user) && ( FriendList.where(inviting_user: current_user , receiving_user: @user).size == 0 ) && ( FriendList.where(inviting_user: @user, receiving_user: current_user).size == 0 )) %>
+      <div class="py-5 px-8 rounded-b rounded-tr view-width">
+      <h4>Message</h4>
       <% @friend_list = FriendList.new %>
         <%= simple_form_for @friend_list, url: "/profile/send_friend_request" do |f| %>
-        <%= f.input :message %>
-        <%=f.hidden_field :receiving_user_id, :value => @user.id %>
-        <%= f.button :submit, "Send Friend Request", class: "button" %>
-      <% end %>
+          <%= f.input :message, label: false, :input_html => {:style=> 'width: 100%;'} %>
+          <%=f.hidden_field :receiving_user_id, :value => @user.id %>
+          <%= f.button :submit, "Send Friend Request", class: "button", style: "margin-left: 0px;" %>
+        <% end %>
+      </div>
     <% end %>
   <% end %>
 </div>

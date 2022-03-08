@@ -30,10 +30,8 @@
   <%= render :partial => 'invitation', locals: { invited_games: @invited_games } %>
 <% end %>
 
-Unrated matches:
-<%= @unrated_matches.size %>
 <% if @unrated_matches.size > 0 %>
-  <%= render :partial => 'unrated_matches', locals: { unrated_matches: @unrated_matches } %>
+  <%= render :partial => 'match_scorings/unrated_match', locals: { match: @unrated_matches.last.match, match_scoring: @unrated_matches.last } %>
 <% end %>
 
 <div class="basic-box mt-6">
@@ -73,10 +71,8 @@ Unrated matches:
   <div class="basic-box-headline">UPCOMING MATCHES</div>
   <div class="basic-list-container">
     <% @upcoming_games.each do |match_scoring|%>
-      <div class="mx-3 mb-3">
-        <% @match = match_scoring.match %>
-        <%= render :template => "match/show_simple"%>
-      </div>
+      <% @match = match_scoring.match %>
+      <%= render :template => "match/show_simple"%>
     <% end %>
   </div>
 </div>

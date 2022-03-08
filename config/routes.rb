@@ -75,7 +75,9 @@ Rails.application.routes.draw do
   resources "armies"
   resources "battle_reports"
 
-  
+  get "match_scoring/:id/decline_rating", to: "match_scorings#decline_rating"
+  resources "match_scorings"
+
 
   # resources "player_groups"
 

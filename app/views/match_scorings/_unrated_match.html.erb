@@ -1,0 +1,30 @@
+
+<%= turbo_frame_tag "rate_match_frame" do %>
+    <div class="notification-box mt-5">
+            <div class="basic-box-headline">Your Game on <%= match.start_date %> </div>
+            
+            <h4 class="basic-box-headline">Rate your game with 
+                <% match.match_scorings.each do |match_scoring|%>
+                    <% if match_scoring.user != current_user%>
+                        <%= match_scoring.user.full_name%>
+                        <% break %>
+                    <% end%>
+                <% end %>
+                .
+            </h4>
+
+            <p class="notification-wrapper-text mx-3 pt-2"></p>
+    
+            <a class="" href="/match_scorings/<%= match_scoring.id %>">
+                <div class="button-secondary">Accept
+                    <div class="button-secondary-corner"></div>
+                </div>
+            </a>
+
+            <a class="" href="/match_scoring/<%= match_scoring.id %>/decline_rating">
+                <div class="button-secondary-decline">Decline
+                    <div class="button-secondary-decline-corner"></div>
+                </div>
+            </a>
+    </div>
+<% end %>
