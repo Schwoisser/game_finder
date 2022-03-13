@@ -9,7 +9,7 @@
 
 if User.where(email: ['test@test.com', 'tes2t@test.com']).size == 0
   user = User.create! :first_name => 'John', :last_name => "Doe", :email => 'test@test.com', :password => 'password', :password_confirmation => 'password', :longitude => 1, :latitude => 1
-  user2 = User.create! :first_name => 'John2', :last_name => "Doe2", :email => 'tes2t@test.com', :password => 'password', :password_confirmation => 'password', :longitude => 1.01, :latitude => 1
+  user2 = User.create! :first_name => 'Jane', :last_name => "Doe2", :email => 'tes2t@test.com', :password => 'password', :password_confirmation => 'password', :longitude => 1.01, :latitude => 1
 
   game = Game.create!(title: "Warhammer", short_title: "WHK", description: "Warhammer description" )
 

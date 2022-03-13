@@ -72,7 +72,9 @@
   <div class="basic-list-container">
     <% @upcoming_games.each do |match_scoring|%>
       <% @match = match_scoring.match %>
-      <%= render :template => "match/show_simple"%>
+      <% if @match %>
+        <%= render :template => "match/show_simple"%>
+      <% end %>
     <% end %>
   </div>
 </div>

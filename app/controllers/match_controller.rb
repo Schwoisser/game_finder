@@ -1,4 +1,6 @@
 class MatchController < ApplicationController
+  include Geokit::Geocoders
+
   def index
     # TODO inform the user that he has no location
     begin
@@ -24,8 +26,13 @@ class MatchController < ApplicationController
     match_scorings = match_params[:match_scorings]
     match_stuff.delete(:match_scorings)
     match_scorings.delete("")
-
     match = Match.new(match_stuff)
+
+    res = OSMGeocoder.geocode("#{match_stuff[:street]}, #{match_stuff[:zip]}, #{match_stuff[:city]}, #{match_stuff[:country]}")
+
+    match.longitude = res.lng
+    match.latitude = res.lat
+
     if match_scorings.size > 2
       match.status = "open"
     end
@@ -37,18 +44,28 @@ class MatchController < ApplicationController
     end
     MatchScoring.create(user: current_user, match: match, accepted: true)
 
-    redirect_to action: "show", id: match.id
   end
 
   def edit
     @match = Match.find(params[:id])
+    unless @match.user == current_user
+      return
+    end
     @users = User.within(20, :origin => current_user)
     render "edit"
   end
 
   def update
+    match_stuff = match_params
+    match_scorings = match_params[:match_scorings]
+    match_stuff.delete(:match_scorings)
+    match_scorings.delete("")
+
     @match = Match.find(params[:id])
-    @match.update(match_params)
+    unless @match.user == current_user
+      return
+    end
+    @match.update(match_stuff)
   end
 
   def match_scoring

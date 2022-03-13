@@ -1,11 +1,6 @@
-<turbo-frame id="match_<%= @match.id %>">
-<%= simple_form_for @match do |f| %>
-  Titel: <%= f.text_field :title %><br />
-  Beschreibung: <%= f.text_field :description %><br />
-  Spieler:
-  <%= f.association :users %>
-  <%= f.submit %>
-<% end %>
-</turbo-frame>
+
+<% @path = "/match/#{@match.id}"%>
+<% @method = :put %>
+<%= render :partial => 'form', locals: { user: @user, path: @path, method: @method } %>
 
 

@@ -1,10 +1,57 @@
-<h1> <%= @match.title%> </h1>
-<h1> <%= @match.description%> </h1>
 
-  Spieler Anzahl: <%= @match.max_player_number %><br />
-  Datum: <%= @match.start_date %><br />
-  <%= @match.game.title %><br />
-  <%= @match.status %><br />
-  <% @match.match_scorings.each do |scoring| %>
-    <%= scoring.user.full_name %> <%= scoring.accepted %><br />
+
+
+  <div class="basic-box">
+    <div class="basic-box-headline"><%= @match.title%></div>
+    
+    <div class="basic-list-container">
+
+      <div class="basic-list-item">
+        Spieler Anzahl: <%= @match.max_player_number %>
+      </div>
+
+      <div class="basic-list-item">
+        Datum: <%= @match.start_date %>
+      </div>
+
+      <div class="basic-list-item">
+        <%= @match.game.title %>
+      </div>
+
+      <div class="basic-list-item">
+        <%= @match.status %>
+      </div>
+
+
+      <div class="basic-list-item">
+        Street: <%= @match.street %>
+      </div>
+      <div class="basic-list-item">
+        ZIP: <%= @match.zip %>
+      </div>
+      <div class="basic-list-item">
+        City: <%= @match.city %>
+      </div>
+      <div class="basic-list-item">
+        Country: <%= @match.country %>
+      </div>
+
+
+
+
+
+      <% @match.match_scorings.each do |scoring| %>
+        <div class="basic-list-item">
+          <%= scoring.user.full_name %> ( <% if scoring.accepted %> Accepted <% else %> Awaiting <% end %> )
+        </div>
+      <% end %>
+
+    </div>
+
+  <div class="basic-box-headline"><%= @match.description%></div>
+  <% if @match.user == current_user %>
+    <a href="<%= @match.id %>/edit" class="button"> Edit Match 
+      <div class="button-corner"></div>
+    </a>
   <% end %>
+</div>

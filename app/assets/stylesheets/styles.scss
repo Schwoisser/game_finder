@@ -479,6 +479,7 @@ h4 {
     padding-left: 15px;
     padding-right: 15px;
     margin-top: 0;
+    cursor: pointer;
 }
 
 .tab-navigation-item-active {
@@ -490,6 +491,7 @@ h4 {
     padding-left: 15px;
     padding-right: 15px;
     margin-top: 0;
+    cursor: pointer;
 }
 
 .tab-navigation-corner{
@@ -585,6 +587,16 @@ h4 {
     height: 300px;
     margin-right: 0.75rem;
 }
+
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+  }
   
 
 @media (min-width: 768px){

@@ -1,4 +1,5 @@
 class ProfileController < ApplicationController
+  include Geokit::Geocoders
   
   def show
     unless params[:id]
@@ -38,6 +39,13 @@ class ProfileController < ApplicationController
   def update
     @user = current_user
     @user.update(user_params)
+
+    res = OSMGeocoder.geocode("#{user_params[:street]}, #{user_params[:zip]}, #{user_params[:city]}, #{user_params[:country]}")
+
+    @user.longitude = res.lng
+    @user.latitude = res.lat
+    @user.save
+
     redirect_to "/profile"
   end
 
@@ -91,7 +99,7 @@ class ProfileController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :nick_name, :longitude, :latitude, :info, :image  )
+    params.require(:user).permit(:first_name, :last_name, :nick_name, :longitude, :latitude, :info, :image, :street, :zip, :city, :country  )
   end
 
 

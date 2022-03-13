@@ -2,10 +2,10 @@
 <div class="basic-box" >
   <div class="basic-box-headline basic-box-form" style="max-width: 624px;padding-left: 1rem; padding-right: 1rem;">Spieler zu einem Match einladen</div>
 
-  <%= form_for :match, url: match_index_path, method: :post do |f| %>
+  <%= form_for :match, url: path, html: { id: "match" }, method: method do |f| %>
     <div class="basic_form basic-box-form">
       <label class="basic_form_label">Spielsystem</label>
-      <%= f.collection_select(:game_id, user.games, :id, :title,  :options => { :class => 'basic_form_input' }) %>
+      <%= f.collection_select(:game_id, current_user.games, :id, :title,  :options => { :class => 'basic_form_input' }) %>
 
       <label class="basic_form_label">Titel:</label> 
       <%= f.text_field :title, placeholder: "Titel der Nachricht", class:"basic-box-form-input" %>
@@ -30,12 +30,12 @@
 
 
       <label class="basic_form_label">Ort:</label> 
-      <%= render :partial => 'layouts/location_selector' %>
+      <% render :partial => 'layouts/location_selector' %>
 
       <div class="flex flex-row" style="max-width: 620px;">
         <div class="basic_form" style="width: 40%;">
           <label class="basic_form_label">Spieler Anzahl:</label>
-          <%= f.text_field :max_player_number %>
+          <%= f.text_field :max_player_number, value: 2 %>
         </div>
         <div class="basic_form" style="width: 60%;">
           <label class="basic_form_label">Datum/Uhrzeit:</label>
@@ -72,10 +72,10 @@
 
       <label class="basic_form_label">Nachricht:</label> 
       <%= f.text_area :description, "rows" => 5, placeholder: "Text der Nachricht", class:"basic-box-form-input"  %>
-        <%= f.submit(class: "") %>
-      <div class="button"> 
+      <a class="button" onclick="$('#match').submit()" href="/play">Save Match
         <div class="button-corner"></div>
-      </div>
-  </div>
+      </a>
+      <br>
+    </div>
   <% end %>
 </div>

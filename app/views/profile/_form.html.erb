@@ -11,9 +11,32 @@
   <%= f.label :info %>
   <%= f.text_field :info, class:"flex flex-row" %>
 
+  <br><br>
+
+  <label class="basic_form_label hidden">Land:</label> 
+  <%= f.text_field :country, placeholder: "Land", value: "Deutschland", class:"hidden"  %>
+
+  <label class="basic_form_label">Straße:</label> 
+  <%= f.text_field :street, placeholder: "Straße Hausnummer", class:"basic-box-form-input" %>
+
+  <div class="flex flex-row" style="max-width: 620px;" >
+    <div class="basic_form" style="width: 40%;">
+      <label class="basic_form_label">Postleitzahl:</label> 
+      <%= f.text_field :zip, placeholder: "12345", class:"basic-box-form-input" %>
+    </div>
+    <div class="basic_form" style="width: 60%;">
+      <label class="basic_form_label">Stadt:</label> 
+      <%= f.text_field :city, placeholder: "Stadt" %>
+    </div>
+  </div>
+
+  <br><br>
+
+
   <input class="flex flex-row" data-location-target="longitude" type="text" value="<%= @user.longitude%>" name="user[longitude]" id="user_longitude">
   <input class="flex flex-row" data-location-target="latitude" type="text" value="<%= @user.latitude%>" name="user[latitude]" id="user_latitude">
-  <div class="flex flex-row"  data-action="click->location#getLocation">Setzte Ort</div>
+  <div class="flex flex-row"  data-action="click->location#getLocation">Setzte Ort</div> 
+  
   <% if @user.image.attached? %>
     <img width="320" height="240" src="<%= (url_for(@user.image)) %>" >
   <% end %>

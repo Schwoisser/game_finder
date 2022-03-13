@@ -41,7 +41,7 @@
       <h4>Message</h4>
       <% @friend_list = FriendList.new %>
         <%= simple_form_for @friend_list, url: "/profile/send_friend_request" do |f| %>
-          <%= f.input :message, label: false, :input_html => {:style=> 'width: 100%;'} %>
+          <%= f.input :message, label: false, :input_html => {:style=> 'width: 100%;', :value => '' } %>
           <%=f.hidden_field :receiving_user_id, :value => @user.id %>
           <%= f.button :submit, "Send Friend Request", class: "button", style: "margin-left: 0px;" %>
         <% end %>

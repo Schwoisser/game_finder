@@ -1,1 +1,3 @@
-<%= render :partial => 'form', locals: { user: @user } %>
+<% @path = match_index_path%>
+<% @method = :post %>
+<%= render :partial => 'form', locals: { user: @user, path: @path, method: @method } %>
