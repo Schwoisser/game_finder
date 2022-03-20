@@ -21,22 +21,22 @@
           <% end %>
         </div>
         
-        <div class=" flex flex-col text-left" style="width:552px;">
+        <div class=" flex flex-col text-left" style="100%;">
 
-          <div class="flex flex-row text-left" style="width:552px;" data-toggle-target="toggled">
+          <div class="flex flex-row text-left" style="100%;" data-toggle-target="toggled">
             <%= match.title %>
           </div>
-          <div class="flex flex-row" style="width:552px;" data-toggle-target="toggled">
+          <div class="flex flex-row" style="100%;" data-toggle-target="toggled">
 
             <%= match.game.short_title  %>
 
           </div>
-          <div class="flex flex-row text-left hidden" style="width:552px;" data-toggle-target="toggled">
+          <div class="flex flex-row text-left hidden" style="100%;" data-toggle-target="toggled">
             <div class="giocaneer-button flex flex-col text-left rounded mx-2 p-2 hidden" data-toggle-target="toggled">Join</div>
             <a href="/match/<%= match.id %>" target="_top" class="inverse-giocaneer-button flex flex-col text-left rounded mr-2 p-2 hidden" data-toggle-target="toggled">View Match</a>
           </div>
         </div>
-        <div class=" flex flex-col text-left" style="width:100px;">
+        <div class=" flex flex-col text-left" style="width:auto;">
           <%= distance = current_user.distance_from(match, :units => :kms).to_i %>km
         </div>
       </div>
