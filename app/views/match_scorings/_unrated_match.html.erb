@@ -1,5 +1,6 @@
 
 <%= turbo_frame_tag "rate_match_frame" do %>
+    <% if match %>
     <div class="notification-box mt-5">
             <div class="basic-box-headline">Your Game on <%= match.start_date %> </div>
             
@@ -27,4 +28,5 @@
                 </div>
             </a>
     </div>
+  <% end %>    
 <% end %>

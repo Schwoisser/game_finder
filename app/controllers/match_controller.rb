@@ -64,15 +64,47 @@ class MatchController < ApplicationController
     match_stuff.delete(:match_scorings)
     match_scorings.delete("") if match_scorings
 
-    Rails.logger.info  match_scorings_params[:match_scorings_current]
-    Rails.logger.info  match_scorings_current_params
-    edited_match_scorings = match_scorings_params[:match_scorings_current].filter {|user_id| user_id != ""}.map{|user_id| user_id.to_i}
-    Rails.logger.info edited_match_scorings
+    
+
+    # Rails.logger.info  match_scorings_params[:match_scorings_current]
+    # Rails.logger.info  match_scorings_current_params
+
+
     @match = Match.find(params[:id])
     unless @match.user == current_user
       return
     end
     @match.update(match_stuff)
+
+
+    all_params = params.require(:match).permit!
+
+    # remove deleted
+    edited_match_scorings = all_params[:match_scorings_current].filter{|user_id| user_id != ""}.map{|user_id| user_id.to_i}
+    @match.match_scorings.each do |match_scoring|
+      if !edited_match_scorings.include?(match_scoring.user_id) && match_scoring.user != current_user
+        match_scoring.delete
+      end
+    end
+    
+    
+
+    #invite new users
+    if all_params[:match_scorings]
+      new_match_scorings = all_params[:match_scorings].filter{|user_id| user_id != ""}.map{|user_id| user_id.to_i}
+      Rails.logger.info "new_match_scorings"
+      Rails.logger.info new_match_scorings
+      new_match_scorings.each do |user_id|
+        Rails.logger.info user_id
+        Rails.logger.info MatchScoring.where(match: @match, user_id: user_id).size
+        if MatchScoring.where(match: @match, user_id: user_id).size == 0
+          Rails.logger.info
+          MatchScoring.create(match: @match, user_id: user_id)
+        end
+      end
+    end
+
+
     redirect_to "/match/#{@match.id}"
   end
 
@@ -134,6 +166,7 @@ class MatchController < ApplicationController
   def match_scorings_params
     params.require(:match).permit(:match_scorings)
   end
+  
   def match_scorings_current_params
     params.require(:match).permit(:match_scorings_current)
   end

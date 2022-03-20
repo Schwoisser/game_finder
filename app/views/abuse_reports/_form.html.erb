@@ -1,0 +1,16 @@
+    <div class="notification-box mt-5">
+        <h4 class="basic-box-headline">Specify your Report</h4>
+        <div class="ml-3 mb-3">
+          <%= form_for :abuse_report, url: "abuse_reports/new", method: :post do |f| %>
+
+            <%= f.text_field :description %><br />
+            <%= f.hidden_field :match_id, :value => abuse_report.match_id %>
+            <br><br>
+            <%= f.collection_select(:reported_user_id, users, :id, :full_name,  :options => { :class => 'basic_form_input' }) %>
+
+            <br><br>
+
+            <%= f.submit %>
+          <% end %>
+        </div>
+    </div>

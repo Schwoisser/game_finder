@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_13_133321) do
+ActiveRecord::Schema.define(version: 2022_03_20_140935) do
+
+  create_table "abuse_reports", charset: "utf8mb4", force: :cascade do |t|
+    t.text "description"
+    t.bigint "match_id"
+    t.bigint "user_id"
+    t.bigint "reported_user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "action_text_rich_texts", charset: "utf8mb4", force: :cascade do |t|
     t.string "name", null: false

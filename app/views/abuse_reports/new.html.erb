@@ -1,0 +1,4 @@
+<%= turbo_frame_tag "rate_match_frame" do %>
+  <%= render :partial => 'form', locals: { abuse_report: @abuse_report, users: @users } %>
+  <%= params %>
+<% end %>

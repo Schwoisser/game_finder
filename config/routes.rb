@@ -78,6 +78,8 @@ Rails.application.routes.draw do
   get "match_scoring/:id/decline_rating", to: "match_scorings#decline_rating"
   resources "match_scorings"
 
+  get "abuse_reports/new", to: "abuse_reports#new"
+  post "abuse_reports/new", to: "abuse_reports#create"
 
   # resources "player_groups"
 
