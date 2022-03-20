@@ -47,27 +47,40 @@
       <%= f.hidden_field :latitude %>
 
 
-      <% if @invited_user %>
-        <div class="hidden">
-      <% end %>
-      <label class="basic_form_label" style="margin-bottom: 0.5rem;"> Spieler im Umkreis auswählen:</label>
+      <% if @match.persisted? %>
+      <label class="basic_form_label" style="margin-bottom: 0.5rem;"> Eingeladene Spieler:</label>
+        <%= f.collection_check_boxes :match_scorings_current, @current_users, :id, :full_name do |user| %>
+          <div class="flex flex-row" style="max-width: 620px; margin-bottom: 0.25rem;">
 
-      <%= f.collection_check_boxes :match_scorings, @users, :id, :full_name do |user| %>
-        <div class="flex flex-row" style="max-width: 620px; margin-bottom: 0.25rem;">
-          <% if @invited_user && @invited_user.id == user.object.id %> 
-            <%= user.check_box(checked: true) %> <%= user.label %>
-          <% else %>
             <div class="ml-3"></div>
-            <%= user.check_box %>
+            <%= user.check_box(checked: true) %> 
+
             <div class="ml-1"></div> 
             <%= user.label %>
             <div class="ml-3"> <%= distance = current_user.distance_from(user.object, :units => :kms).to_i %>km </div>
-          <% end %>
-        </div>
+            
+          </div>
+        <% end %>
       <% end %>
 
-      <% if @invited_user %>
-        </div>
+      <% if @users.size > 0 %>
+        <label class="basic_form_label" style="margin-bottom: 0.5rem;"> Spieler im Umkreis auswählen:</label>
+
+        <%= f.collection_check_boxes :match_scorings, @users, :id, :full_name do |user| %>
+          <div class="flex flex-row" style="max-width: 620px; margin-bottom: 0.25rem;">
+
+            <div class="ml-3"></div>
+            <% if @invited_user && @invited_user.id == user.object.id %> 
+              <%= user.check_box(checked: true) %> 
+            <% else %>
+              <%= user.check_box %>
+            <% end %>
+            <div class="ml-1"></div> 
+            <%= user.label %>
+            <div class="ml-3"> <%= distance = current_user.distance_from(user.object, :units => :kms).to_i %>km </div>
+            
+          </div>
+        <% end %>
       <% end %>
 
       <label class="basic_form_label">Nachricht:</label> 

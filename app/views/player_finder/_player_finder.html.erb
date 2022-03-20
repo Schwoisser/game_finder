@@ -17,21 +17,25 @@
             <div class="m-1" style="height:30px; width:30px; background-color: white; border-radius: 5rem;"></div>
           <% end %>
         </div>
-        <div class=" flex flex-col text-left" style="width: auto;"  data-toggle-target="toggled">
-          <div class="flex flex-row text-left" style="width: auto;">
+
+        <div class=" flex flex-col text-left" style="width: 552px;"  data-toggle-target="toggled">
+        
+          <div class="flex flex-row text-left" style="width: 552px;">
             <%= user.full_name %>
           </div>
+
           <div class="flex flex-row" style="width: auto;">
 
             <%= (user.games.reduce("") { |sum, game| sum + ", " + game.short_title })[2..-1]  %>
 
           </div>
         </div>
-        <div class=" flex flex-col text-left" style="width:100px;" data-toggle-target="toggled">
-          <%= distance = current_user.distance_from(user, :units => :kms).to_i %>km
-        </div>
-        <a class="giocaneer-button rounded mx-2 p-2 hidden"         href="/invite/<%= user.id %>"  target="_top" data-toggle-target="toggled">Invite to play</a>
-        <a class="inverse-giocaneer-button rounded mx-2 p-2 hidden" href="/profile/<%= user.id %>" target="_top" data-toggle-target="toggled">See Profile</a>
+
+          <a class="giocaneer-button rounded mx-2 p-2 hidden"         href="/invite/<%= user.id %>"  target="_top" data-toggle-target="toggled">Invite to play</a>
+          <a class="inverse-giocaneer-button rounded mx-2 p-2 hidden" href="/profile/<%= user.id %>" target="_top" data-toggle-target="toggled">See Profile</a>
+          <div class=" flex flex-col text-left" style="width:100px;" data-toggle-target="toggled">
+            <%= distance = current_user.distance_from(user, :units => :kms).to_i %>km
+          </div>
         </div>
     </div>
   <% end %>
