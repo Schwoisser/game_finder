@@ -12,14 +12,12 @@ Rails.application.routes.draw do
   # Reihenfolge beachten
   get "/profile/edit", to: "profile#edit"
   post "/profile/edit", to: "profile#update"
-  
-  post "/profile/add_game", to: "profile#add_game"
-  patch "/profile/add_game", to: "profile#add_game"
-  patch "/profile/remove_game", to: "profile#remove_game"
 
-  post "/profile/add_language", to: "profile#add_language"
-  patch "/profile/add_language", to: "profile#add_language"
-  patch "/profile/remove_language", to: "profile#remove_language"
+  patch "/profile/add_game/", to: "profile#add_game"
+  get "/profile/remove_game/:id", to: "profile#remove_game"
+
+  patch "/profile/add_language/", to: "profile#add_language"
+  get "/profile/remove_language/:id", to: "profile#remove_language"
 
 
   post "/profile/send_friend_request", to: "profile#send_friend_request"

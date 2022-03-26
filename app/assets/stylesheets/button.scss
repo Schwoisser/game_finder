@@ -1,0 +1,243 @@
+@import "constants";
+
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+
+
+
+
+.button {
+  display: flex;
+  justify-content: center;
+  position:relative;
+  background-color: $background-button;
+  padding: 0.5rem 0.75rem 0.5rem 0.75rem;
+  margin: 1rem 1rem 1rem 0.75rem;
+  min-width: 94%;
+  max-width: 20rem;
+  
+  border-color: $background-container-border;
+  border-width: 2px;  
+  box-shadow: inset 2px -2px 0px $shadow-dark,
+              inset -2px 2px 0px white;  
+}
+
+.button:hover {
+  background-color: $shadow-dark;
+  cursor: pointer;
+  box-shadow: none;
+}
+
+
+
+
+
+.button:hover {
+  background-color: $shadow-dark;
+  cursor: pointer;
+  box-shadow: none;
+}
+
+.button:hover>.button_hover_effect {
+  background-color: $shadow-dark;
+  cursor: pointer;
+  box-shadow: none;
+}
+
+.button>* {
+  background-color: $background-button;
+  cursor: pointer;
+  box-shadow: none;
+  padding: 0;
+}
+
+.button-corner{
+  content: "";
+  position:absolute;
+  right: 6px;
+  bottom: -3px;
+  margin:-10px;
+  width:18px;
+  height:30px;
+  transform:rotate(50deg);
+  background-color:$background-container; /* to see where it is */
+  border-left-color: $background-container-border;
+  border-left-width: 2px;
+  box-shadow: -2px 0px 0px $shadow-dark;
+  //box-shadow: -2px 0px 0px #ffff;
+}
+
+
+
+.button-primary{
+  display: flex;
+  justify-content: center;
+  position:relative;
+  background-color: $background-button;
+  padding: 0.5rem 0.75rem 0.5rem 0.75rem;
+  margin: 0.75rem 0.75rem 0.75rem 0.75rem;
+  min-width: 93%;
+  max-width: 20rem;
+  
+  border-color: $background-container-border;
+  border-width: 2px;  
+  box-shadow: inset 2px -2px 0px $shadow-dark,
+              inset -2px 2px 0px white;  
+}
+
+
+.button-primary:hover {
+  background-color: $shadow-dark;
+  cursor: pointer;
+  box-shadow: none;
+}
+
+.button-primary:hover>.button_hover_effect {
+  background-color: $shadow-dark;
+  cursor: pointer;
+  box-shadow: none;
+}
+
+
+.button-primary-decline {
+  display: flex;
+  justify-content: center;
+  position:relative;
+  background-color: $background-brown;
+  padding: 0.5rem 0.75rem 0.5rem 0.75rem;
+  margin: 0.75rem 0.75rem 0.75rem 0.75rem;
+  min-width: 93%;
+  max-width: 20rem;
+  
+  border-color: $background-container-border;
+  border-width: 2px;  
+  box-shadow: inset 2px -2px 0px $background-brown-shadow,
+              inset -2px 2px 0px white;  
+}
+
+.button-primary-decline:hover {
+  background-color: $background-brown-shadow;
+  color: white;
+  cursor: pointer;
+  box-shadow: none;
+}
+
+.button-primary-decline:hover>.button_hover_effect {
+  background-color: $background-brown-shadow;
+  color: white;
+  cursor: pointer;
+  box-shadow: none;
+}
+
+
+
+.button-primary-decline-corner{
+  content: "";
+  position:absolute;
+  right: 6px;
+  bottom: -3px;
+  margin:-10px;
+  width:18px;
+  height:30px;
+  transform:rotate(50deg);
+  background-color:$background-container; /* to see where it is */
+  border-left-color: $background-container-border;
+  border-left-width: 2px;
+  box-shadow: -2px 0px 0px $background-brown-shadow;
+  //box-shadow: -2px 0px 0px #ffff;
+}
+
+
+
+
+
+
+.button-secondary {
+  background-color: $background-container-item-b;
+  display: flex;
+  justify-content: center;
+  position:relative;
+  padding: 0.5rem 0.75rem 0.5rem 0.75rem;
+  margin: 0.75rem 0.75rem 0.75rem 0.75rem;
+  min-width: 80%;
+  max-width: 20rem;
+}
+
+.button-secondary:hover {
+  background-color: $shadow-dark;
+}
+
+.button-secondary-corner {
+  content: "";
+  position:absolute;
+  right: 6px;
+  bottom: -1px;
+  margin:-10px;
+  width:15px;
+  height:30px;
+  transform:rotate(50deg);
+  background-color: white; /* to see where it is */
+  // border-left-color: $background-container-border;
+  // border-left-width: 2px;
+  // box-shadow: -2px 0px 0px $shadow-dark;
+}
+
+.button-secondary-decline {
+  background-color: white;
+  border-color: $border-secondary;
+  border-width: 1px;
+  display: flex;
+  justify-content: center;
+  position:relative;
+  box-sizing: border-box;
+  padding: 0.5rem 0.75rem 0.5rem 0.75rem;
+  margin: 0.75rem 0.75rem 0.75rem 0.75rem;
+  min-width: 80%;
+  max-width: 20rem;
+}
+.button-secondary-decline:hover {
+  background-color: $border-secondary;
+}
+
+.button-secondary-decline-corner {
+  content: "";
+  position:absolute;
+  right: 8px;
+  bottom: -1px;
+  margin:-10px;
+  width:15px;
+  height:28px;
+  transform:rotate(50deg);
+  background-color: white; /* to see where it is */
+  border-left-color: $border-secondary;
+  border-left-width: 1px;
+  // border-left-color: $background-container-border;
+  // border-left-width: 2px;
+  // box-shadow: -2px 0px 0px $shadow-dark;
+}
+
+
+.button-list {
+  cursor: pointer;
+  background-color: white;
+  padding: 0.125rem 0.5rem 0.125rem 0.5rem;
+  border-radius: 4px;
+  margin-left: 1rem;
+}
+
+.button-list:hover {
+  background-color: $background-brown-shadow;
+  color: white;
+}
+
+@media (min-width: 768px){
+  .button-primary{
+    min-width: 45%;
+  }
+
+  .button-primary-decline {
+    min-width: 45%;
+  }
+}

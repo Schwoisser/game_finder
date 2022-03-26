@@ -59,16 +59,16 @@ class ProfileController < ApplicationController
 
   def add_game
     @user = current_user
-    game = Game.find(add_game_params[:games])
+    game = Game.where(id: add_game_params[:games]).first
     unless current_user.games.include? game
       current_user.games += [game]
-      render "edit"
     end
+    render "edit"
   end
 
   def remove_game
     @user = current_user
-    game = Game.find(remove_game_params[:game_id])
+    game = Game.find(params[:id])
     if current_user.games.include? game
       current_user.games.delete game
     end
@@ -87,11 +87,12 @@ class ProfileController < ApplicationController
       current_user.save
       render "edit"
     end
+    # render "edit"
   end
 
   def remove_language
     @user = current_user
-    language = Language.find(remove_language_params[:language_id])
+    language = Language.find(params[:id])
     if current_user.languages.include? language
       current_user.languages.delete language
     end

@@ -1,0 +1,64 @@
+@import "constants";
+
+
+.basic_form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.basic_form>input, .basic_form>select, .basic_form>textarea {
+  flex-direction: row;
+  // min-width: 80%;
+  justify-content: center;
+  position:relative;
+  margin: 0 0.75rem 0.5rem 0.75rem;
+  border-radius: 6px;
+  // max-width: 360px;
+  min-height: 44px;
+  font-size: $font-size-md;
+}
+
+.basic_form_label {
+  margin: 0.5rem 0.5rem 0 0.75rem;
+  flex-direction: row;
+}
+
+.responsive-row {
+  display: flex;
+  flex-direction: column;
+}
+
+
+@media (min-width: 768px){
+  .basic_form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 50%;
+  }
+  .basic_form>input, .basic_form>select, .basic_form>textarea {
+    flex-direction: row;
+    // min-width: 80%;
+    justify-content: center;
+    position:relative;
+    margin: 0 0.75rem 0.5rem 0.75rem;
+    border-radius: 6px;
+    // max-width: 360px;
+    min-height: 44px;
+    font-size: $font-size-md;
+  }
+  
+  .basic_form_label {
+    margin: 0.5rem 0.5rem 0 0.75rem;
+    flex-direction: row;
+  }
+
+  .responsive-row {
+    display: flex;
+    flex-direction: row;
+  }
+  
+}
+
+@media (min-width: 1025px){
+}
