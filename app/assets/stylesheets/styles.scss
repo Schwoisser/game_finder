@@ -43,7 +43,7 @@ select {
     padding: 0.35rem 0.8rem 0.35rem 0.8rem;
     cursor: pointer;
     border-radius: 4px;
-
+    min-width: 200px;
 }
 
 select:after {
@@ -390,23 +390,7 @@ h4 {
 .hover-effect:hover{
     background-color: yellow;
 }
-.giocaneer-button {
-    background-color: #374151 !important;
-    color: white !important;
-}
-.giocaneer-button:hover{
-    background-color: #D1D5DB !important;
-    color:  #374151 !important;
-}
 
-.inverse-giocaneer-button {
-    background-color: #D1D5DB !important;
-    color: #374151 !important;
-}
-.inverse-giocaneer-button:hover{
-    background-color: #374151 !important; 
-    color:  white!important;
-}
 .light_hover:hover {
     background-color: #D1D5DB !important; 
 }

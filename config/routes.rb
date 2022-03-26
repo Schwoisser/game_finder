@@ -60,7 +60,7 @@ Rails.application.routes.draw do
   
 
 
-  
+  # TODO join match route
   resources "match"
   get "invite/:id", to: "match#invite"
   get "accept_invite/:id", to: "match#accept_invite"

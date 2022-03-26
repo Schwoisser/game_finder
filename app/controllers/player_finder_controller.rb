@@ -22,4 +22,8 @@ class PlayerFinderController < ApplicationController
       format.html
     end
   end
+
+  def join_match
+    # TODO implement
+  end
 end

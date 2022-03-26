@@ -10,7 +10,7 @@
   
   <div class="basic-list-container">
     <% matches.each do |match|%>
-    <div class="basic-list-item" data-controller="toggle">
+    <div class="basic-list-item" data-controller="toggle" style="min-height: 56px;">
       <div class="flex flex-row" data-action="click->toggle#toggle">
 
         <div class=" flex flex-col text-left" style="width:50px;">
@@ -21,18 +21,21 @@
           <% end %>
         </div>
         
-        <div class=" flex flex-col text-left" style="100%;">
+        <div class=" flex flex-col text-left" style="width: 100%;">
 
-          <div class="flex flex-row text-left" style="100%;" data-toggle-target="toggled">
+          <div class="flex flex-row text-left" style="width: 100%;" data-toggle-target="toggled">
             <%= match.title %>
           </div>
-          <div class="flex flex-row" style="100%;" data-toggle-target="toggled">
+          <div class="flex flex-row" style="width: 100%;" data-toggle-target="toggled">
 
             <%= match.game.short_title  %>
 
           </div>
-          <div class="flex flex-row text-left hidden" style="100%;" data-toggle-target="toggled">
-            <div class="giocaneer-button flex flex-col text-left rounded mx-2 p-2 hidden" data-toggle-target="toggled">Join</div>
+          <div class="flex flex-row text-left hidden" style="width: 100%;" data-toggle-target="toggled">
+            <% "TODO Form for join match withc new match scoring" %>
+            <% unless match.user_in_match(current_user) %>
+              <div class="giocaneer-button flex flex-col text-left rounded mx-2 p-2 hidden" data-toggle-target="toggled">Join</div>
+            <% end %>
             <a href="/match/<%= match.id %>" target="_top" class="inverse-giocaneer-button flex flex-col text-left rounded mr-2 p-2 hidden" data-toggle-target="toggled">View Match</a>
           </div>
         </div>

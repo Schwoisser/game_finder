@@ -12,11 +12,15 @@ class Match < ApplicationRecord
     return ["open", "closed", "finished"]
   end
 
-  def user_in_match(user)
+  def user_in_match(match_user)
     valid = false
 
+    if user == match_user
+      return true
+    end
+
     match_scorings.each do |match_scoring|
-      if match_scoring.user == user
+      if match_scoring.user == match_user
         valid = true
       end
     end

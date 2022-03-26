@@ -60,11 +60,11 @@
         <%= f.text_area :info, :rows => 8 , style: "max-width: 600px !important;"%>
       </div>
     </div>
-
+    <br>
+    <div class="basic-box-headline">Profilbild</div>
     <% if @user.image.attached? %>
       <img width="320" height="240" src="<%= (url_for(@user.image)) %>" >
     <% end %>
-    <br>
     <%= f.file_field :image %><br>
     <br>
     <br>
@@ -85,15 +85,18 @@
   <% end %>
 </div>
 <br><br>
-<div class="basic-box px-3 pb-3">
-  <div class="basic-box-headline"> Sprachen</div>
+<div class="basic-box pb-3">
+  <div class="basic-box-headline ml-2"> Sprachen</div>
     <turbo-frame id="profile_languages">
-      <div class="ml-2">
-        <% @user.languages.each do |language| %>
-          <div class="basic-list-item flex flex-row" style="display: flex;  ">
 
-            <div class="ml-1 flex flex-col" style="margin-top: 2px;">
-              <img style="height: 20px; width: 20px;"  src="<%= (url_for(language.flag_image)) %>" >
+        <% @user.languages.each do |language| %>
+          <div class="basic-list-item flex flex-row" style="display: flex;  padding-left: 1.5rem; padding-right: 1.5rem;">
+
+            <div class="ml-1 flex flex-col" style="margin-top: 2px; width:100%;">
+              <div class="flex flex-row">
+                <img style="height: 20px; width: 20px;"  src="<%= (url_for(language.flag_image)) %>" >
+                <div class="ml-3"><%= language.name %></div>
+              </div>
             </div>
 
             <div class="ml-1 flex flex-col" style="margin-top: 2px;">
@@ -104,38 +107,49 @@
 
           </div>
         <% end %>
-      </div>
 
 
-      <br><br>
+
+      <br>
       <div class="basic-box-headline">Spielsysteme hinzufügen</div>
 
-    <%= simple_form_for current_user, :url => '/profile/add_language' do |f| %>
-      <%= f.input :languages, collection: Language.order(:name), prompt: "Choose a Language" , label_method: :name, value_method: :id %>
-      <%= f.button :submit, "Add Language", class:"giocaneer-button p-2 rounded mt-3 w-full px-2" %>
+    <%= form_for :user, url: "/profile/add_language", method: :patch do |f| %>
+        <div class="ml-3"> 
+        
+          <%= f.collection_select :languages, Language.order(:name), :id, :name  %> 
+          <button type="submit" name="commit" value="Add Language" class="button-list py-2" data-disable-with="Add Language" style="width: 150px">
+            Add Language
+          </button>
+        </div>
     <% end %> 
   </turbo-frame>
 </div>
 
 <br><br>
 
-<div class="basic-box px-3 pb-3">
-    <div class="basic-box-headline">Spielsysteme</div>
+<div class="basic-box pb-3">
+    <div class="basic-box-headline ml-2">Spielsysteme</div>
 
       <turbo-frame id="profile_games_armies">
 
-          <div class="ml-2">
+
             <% @user.games.each do |game| %>
-                <div class="basic-list-item flex flex-row" style="display: flex;  ">
-                  <div class="ml-1 flex flex-col" style="margin-top: 2px;"><%= game.title %></div>
-                  <a href="/profile/remove_game/<%= game.id %>" class="button-list flex flex-col">
-                    entfernen
-                  </a>
+                <div class="basic-list-item flex flex-row" style="display: flex;  padding-left: 1.5rem; padding-right: 1.5rem;">
+
+                  <div class="ml-1 flex flex-col" style="margin-top: 2px; width:100%;">
+                    <div class="ml-1 flex flex-col" style="margin-top: 2px;"><%= game.title %></div>
+                  </div>
+
+                  <div class="ml-1 flex flex-col" style="margin-top: 2px;">
+                    <a href="/profile/remove_game/<%= game.id %>" class="button-list flex flex-col">
+                      entfernen
+                    </a>
+                  </div>
+
                 </div>
               <% end %>
-          </div>
-        <br><br>
 
+      <br>
       <div class="basic-box-headline">Spielsysteme hinzufügen</div>
 
       <%= form_for :user, url: "/profile/add_game", method: :patch do |f| %>
@@ -143,7 +157,7 @@
         
           <%= f.collection_select :games, Game.order(:title), :id, :title  %> 
 
-          <button type="submit" name="commit" value="Add Gamesystem" class="button-list py-2" data-disable-with="Add Gamesystem">
+          <button type="submit" name="commit" value="Add Gamesystem" class="button-list py-2" data-disable-with="Add Gamesystem" style="width: 150px">
             Add Gamesystem
           </button>
         </div>
