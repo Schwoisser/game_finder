@@ -281,6 +281,7 @@ h4 {
 
 .bg-main {
   background-color:$background;
+//   width: 100%;
 }
 
 .bg-dark {
@@ -400,7 +401,7 @@ h4 {
 }
 
 .mobile-vertical {
-    display: inline-grid;
+    // display: inline-grid;
 }
 // @media (max-width: 768px){
 // }
@@ -467,7 +468,7 @@ h4 {
     }
 
     .basic-box-image-container {
-        margin-right: 0;  
+        // margin-right: 0;  
     }
 
     .tab-navigation {

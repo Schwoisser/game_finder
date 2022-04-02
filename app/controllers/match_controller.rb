@@ -54,7 +54,7 @@ class MatchController < ApplicationController
       return
     end
     @current_users = @match.users.filter {|u| u != current_user}
-    @users = User.within(20, :origin => current_user).filter {|u| u != current_user} - @current_users
+    @users = ( current_user.friend_list_users + User.within(20, :origin => current_user).filter {|u| u != current_user}) - @current_users
     render "edit"
   end
 
@@ -80,12 +80,12 @@ class MatchController < ApplicationController
     all_params = params.require(:match).permit!
 
     # remove deleted
-    edited_match_scorings = all_params[:match_scorings_current].filter{|user_id| user_id != ""}.map{|user_id| user_id.to_i}
-    @match.match_scorings.each do |match_scoring|
-      if !edited_match_scorings.include?(match_scoring.user_id) && match_scoring.user != current_user
-        match_scoring.delete
-      end
-    end
+    # edited_match_scorings = all_params[:match_scorings_current].filter{|user_id| user_id != ""}.map{|user_id| user_id.to_i}
+    # @match.match_scorings.each do |match_scoring|
+    #   if !edited_match_scorings.include?(match_scoring.user_id) && match_scoring.user != current_user
+    #     match_scoring.delete
+    #   end
+    # end
     
     
 
@@ -105,7 +105,7 @@ class MatchController < ApplicationController
     end
 
 
-    redirect_to "/match/#{@match.id}"
+    redirect_to "/match/#{@match.id}/edit"
   end
 
   def match_scoring
@@ -152,6 +152,19 @@ class MatchController < ApplicationController
     end
     redirect_to "/"
   end
+
+  def join_match
+    @user = current_user
+    @match = Match.find(params[:id])
+    if @match.max_player_number < @match.users.size || @match.status == "closed"
+      return
+    end
+
+    @match_scoring = MatchPendingUser.create(user: @user, match: @match)
+    render "show"
+  end
+
+
 
   private
 

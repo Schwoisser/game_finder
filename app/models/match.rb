@@ -5,6 +5,7 @@ class Match < ApplicationRecord
   belongs_to :user
   has_and_belongs_to_many :users
   has_many :match_scorings, class_name: "MatchScoring"
+  has_many :match_pending_users
 
   validates :start_date, presence: true
   

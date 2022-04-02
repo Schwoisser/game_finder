@@ -29,6 +29,20 @@ class User < ApplicationRecord
     FriendList.where("inviting_user_id = ? or receiving_user_id = ?", id, id).where(status: :accepted)
   end
 
+  def friend_list_users
+    fl = FriendList.where("inviting_user_id = ? or receiving_user_id = ?", id, id).where(status: :accepted)
+    result = []
+    fl.each do |f|
+      if f.inviting_user == self 
+        result << f.receiving_user 
+      else
+        result << f.inviting_user
+      end
+    end
+
+    return result
+  end
+
   def friend_list_request
     FriendList.where(receiving_user_id: id, status: :sent)
   end

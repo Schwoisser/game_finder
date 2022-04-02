@@ -38,17 +38,14 @@
 
 
 
-
-
-      <% @match.match_scorings.each do |scoring| %>
-        <div class="basic-list-item">
-          <%= scoring.user.full_name %> ( <% if scoring.accepted %> Accepted <% else %> Awaiting <% end %> )
-        </div>
-      <% end %>
+      <br>
+      <%= render  :partial => "match_user_manager/match_user_manager", locals: {match: @match}  %>
+      <br>
 
     </div>
-
+  <label class="basic_form_label" style="margin-bottom: 0.5rem;"> Match Description:</label>
   <div class="basic-box-headline"><%= @match.description%></div>
+  <br>
   <% if @match.user == current_user %>
     <a href="<%= @match.id %>/edit" class="button"> Edit Match 
       <div class="button-corner"></div>

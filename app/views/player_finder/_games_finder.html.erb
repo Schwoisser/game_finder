@@ -24,7 +24,13 @@
         <div class=" flex flex-col text-left" style="width: 100%;">
 
           <div class="flex flex-row text-left" style="width: 100%;" data-toggle-target="toggled">
-            <%= match.title %>
+            <%= match.title %> 
+            <% if match.user == current_user %>
+              (You are the Host)
+            <%  elsif match.users.include? current_user  %>
+              (Your Match)
+            <% end %>
+    
           </div>
           <div class="flex flex-row" style="width: 100%;" data-toggle-target="toggled">
 
@@ -34,7 +40,7 @@
           <div class="flex flex-row text-left hidden" style="width: 100%;" data-toggle-target="toggled">
             <% "TODO Form for join match withc new match scoring" %>
             <% unless match.user_in_match(current_user) %>
-              <div class="giocaneer-button flex flex-col text-left rounded mx-2 p-2 hidden" data-toggle-target="toggled">Join</div>
+              <a href="/join_match/<%= match.id %>" target="_top" class="giocaneer-button flex flex-col text-left rounded mx-2 p-2 hidden" data-toggle-target="toggled">Join</a>
             <% end %>
             <a href="/match/<%= match.id %>" target="_top" class="inverse-giocaneer-button flex flex-col text-left rounded mr-2 p-2 hidden" data-toggle-target="toggled">View Match</a>
           </div>
