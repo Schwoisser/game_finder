@@ -9,12 +9,12 @@
 
       <div class="p-2 flex flex-col items-center">
         <h1 class="bg-dark text-bright flex inline-flex py-2.5 px-3 big-number"><%= @users_in_area_number %></h1>
-        <p class="w-32 text-center mt-2">Active Players<br> in your Area</p>
+        <p class="w-32 text-center mt-2"><%= t(:active_players).html_safe %></p>
       </div>
 
       <div class="p-2 flex flex-col items-center">
         <h1 class="bg-dark text-bright flex inline-flex py-2.5 px-3 big-number"><%= @matches_in_area_number %></h1>
-        <p class="w-32 text-center mt-2">Scheduled Matches<br> in the next 24h</p>
+        <p class="w-32 text-center mt-2"><%= t(:scheduled_matches).html_safe %></p>
       </div>
 
     </div>

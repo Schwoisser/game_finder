@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_16_090907) do
+ActiveRecord::Schema.define(version: 2022_04_16_131435) do
 
   create_table "abuse_reports", charset: "utf8mb4", force: :cascade do |t|
     t.text "description"
@@ -195,6 +195,7 @@ ActiveRecord::Schema.define(version: 2022_04_16_090907) do
     t.string "message", limit: 2500
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "unread", default: true
   end
 
   create_table "player_attributes", charset: "utf8mb4", force: :cascade do |t|

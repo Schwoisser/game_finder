@@ -65,8 +65,9 @@
   background-color:$background-container; /* to see where it is */
   border-left-color: $background-container-border;
   border-left-width: 2px;
-  box-shadow: -2px 0px 0px $shadow-dark;
+  // box-shadow: -2px 0px 0px $shadow-dark;
   //box-shadow: -2px 0px 0px #ffff;
+  box-shadow: -2px -0.25px 0px -0.5px $shadow-dark;
 }
 
 

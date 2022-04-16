@@ -20,5 +20,7 @@ module GameFinder
     config.eager_load_paths << Rails.root.join("app/commands")
     config.assets.enabled = true  
     config.assets.paths << "#{Rails.root}/app/assets/fonts"  
+
+    config.i18n.default_locale = :en
   end
 end

@@ -33,3 +33,6 @@ en:
   time:
     formats:
       default: '%H:%M %d.%m.%Y'
+  
+  active_players: "Active Players<br> in your Area"
+  scheduled_matches: "Scheduled Matches<br> in the next 24h"

@@ -93,6 +93,7 @@ trix-editor {
     // overflow-y: auto !important;
 }
 
+
 .basic-box {
     background-color: $background-container;
     border-width:  2px;
@@ -307,6 +308,10 @@ h4 {
     background-color: $dark-red;
 }
 
+.bg-highlight {
+    background-color: $background-light;
+}
+
 .text-bright {
     color: $text-bright;
 }
@@ -447,10 +452,36 @@ h4 {
           -ms-user-select: none; /* Internet Explorer/Edge */
               user-select: none; /* Non-prefixed version, currently
                                     supported by Chrome, Edge, Opera and Firefox */
-  }
+}
   
 
+.red-counter {
+    position: absolute;
+    border-radius: 100px;
+    background-color: red;
+    color: white;
+    font-size: $font-size-xs;
+    padding: 3px;
+    padding-left: 7px;
+    padding-right: 7px;
+    margin-left: 14%;
+    margin-top: -15px;
+}
+
 @media (min-width: 768px){
+
+    .red-counter {
+        position: absolute;
+        border-radius: 100px;
+        background-color: red;
+        color: white;
+        font-size: $font-size-xs;
+        padding: 3px;
+        padding-left: 7px;
+        padding-right: 7px;
+        margin-left: 60%;
+        margin-top: -15px;
+    }
 
     .giocaneernav{
         display: flex;
@@ -619,6 +650,7 @@ h4 {
 
 }
 
+
 @media (min-width: 1025px){
 
     .max-view-width {
@@ -648,4 +680,16 @@ h4 {
         display: flex;
     }
 
+    .red-counter {
+        position: absolute;
+        border-radius: 100px;
+        background-color: red;
+        color: white;
+        font-size: $font-size-xs;
+        padding: 3px;
+        padding-left: 7px;
+        padding-right: 7px;
+        margin-left: 60%;
+        margin-top: -15px;
+    }
 }

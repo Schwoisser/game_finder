@@ -4,5 +4,8 @@
   <%= f.text_field :message %><br />
   <%= f.hidden_field :receiver_id, :value => receiving_user.id %>
   <br>
-  <%= f.submit %>
+  <button type="submit" name="commit" value="Send" class="button-primary" data-disable-with="Save Message">
+    Send
+    <div class="button-corner bg-main"></div>
+  </button>
 <% end %>

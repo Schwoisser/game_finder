@@ -10,6 +10,10 @@ class MessagesController < ApplicationController
     @receiving_user = User.find(params[:id])
 
     @messages = Message.where(sender: current_user, receiver: @receiving_user).or(Message.where(sender: @receiving_user, receiver: current_user)).order('created_at asc')
+    @messages.each do |message|
+      message.unread = false
+      message.save
+    end
   end
 
   def create

@@ -1,4 +1,4 @@
-  <a class="p-2 flex flex-row dark_hover" href="/profile/<%= receiving_user.id %>" >
+  <div class="p-2 flex flex-row dark_hover" >
     <div class="flex flex-row" >
       <div class=" flex flex-col text-left" style="width:80px;" >
         <% if receiving_user.image.attached? %>
@@ -20,7 +20,7 @@
       <div class=" flex flex-col text-left" style="width:100px;">
       </div>
       </div>
-  </a>
+  </div>
 
 <%= turbo_stream_from current_user %>
 

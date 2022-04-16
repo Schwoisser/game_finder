@@ -57,6 +57,10 @@
             <ellipse id="Oval" stroke="#cfd9c8" stroke-width="1.8" cx="10.3974359" cy="4.48148148" rx="4.23076923" ry="4.48148148"></ellipse>
             </g>
         </svg>
+        <% unread_messages = Message.where(receiver: current_user, unread: true)%>
+        <% if unread_messages.size > 0 %>
+        <div class="red-counter"> <%= unread_messages.size %> </div>
+        <% end %>
         <div class="text-center text-gray-400">
             Profile
         </div>
