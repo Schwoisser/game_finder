@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_02_111034) do
+ActiveRecord::Schema.define(version: 2022_04_16_090907) do
 
   create_table "abuse_reports", charset: "utf8mb4", force: :cascade do |t|
     t.text "description"
@@ -81,6 +81,15 @@ ActiveRecord::Schema.define(version: 2022_04_02_111034) do
   create_table "countries", charset: "utf8mb4", force: :cascade do |t|
     t.text "name"
     t.text "short_name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "dev_notes", charset: "utf8mb4", force: :cascade do |t|
+    t.text "title"
+    t.text "intro"
+    t.text "text"
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -273,6 +282,7 @@ ActiveRecord::Schema.define(version: 2022_04_02_111034) do
     t.string "city", limit: 2000
     t.string "street", limit: 2000
     t.string "zip", limit: 2000
+    t.boolean "is_admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

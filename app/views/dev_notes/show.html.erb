@@ -1,0 +1,21 @@
+<div class="basic-box">
+  <div class="basic-box-headline"> <b><%= @dev_note.title%></b> </div>
+
+  <div class="basic-box-image-container">
+
+    <div class="basic-box-image">
+       <%= image_tag  url_for(@dev_note.image) %>
+    </div> 
+
+  </div>
+
+  <p class="m-3">
+    <b><%= @dev_note.intro%></b>
+  </p>
+
+  <p class="m-3">
+    <%= @dev_note.text%>
+  </p>
+
+
+</div>

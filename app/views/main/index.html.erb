@@ -37,43 +37,48 @@
     <%= render :partial => 'match_scorings/unrated_match', locals: { match: @unrated_matches.last.match, match_scoring: @unrated_matches.last } %>
   <% end %>
 
-
-
-
-<div class="basic-box mt-6">
-  <div class="basic-box-headline">News</div>
-  <div class="flex flex-wrap mobile-vertical">
-
-    <a href="/" class="basic-box-image-container">
-      <div class="basic-box-image">
-        <%= image_tag '40k_news.jpg', style:'width:100%' %>
-      </div>
-      <div class="basic-box-image-label">
-        <div class="basic-box-label-text">Do Space Marines perform better with the new Edition?</div>
-        <div class="basic-box-label-arrow">
-          <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-chevron-compact-right" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z"/>
-          </svg>
-        </div>
-      </div>  
-    </a>
-
-    <a href="/" class="basic-box-image-container">
-      <div class="basic-box-image">
-        <%= image_tag 'fow_news.jpg', style:'width:100%' %>
-      </div>
-      <div class="basic-box-image-label">
-        <div class="basic-box-label-text">Flames of War Bagration Book and new Box Sets are out!</div>
-        <div class="basic-box-label-arrow">
-          <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-chevron-compact-right" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z"/>
-          </svg>
-        </div>
-      </div>  
-    </a>
-
+<% if current_user.is_admin %>
+  <div class="basic-box mt-6">
+    <div class="basic-box-headline">News Admin Panel</div>
+      <p class="m-3">
+        <a href="<%= dev_notes_path %>" class="basic-box-image-container">
+          Übersicht
+        </a>
+      </p>
+      <p class="m-3">
+        <a href="<%= new_dev_note_path %>" class="basic-box-image-container">
+          Neuen Artikel erstellen
+        </a>
+      </p>
+    </div>
   </div>
-</div>
+<% end %>
+
+<% if @dev_notes.size == 2 %>
+  <div class="basic-box mt-6">
+    <div class="basic-box-headline">News</div>
+    <div class="flex flex-wrap mobile-vertical">
+      <% @dev_notes.each do |dev_note| %>
+
+        <a href="<%= dev_note_path(dev_note.id) %>" class="basic-box-image-container">
+          <div class="basic-box-image">
+            <%= image_tag dev_note.image, style:'width:320px; height: 200px' %>
+          </div>
+          <div class="basic-box-image-label">
+            <div class="basic-box-label-text"><%= dev_note.intro %></div>
+            <div class="basic-box-label-arrow">
+              <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-chevron-compact-right" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z"/>
+              </svg>
+            </div>
+          </div>  
+        </a>
+      <% end %>
+
+    </div>
+  </div>
+
+<% end %>
 
 <div class="notification-box mt-6">
   <div class="basic-box-headline">UPCOMING MATCHES</div>

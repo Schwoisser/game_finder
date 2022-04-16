@@ -86,6 +86,8 @@ Rails.application.routes.draw do
   get "abuse_reports/new", to: "abuse_reports#new"
   post "abuse_reports/new", to: "abuse_reports#create"
 
+  resources "dev_notes"
+
   # resources "player_groups"
 
 end

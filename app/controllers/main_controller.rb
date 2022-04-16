@@ -7,6 +7,7 @@ class MainController < ApplicationController
         @users_in_area_number = User.joins(:games).by_distance(:origin => current_user)[1..13].size
         @matches_in_area_number = Match.where(status: "open").by_distance(:origin => current_user)[1..13].try(:size) || 0
         @unrated_matches = MatchScoring.where(user_id: current_user.id, rated: false)
+        @dev_notes = DevNote.last(2)
     end 
 
     def elements

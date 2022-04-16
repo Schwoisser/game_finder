@@ -79,6 +79,20 @@ scrollbar-width: none; /* Firefox */
     background-color: $background;
 }
 
+.trix-content {
+    margin: 10px;
+}
+
+trix-toolbar {
+    margin-top: 20px;
+}
+
+trix-editor {
+    // height: 150px !important;
+    min-height: 500px !important;
+    // overflow-y: auto !important;
+}
+
 .basic-box {
     background-color: $background-container;
     border-width:  2px;

@@ -1,0 +1,18 @@
+<div class="basic-box">
+  <div class="basic-box-headline">News</div>
+
+
+  <div class="basic-list-container">
+    <% @dev_notes.each do |dev_note|%>
+      <a href="<%= edit_dev_note_path(dev_note.id) %>" class="basic-list-item">
+        <%= dev_note.title %>
+      </a>
+    <% end %>
+  </div>
+
+  <p class="m-3">
+    <a href="<%= new_dev_note_path %>" class="basic-box-image-container">
+      Neuen Artikel erstellen
+    </a>
+  </p>
+</div>

@@ -1,0 +1,12 @@
+<%= simple_form_for dev_note do |f| %>
+  <%= f.input :title %>
+  <%= f.input :intro %>
+  <%= f.rich_text_area :text %>
+  <% if dev_note.image.attached? %>
+    <img width="320" height="240" src="<%= (url_for(dev_note.image)) %>" >
+  <% end %>
+  <%= f.file_field :image %><br>
+  <br>
+  <%= f.button :submit, class: "button-primary", :value=> 'Submit', style: "background-color: red;" %>
+<% end %>
+
