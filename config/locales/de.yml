@@ -3,12 +3,94 @@ de:
     formats:
       default: '%H:%M %d.%m.%Y'
 
-  invite_players_to_a_match: "Spieler zu einem Match einladen"
+  number_of_players: "Spieleranzahl" # Kommt nicht in englischer Version vor (?!)
 
+  active_players: "Aktive Spieler<br> in deiner Umgebung"
+  scheduled_matches: "geplante Spiele<br> in den nächsten 24 Stunden"
+  find_players: "Finde Spieler"
+  your_game_on: "Dein Spiel am"
+  rate_your_game_with: "Bewerte dein Spiel mit"
 
-  number_of_players: "Spieler Anzahl"
+  look_for_friends: "Suche nach Freunden um Nachrichten auszutauschen."
 
+  accept: "Akzeptieren"
+  decline: "Ablehnen"
+
+  save: "Speichern"
+  cancel: "Abbrechen"
+  delete: "Löschen"
+  edit: "Bearbeiten"
+
+  logout: "Ausloggen"
+
+  title: "Titel"
+
+  overview: "Übersicht"
+  create_new_article: "Neuen Artikel erstellen"
+  news: "Neuigkeiten"
+  upcoming_matches: "Bevorstehende Spiele"
+  date: "Datum"
+  time: "Uhrzeit"
+  players: "Spieler"
+  games: "Spielsysteme"
+  my_games: "Meine Spielsysteme"
+  your_match: "Dein Spiel"
+  you_are_the_host: "Du bist der Gastgeber"
+
+  join: "Beitreten"
+  view_match: "Spiel anzeigen"
+  create_new_match: "Neues Spiel erstellen"
+  player_number: "Spieler Nummer"
   invite_player: "Spieler einladen"
+  save_match: "Spiel speichern"
 
   invited_players: "Eingeladene Spieler"
   participation_request: "Teilnahmeanfragen"
+
+  invite_players_to_a_match: "Spieler zu einem Match einladen"
+
+  invite_to_play: "Zum spielen einladen"
+  see_profile: "Profile anzeigen"
+  your_profile: "Dein Profil"
+  edit_profile: "Profil bearbeiten"
+
+  nick_name: "Nickname"
+  first_name: "Vorname"
+  last_name: "Nachname"
+  country: "Land"
+  street: "Straße"
+  house_number: "Hausnummer"
+  zip_code: "Postleitzahl"
+  city: "Stadt"
+  profile_picture: "Profilbild"
+  languages: "Sprachen"
+  add_language: "Sprache hinzufügen"
+  game_system: "Spielsystem"
+  game_systems: "Spielsysteme"
+  add_game_system: "Spielsystem hinzufügen"
+  prefered_location: "Bevorzugter Spielort"
+  player_virtue: "Spielertugend"
+  bio: "Bio"
+  away: "abwesend"
+
+
+  send_friend_request: "Freundschaftsanfrage senden"
+  add_friends: "Freunde hinzufügen"
+
+  user: "Nutzer"
+  save_user: "Nutzer speichern"
+
+  info: "Info"
+
+  messages: "Nachrichten"
+  message: "Nachricht"
+  message_to: "Nachricht an"
+  new_message: "Neue Nachricht"
+  send: "Senden"
+
+  specify_your_report: "Beschreibe deine Beschwerde" # Was ist damit gemeint? Wo kommst das vor?
+  report_send: "Beschwerde senden"
+
+  edit_invitation: "Einladung bearbeiten"
+  invitations_to_play: "Einladungen zum Spielen"
+  invitation: "Einladung"

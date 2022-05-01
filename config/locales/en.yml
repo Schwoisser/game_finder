@@ -40,7 +40,7 @@ en:
   your_game_on: "Your Game on"
   rate_your_game_with: "Rate your game with"
 
-  look_for_friends: "Search for friend to exchange messages."
+  look_for_friends: "Search for friends to exchange messages."
 
   accept: "Accept"
   decline: "Decline"
@@ -83,7 +83,7 @@ en:
   your_profile: "Your Profile"
   edit_profile: "Edit Profile"
 
-  nick_name: "Nick Name"
+  nick_name: "Nickname"
   first_name: "First Name"
   last_name: "Last Name"
   country: "Country"
@@ -97,7 +97,7 @@ en:
   game_system: "Game System"
   game_systems: "Game Systems"
   add_game_system: "Add Game System"
-  prefered_location: "Prefered Location"
+  prefered_location: "Preferred Location"
   player_virtue: "Player Virtue"
   bio: "Bio"
   away: "away"
