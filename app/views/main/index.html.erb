@@ -20,7 +20,7 @@
     </div>
     <a class="" href="/play">
       <div class="button-container">
-        <div class="button">Find Players
+        <div class="button"><%= t(:find_players) %>
           <div class="button-corner"></div>
         </div>
       </div>
@@ -42,12 +42,12 @@
     <div class="basic-box-headline">News Admin Panel</div>
       <p class="m-3">
         <a href="<%= dev_notes_path %>" class="basic-box-image-container">
-          Übersicht
+          <%= t(:overview) %>
         </a>
       </p>
       <p class="m-3">
         <a href="<%= new_dev_note_path %>" class="basic-box-image-container">
-          Neuen Artikel erstellen
+          <%= t(:create_new_article) %>
         </a>
       </p>
     </div>
@@ -56,7 +56,7 @@
 
 <% if @dev_notes.size == 2 %>
   <div class="basic-box mt-6">
-    <div class="basic-box-headline">News</div>
+    <div class="basic-box-headline"><%= t(:news) %></div>
     <div class="flex flex-wrap mobile-vertical">
       <% @dev_notes.each do |dev_note| %>
 
@@ -81,7 +81,7 @@
 <% end %>
 
 <div class="notification-box mt-6">
-  <div class="basic-box-headline">UPCOMING MATCHES</div>
+  <div class="basic-box-headline"><%= t(:upcoming_matches) %></div>
   <div class="basic-list-container">
     <% @upcoming_games.each do |match_scoring|%>
       <% @match = match_scoring.match %>

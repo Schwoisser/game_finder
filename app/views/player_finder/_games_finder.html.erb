@@ -2,7 +2,7 @@
 <turbo-frame id="matches">
 
     <div class="m-4">
-      <a class="<% if @user_games %> giocaneer-button <% else %> inverse-giocaneer-button <% end %> px-2 py-1 rounded mr-2" href="/play" >My Games </a>
+      <a class="<% if @user_games %> giocaneer-button <% else %> inverse-giocaneer-button <% end %> px-2 py-1 rounded mr-2" href="/play" ><%= t(:my_games) %></a>
       <% Game.all.each do |game|%>
         <a class="<% if @selected_game == game %> giocaneer-button <% else %> inverse-giocaneer-button <% end %> px-2 py-1 rounded mr-1" href="/play?id=<%= game.id %>"><%= game.short_title %></a>
       <% end %>
@@ -26,9 +26,9 @@
           <div class="flex flex-row text-left" style="width: 100%;" data-toggle-target="toggled">
             <%= match.title %> 
             <% if match.user == current_user %>
-              (You are the Host)
+              (<%= t(:you_are_the_host) %>)
             <%  elsif match.users.include? current_user  %>
-              (Your Match)
+              (<%= t(:your_match) %>)
             <% end %>
     
           </div>
@@ -40,9 +40,9 @@
           <div class="flex flex-row text-left hidden" style="width: 100%;" data-toggle-target="toggled">
             <% "TODO Form for join match withc new match scoring" %>
             <% unless match.user_in_match(current_user) %>
-              <a href="/join_match/<%= match.id %>" target="_top" class="giocaneer-button flex flex-col text-left rounded mx-2 p-2 hidden" data-toggle-target="toggled">Join</a>
+              <a href="/join_match/<%= match.id %>" target="_top" class="giocaneer-button flex flex-col text-left rounded mx-2 p-2 hidden" data-toggle-target="toggled"><%= t(:join)%></a>
             <% end %>
-            <a href="/match/<%= match.id %>" target="_top" class="inverse-giocaneer-button flex flex-col text-left rounded mr-2 p-2 hidden" data-toggle-target="toggled">View Match</a>
+            <a href="/match/<%= match.id %>" target="_top" class="inverse-giocaneer-button flex flex-col text-left rounded mr-2 p-2 hidden" data-toggle-target="toggled"><%= t(:view_match) %></a>
           </div>
         </div>
         <div class=" flex flex-col text-left" style="width:auto;">
@@ -55,6 +55,6 @@
 </turbo-frame>
 
   <a class="button mt-2" href="/match/new"  target="_top" data-toggle-target="toggled">
-      Create new Match
+      <%= t(:create_new_match) %>
       <div class="button-corner"></div>
   </a>

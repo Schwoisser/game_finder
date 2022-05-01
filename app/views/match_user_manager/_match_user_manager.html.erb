@@ -3,7 +3,7 @@
   <% if @match.persisted? %>
       
     <% if match.match_scorings.size > 0 %>
-      <label class="basic_form_label" style="margin-bottom: 0.5rem;"> Eingeladene Spieler:</label>
+      <label class="basic_form_label" style="margin-bottom: 0.5rem;"> <%= t(:invited_players) %>:</label>
     <% end %>
     <% match.match_scorings.each do |match_scoring| %>
 
@@ -13,12 +13,12 @@
         <div class="ml-1"></div> 
         <%= match_scoring.user.full_name %>
         <div class="ml-3"> <%= distance = current_user.distance_from(match_scoring.user, :units => :kms).to_i %>km </div>
-        <a href="/match_user_manager/delete_match_scoring/<%= match_scoring.id %>" class="giocaneer-button px-2 rounded ml-2"> entfernen </a>
+        <a href="/match_user_manager/delete_match_scoring/<%= match_scoring.id %>" class="giocaneer-button px-2 rounded ml-2"> <%= t(:delete) %> </a>
       </div>
     <% end %>
 
     <% if match.match_pending_users.size > 0 %>
-      <label class="basic_form_label" style="margin-bottom: 0.5rem;"> Teilnahmeanfragen:</label>
+      <label class="basic_form_label" style="margin-bottom: 0.5rem;"> <%= t(:participation_request) %>:</label>
     <% end %>
     <% match.match_pending_users.each do |pending_user| %>
       <div  class="flex flex-row" style="max-width: 620px; margin-bottom: 0.25rem;">
@@ -28,7 +28,7 @@
         <div class="ml-1"></div> 
         <%= pending_user.user.full_name %>
         <div class="ml-3"> <%= distance = current_user.distance_from(pending_user.user, :units => :kms).to_i %>km </div>
-        <a href="/match_user_manager/accept_pending_user/<%= pending_user.id %>" class="giocaneer-button px-2 rounded ml-2"> annehmen </a>
+        <a href="/match_user_manager/accept_pending_user/<%= pending_user.id %>" class="giocaneer-button px-2 rounded ml-2"> <%= t(:accept) %> </a>
       </div>
     <% end %>
   <% end %>

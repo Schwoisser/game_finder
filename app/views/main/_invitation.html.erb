@@ -1,5 +1,5 @@
 <div class="notification-box mt-5">
-    <div class="basic-box-headline">Invitations to play</div>
+    <div class="basic-box-headline"><%= t(:invitations_to_play) %></div>
         <% invited_games.each do |match_scoring| %>
             <% @match = match_scoring.match %>
             <%= render :template => "match/show_simple"%>
@@ -8,12 +8,12 @@
             <p class="notification-wrapper-text mx-3 pt-2"> <%= @match.description%> </p>
 
             <a class="" href="/accept_invite/<%= match_scoring.id %>">
-                <div class="button-secondary">Accept Invitation
+                <div class="button-secondary"><%= t(:accept) %> <%= t(:invitation) %>
                     <div class="button-secondary-corner"></div>
                 </div>
             </a>
             <a class="" href="/decline_invite/<%= match_scoring.id %>">
-                <div class="button-secondary-decline">Decline Invitation
+                <div class="button-secondary-decline"><%= t(:decline) %> <%= t(:invitation) %>
                     <div class="button-secondary-decline-corner"></div>
                 </div>
             </a>

@@ -2,3 +2,13 @@ de:
   time:
     formats:
       default: '%H:%M %d.%m.%Y'
+
+  invite_players_to_a_match: "Spieler zu einem Match einladen"
+
+
+  number_of_players: "Spieler Anzahl"
+
+  invite_player: "Spieler einladen"
+
+  invited_players: "Eingeladene Spieler"
+  participation_request: "Teilnahmeanfragen"

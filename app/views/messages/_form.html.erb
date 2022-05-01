@@ -1,11 +1,11 @@
 <%= form_for :message, url: messages_path, method: :post do |f| %>
-  Nachricht an <%= receiving_user.full_name %>
+  <%= t(:message_to) %> <%= receiving_user.full_name %>
   <br>
   <%= f.text_field :message %><br />
   <%= f.hidden_field :receiver_id, :value => receiving_user.id %>
   <br>
   <button type="submit" name="commit" value="Send" class="button-primary" data-disable-with="Save Message">
-    Send
+    <%= t(:send) %>
     <div class="button-corner bg-main"></div>
   </button>
 <% end %>

@@ -4,14 +4,14 @@
 
 <div class="basic-box px-3 pb-3">
 
-  <div class="basic-box-headline">Profil editieren</div>
+  <div class="basic-box-headline"><%= t(:edit_profile) %></div>
 
   <%= form_for :user, url: "/profile/edit", method: :post, class:"" do |f| %>
   
     <div class="responsive-row">
 
       <div class="basic_form">
-        <label class="basic_form_label">Nick Name:</label> 
+        <label class="basic_form_label"><%= t(:nick_name) %>e:</label> 
         <%= f.text_field :nick_name, class:"basic-box-form-input" %>
       </div>
 
@@ -19,11 +19,11 @@
 
     <div class="responsive-row">
       <div class="basic_form">
-        <label class="basic_form_label">First Name:</label> 
+        <label class="basic_form_label"><%= t(:first_name) %>:</label> 
         <%= f.text_field :first_name, class:"basic-box-form-input" %>
       </div>
       <div class="basic_form">
-        <label class="basic_form_label">Last Name:</label> 
+        <label class="basic_form_label"><%= t(:last_name) %>:</label> 
         <%= f.text_field :last_name, class:"basic-box-form-input" %>
       </div>
     </div>
@@ -33,22 +33,22 @@
     <div class="responsive-row">
       <div class="basic_form">
 
-        <label class="basic_form_label hidden">Land:</label> 
+        <label class="basic_form_label hidden"><%= t(:country) %>:</label> 
         <%= f.text_field :country, placeholder: "Land", value: "Deutschland", class:"hidden" %>
 
-        <label class="basic_form_label">Straße:</label> 
-        <%= f.text_field :street, placeholder: "Straße Hausnummer", class:"basic-box-form-input" %>
+        <label class="basic_form_label"><%= t(:street) %>:</label> 
+        <%= f.text_field :street, placeholder: "#{t(:street)} #{t(:house_number)}", class:"basic-box-form-input" %>
       </div>
     </div>
 
     <div class="responsive-row">
       <div class="basic_form">
-        <label class="basic_form_label">Postleitzahl:</label> 
+        <label class="basic_form_label"><%= t(:zip_code)%>:</label> 
         <%= f.text_field :zip, placeholder: "12345", class:"basic-box-form-input" %>
       </div>
       <div class="basic_form">
-        <label class="basic_form_label">Stadt:</label> 
-        <%= f.text_field :city, placeholder: "Stadt", class:"basic-box-form-input" %>
+        <label class="basic_form_label"><%=t(:city)%>:</label> 
+        <%= f.text_field :city, placeholder: t(:city), class:"basic-box-form-input" %>
       </div>
     </div>
 
@@ -56,12 +56,12 @@
 
     <div class="responsive-row">
       <div class="basic_form">
-        <label class="basic_form_label">Info:</label> 
+        <label class="basic_form_label"><%=t(:info)%>:</label> 
         <%= f.text_area :info, :rows => 8 , style: "max-width: 600px !important;"%>
       </div>
     </div>
     <br>
-    <div class="basic-box-headline">Profilbild</div>
+    <div class="basic-box-headline"><%=t(:profile_picture)%></div>
     <% if @user.image.attached? %>
       <img width="320" height="240" src="<%= (url_for(@user.image)) %>" >
     <% end %>
@@ -72,12 +72,12 @@
     <div class="responsive-row">
 
       <a class="button-primary-decline" href="<%= profile_path %>"> 
-        Cancel
+        <%= t(:cancel) %>
         <div class="button-primary-decline-corner"></div>
       </a>
 
       <button type="submit" name="commit" value="Save User" class="button-primary" data-disable-with="Save User">
-          Save User
+          <%= t(:save_user) %>
           <div class="button-corner"></div>
       </button>
 
@@ -86,7 +86,7 @@
 </div>
 <br><br>
 <div class="basic-box pb-3">
-  <div class="basic-box-headline ml-2"> Sprachen</div>
+  <div class="basic-box-headline ml-2"><%= t(:languages) %></div>
     <turbo-frame id="profile_languages">
 
         <% @user.languages.each do |language| %>
@@ -101,7 +101,7 @@
 
             <div class="ml-1 flex flex-col" style="margin-top: 2px;">
               <a href="/profile/remove_language/<%= language.id %>" class="button-list flex flex-col">
-                entfernen
+                <%= t(:delete) %>
               </a>
             </div>
 
@@ -111,14 +111,14 @@
 
 
       <br>
-      <div class="basic-box-headline">Sprache hinzufügen</div>
+      <div class="basic-box-headline"><%= t(:add_language) %></div>
 
     <%= form_for :user, url: "/profile/add_language", method: :patch do |f| %>
         <div class="ml-3"> 
         
           <%= f.collection_select :languages, Language.order(:name), :id, :name  %> 
           <button type="submit" name="commit" value="Add Language" class="button-list py-2" data-disable-with="Add Language" style="width: 150px">
-            Add Language
+            <%= t(:add_language) %>
           </button>
         </div>
     <% end %> 
@@ -128,7 +128,7 @@
 <br><br>
 
 <div class="basic-box pb-3">
-    <div class="basic-box-headline ml-2">Spielsysteme</div>
+    <div class="basic-box-headline ml-2"><%= t(:game_systems) %></div>
 
       <turbo-frame id="profile_games_armies">
 
@@ -142,7 +142,7 @@
 
                   <div class="ml-1 flex flex-col" style="margin-top: 2px;">
                     <a href="/profile/remove_game/<%= game.id %>" class="button-list flex flex-col">
-                      entfernen
+                      <%= t(:delete) %>
                     </a>
                   </div>
 
@@ -150,7 +150,7 @@
               <% end %>
 
       <br>
-      <div class="basic-box-headline">Spielsysteme hinzufügen</div>
+      <div class="basic-box-headline"><%= t(:add_game_system) %></div>
 
       <%= form_for :user, url: "/profile/add_game", method: :patch do |f| %>
         <div class="ml-3"> 
@@ -158,7 +158,7 @@
           <%= f.collection_select :games, Game.order(:title), :id, :title  %> 
 
           <button type="submit" name="commit" value="Add Gamesystem" class="button-list py-2" data-disable-with="Add Gamesystem" style="width: 150px">
-            Add Gamesystem
+            <%= t(:add_game_system) %>
           </button>
         </div>
       <% end %> 

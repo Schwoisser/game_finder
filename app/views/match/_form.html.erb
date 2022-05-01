@@ -1,29 +1,29 @@
 
 <div class="basic-box" >
-  <div class="basic-box-headline basic-box-form" style="max-width: 624px;padding-left: 1rem; padding-right: 1rem;">Spieler zu einem Match einladen</div>
+  <div class="basic-box-headline basic-box-form" style="max-width: 624px;padding-left: 1rem; padding-right: 1rem;"><%= t(:invite_players_to_a_match) %></div>
 
   <%= form_for :match, url: path, html: { id: "match" }, method: method do |f| %>
     <div class="basic_form basic-box-form">
-      <label class="basic_form_label">Spielsystem</label>
+      <label class="basic_form_label"><%= t(:game_system) %></label>
       <%= f.collection_select(:game_id, current_user.games, :id, :title,  :options => { :class => 'basic_form_input' }) %>
 
-      <label class="basic_form_label">Titel:</label> 
-      <%= f.text_field :title, placeholder: "Titel der Nachricht", class:"basic-box-form-input" %>
+      <label class="basic_form_label"><%= t(:title) %>:</label> 
+      <%= f.text_field :title, placeholder: t(:title), class:"basic-box-form-input" %>
 
-      <label class="basic_form_label hidden">Land:</label> 
-      <%= f.text_field :country, placeholder: "Land", value: "Deutschland", class:"hidden"  %>
+      <label class="basic_form_label hidden"><%= t(:country) %>:</label> 
+      <%= f.text_field :country, placeholder: t(:country), value: "Deutschland", class:"hidden"  %>
 
-      <label class="basic_form_label">Straße:</label> 
-      <%= f.text_field :street, placeholder: "Straße Hausnummer", class:"basic-box-form-input" %>
+      <label class="basic_form_label"><%= t(:street) %>:</label> 
+      <%= f.text_field :street, placeholder: "#{t(:street)} #{t(:house_number)}", class:"basic-box-form-input" %>
 
       <div class="flex flex-row" style="max-width: 620px;" >
         <div class="basic_form" style="width: 40%;">
-          <label class="basic_form_label">Postleitzahl:</label> 
+          <label class="basic_form_label"><%= t(:zip_code)%>:</label> 
           <%= f.text_field :zip, placeholder: "12345", class:"basic-box-form-input" %>
         </div>
         <div class="basic_form" style="width: 60%;">
-          <label class="basic_form_label">Stadt:</label> 
-          <%= f.text_field :city, placeholder: "Stadt" %>
+          <label class="basic_form_label"><%= t(:city)%>:</label> 
+          <%= f.text_field :city, placeholder: t(:city) %>
         </div>
       </div>
 
@@ -34,11 +34,11 @@
 
       <div class="flex flex-row" style="max-width: 620px;">
         <div class="basic_form" style="width: 40%;">
-          <label class="basic_form_label">Spieler Anzahl:</label>
+          <label class="basic_form_label"><%= t(:player_number) %>:</label>
           <%= f.text_field :max_player_number, value: 2 %>
         </div>
         <div class="basic_form" style="width: 60%;">
-          <label class="basic_form_label">Datum/Uhrzeit:</label>
+          <label class="basic_form_label"><%= t(:date) %>/<%= t(:time) %>:</label>
           <%= f.datetime_field :start_date, start_year: Time.now.year, min: Date.today, required: true %>
         </div>
       </div>
@@ -49,7 +49,7 @@
       <%= render  :partial => "match_user_manager/match_user_manager", locals: {match: @match}  %>
 
       <% if @users.size > 0 %>
-        <label class="basic_form_label" style="margin-bottom: 0.5rem;"> Spieler einladen:</label>
+        <label class="basic_form_label" style="margin-bottom: 0.5rem;"> <%= t(:invite_player) %>:</label>
 
         <%= f.collection_check_boxes :match_scorings, @users, :id, :full_name do |user| %>
           <div class="flex flex-row" style="max-width: 620px; margin-bottom: 0.25rem;">
@@ -69,21 +69,21 @@
       <% end %>
 
       <br>
-      <label class="basic_form_label">Nachricht:</label> 
-      <%= f.text_area :description, "rows" => 5, placeholder: "Text der Nachricht", class:"basic-box-form-input"  %>
+      <label class="basic_form_label"><%= t(:message) %>:</label> 
+      <%= f.text_area :description, "rows" => 5, placeholder: t(:message), class:"basic-box-form-input"  %>
       <br>
       <div class="flex flex-row">
         <% if @match.persisted? %>
-          <a class="button-primary-decline"  href="/match/<%= @match.id %>">Cancel
+          <a class="button-primary-decline"  href="/match/<%= @match.id %>"><%= t(:cancel) %>
             <div class="button-primary-decline-corner"></div>
           </a>
         <% else %>
-          <a class="button-primary-decline"  href="/play" >Cancel
+          <a class="button-primary-decline"  href="/play" ><%= t(:cancel) %>
             <div class="button-primary-decline-corner"></div>
           </a>
         <% end %>
         
-        <a class="button-primary" onclick="$('#match').submit()" href="/match/<%= @match.id %>/edit">Save Match
+        <a class="button-primary" onclick="$('#match').submit()" href="/match/<%= @match.id %>/edit"><%= t(:save_match) %>
           <div class="button-corner"></div>
         </a>
       </div>

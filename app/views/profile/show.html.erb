@@ -1,10 +1,10 @@
 <div class="view-width" data-controller="tab" style="width: 100% !important;">
   <% if @user == current_user %>
     <div class="tab-navigation" > 
-      <div class="<% unless @tab && @tab != "tab" %> tab-navigation-item-active <% else %> tab-navigation-item <% end %>" data-tab-target="buttons" data-action="click->tab#switch" data-tab-number="0" >Your Profile</div>
+      <div class="<% unless @tab && @tab != "tab" %> tab-navigation-item-active <% else %> tab-navigation-item <% end %>" data-tab-target="buttons" data-action="click->tab#switch" data-tab-number="0" ><%= t(:your_profile) %></div>
       <div class="<% unless @tab == "messages" %> tab-navigation-item <% else %> tab-navigation-item-active <% end %>" data-tab-target="buttons" data-action="click->tab#switch" data-tab-number="1">
         <% unread_messages = Message.where(receiver: current_user, unread: true)%>
-        Messages <% if unread_messages.size > 0 %><span class="caption">(<%= unread_messages.size %>)</span><% end %>
+        <%= t(:messages) %> <% if unread_messages.size > 0 %><span class="caption">(<%= unread_messages.size %>)</span><% end %>
       </div>
      <!-- <div class="tab-navigation-item" data-tab-target="buttons" data-action="click->tab#switch" data-tab-number="1">Your Army Lists</div> -->
 
@@ -41,7 +41,7 @@
 
     <% if ((@user != current_user) && ( FriendList.where(inviting_user: current_user , receiving_user: @user).size == 0 ) && ( FriendList.where(inviting_user: @user, receiving_user: current_user).size == 0 )) %>
       <div class="py-5 px-8 rounded-b rounded-tr view-width">
-      <h4>Message</h4>
+      <h4><%= t(:message) %></h4>
       <% @friend_list = FriendList.new %>
         <%= simple_form_for @friend_list, url: "/profile/send_friend_request" do |f| %>
           <%= f.input :message, label: false, :input_html => {:style=> 'width: 100%;', :value => '' } %>

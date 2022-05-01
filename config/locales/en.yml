@@ -36,3 +36,90 @@ en:
   
   active_players: "Active Players<br> in your Area"
   scheduled_matches: "Scheduled Matches<br> in the next 24h"
+  find_players: "Find Players"
+  your_game_on: "Your Game on"
+  rate_your_game_with: "Rate your game with"
+
+  look_for_friends: "Search for friend to exchange messages."
+
+  accept: "Accept"
+  decline: "Decline"
+
+  save: "Save"
+  cancel: "Cancel"
+  delete: "delete"
+  edit: "Edit"
+
+  logout: "Logout"
+
+  title: "Title"
+
+  overview: "Overview"
+  create_new_article: "Create new Article"
+  news: "News"
+  upcoming_matches: "Upcoming Matches"
+  date: "Date"
+  time: "Time"
+  players: "Players"
+  games: "Games"
+  my_games: "My Games"
+  your_match: "Your Match"
+  you_are_the_host: "You are the Host"
+
+  join: "Join"
+  view_match: "View Match"
+  create_new_match: "Create new Match"
+  player_number: "Player Number"
+  invite_player: "Invite Player"
+  save_match: "Save Match"
+
+  invited_players: "Invited Players"
+  participation_request: "Participation Request"
+
+  invite_players_to_a_match: "Invite players to a match"
+
+  invite_to_play: "Invite to play"
+  see_profile: "See Profile"
+  your_profile: "Your Profile"
+  edit_profile: "Edit Profile"
+
+  nick_name: "Nick Name"
+  first_name: "First Name"
+  last_name: "Last Name"
+  country: "Country"
+  street: "Street"
+  house_number: "House Number"
+  zip_code: "Zip Code"
+  city: "City"
+  profile_picture: "Profile Picture"
+  languages: "Languages"
+  add_language: "Add Language"
+  game_system: "Game System"
+  game_systems: "Game Systems"
+  add_game_system: "Add Game System"
+  prefered_location: "Prefered Location"
+  player_virtue: "Player Virtue"
+  bio: "Bio"
+  away: "away"
+
+
+  send_friend_request: "Send friend request"
+  add_friends: "Add Friends"
+
+  user: "User"
+  save_user: "Save User"
+
+  info: "Info"
+
+  messages: "Messages"
+  message: "Message"
+  message_to: "Message to"
+  new_message: "New Message"
+  send: "Send"
+
+  specify_your_report: "Specify your Report"
+  report_send: "Report send"
+
+  edit_invitation: "Editing Invitation"
+  invitations_to_play: "Invitations to play"
+  invitation: "Invitation"

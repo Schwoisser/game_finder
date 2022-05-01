@@ -9,7 +9,7 @@
     
     <% if @user == current_user%>
       <a class="button-secondary" href="/profile/edit" style="max-width: 250px">
-        <div class="">Bearbeiten
+        <div class=""><%= t(:edit) %>
           <div class="button-secondary-corner on-background"></div>
         </div>
       </a>
@@ -20,7 +20,7 @@
 <div class="flex flex-row width-100">
 
   <div class="flex flex-col border-light-hover">
-    <h4 class="">Languages</h4>
+    <h4 class=""><%= t(:languages) %></h4>
     <% @user.languages.each do |language| %>
         <div class="flex flex-row"> 
           <img style="height: 20px; width: 20px;"  src="<%= (url_for(language.flag_image)) %>" >
@@ -30,8 +30,8 @@
   </div>
 
   <div class="flex flex-col border-light-hover">
-    <h4 class=""> Prefered Location </h4>
-    <p><%= distance = current_user.distance_from(@user, :units => :kms).to_i %>km weit weg.
+    <h4 class=""> <%= t(:prefered_location) %> </h4>
+    <p><%= distance = current_user.distance_from(@user, :units => :kms).to_i %>km <%= t(:away) %>.
   </div>
 
 </div>
@@ -39,7 +39,7 @@
 <turbo-frame id="profile_games_armies">
 
   <div class="basic-box">
-    <div class="basic-box-headline"> Spielsysteme</div>
+    <div class="basic-box-headline"> <%= t(:game_systems) %></div>
     <% @user.games.each do |game| %>
         <div class="basic-list-item caption">
             <%= game.title %>
@@ -101,7 +101,7 @@
 <div class="flex flex-row width-100">
 
   <div class="flex flex-col border-light-hover">
-    <h4 class=""> Player Virtue </h4>
+    <h4 class=""> <%= t(:player_virtue) %> </h4>
     <div class=""> <h4 class="bg-gray-400 px-2.5 rounded"><%= @player_attribute_title %></h4> </div>
   </div>
 
@@ -109,13 +109,13 @@
 
 
 <div class="flex flex-col border-light width-100">
-  <h4>Bio</h4>
+  <h4><%= t(:bio) %></h4>
   <%= @user.info %>
 </div>
 
 <% if @user == current_user%>
   <div class="button-container">
-    <a class="button" rel="nofollow" data-method="delete" href="/users/sign_out">Logout
+    <a class="button" rel="nofollow" data-method="delete" href="/users/sign_out"><%= t(:logout) %>
       <div class="button-corner bg-main"></div>
     </a>
   </div>
