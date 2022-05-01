@@ -3,8 +3,6 @@ de:
     formats:
       default: '%H:%M %d.%m.%Y'
 
-  number_of_players: "Spieleranzahl" # Kommt nicht in englischer Version vor (?!)
-
   active_players: "Aktive Spieler<br> in deiner Umgebung"
   scheduled_matches: "geplante Spiele<br> in den nächsten 24 Stunden"
   find_players: "Finde Spieler"
@@ -40,7 +38,7 @@ de:
   join: "Beitreten"
   view_match: "Spiel anzeigen"
   create_new_match: "Neues Spiel erstellen"
-  player_number: "Spieler Nummer"
+  player_number: "Spieler Anzahl"
   invite_player: "Spieler einladen"
   save_match: "Spiel speichern"
 
