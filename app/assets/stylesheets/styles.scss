@@ -8,6 +8,10 @@ body {
     height: 100%;
 }
 
+.bold {
+  font-family: 'Saira Bold';
+}
+
 .caption {
     font-family: 'Saira Semi Bold';
 }
@@ -95,13 +99,15 @@ trix-editor {
 
 
 .basic-box {
-    background-color: $background-container;
-    border-width:  2px;
-    border-color: $background-container-border;
-    position: relative;
-    box-shadow: inset 2px -2px 0px $shadow-dark,
-                 inset -2px 2px 0px $shadow-bright;
-    /* overflow:hidden; */
+  background-image: url(metalic_background.svg);
+
+  background-color: $background-container;
+  border-width:  2px;
+  border-color: $background-container-border;
+  position: relative;
+  box-shadow: inset 2px -2px 0px $shadow-dark,
+                inset -2px 2px 0px $shadow-bright;
+  /* overflow:hidden; */
 
   /*   width: 200px;
     min-height: 200px;

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_16_131435) do
+ActiveRecord::Schema.define(version: 2022_05_07_094513) do
 
   create_table "abuse_reports", charset: "utf8mb4", force: :cascade do |t|
     t.text "description"
@@ -284,6 +284,7 @@ ActiveRecord::Schema.define(version: 2022_04_16_131435) do
     t.string "street", limit: 2000
     t.string "zip", limit: 2000
     t.boolean "is_admin", default: false
+    t.string "locale", limit: 50
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

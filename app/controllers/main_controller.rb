@@ -1,5 +1,10 @@
 class MainController < ApplicationController
     def index
+        if params[:locale]
+          current_user.locale = params[:locale]
+          current_user.save
+          I18n.locale = current_user.locale
+        end
         @user = current_user
         @tournaments = Tournament.all
         @invited_games = MatchScoring.where(user_id: @user.id, accepted: false)
