@@ -82,10 +82,16 @@
             <div class="button-primary-decline-corner"></div>
           </a>
         <% end %>
-        
-        <a class="button-primary" onclick="$('#match').submit()" href="/match/<%= @match.id %>/edit"><%= t(:save_match) %>
-          <div class="button-corner"></div>
-        </a>
+        <% if request.url.include? "edit" %>
+          <a class="button-primary" onclick="$('#match').submit()" href="/match/<%= @match.id %>/edit"><%= t(:save_match) %>
+            <div class="button-corner"></div>
+          </a>
+        <% end %>
+        <% if request.url.include? "new" %>
+          <a class="button-primary" onclick="$('#match').submit()" href="/match/new"><%= t(:save_match) %>
+            <div class="button-corner"></div>
+          </a>
+        <% end %>
       </div>
 
       <br>

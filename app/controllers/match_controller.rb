@@ -45,7 +45,7 @@ class MatchController < ApplicationController
       MatchScoring.create(user_id: user_id.to_i, match: match)
     end
     MatchScoring.create(user: current_user, match: match, accepted: true)
-
+    redirect_to "/match/#{match.id}/edit"
   end
 
   def edit
