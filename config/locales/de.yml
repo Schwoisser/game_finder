@@ -20,6 +20,7 @@ de:
   edit: "Bearbeiten"
 
   logout: "Ausloggen"
+  login: "Anmelden"
 
   title: "Titel"
 
@@ -30,7 +31,7 @@ de:
   date: "Datum"
   time: "Uhrzeit"
   players: "Spieler"
-  games: "Spielsysteme"
+  games: "Termine"
   my_games: "Meine Spielsysteme"
   your_match: "Dein Spiel"
   you_are_the_host: "Du bist der Gastgeber"

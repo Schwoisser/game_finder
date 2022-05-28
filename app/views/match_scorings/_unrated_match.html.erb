@@ -16,17 +16,20 @@
 
             <p class="notification-wrapper-text mx-3 pt-2"></p>
     
-            <a class="" href="/match_scorings/<%= match_scoring.id %>">
-                <div class="button-secondary"><%= t(:accept) %>
-                    <div class="button-secondary-corner"></div>
-                </div>
-            </a>
+            <div class="flex flex-row justify-center">
+                <a class="" style="width: 50%;" href="/match_scorings/<%= match_scoring.id %>">
+                    <div class="button-secondary" style="width: 100%;"><%= t(:accept) %>
+                        <div class="button-secondary-corner"></div>
+                    </div>
+                </a>
 
-            <a class="" href="/match_scoring/<%= match_scoring.id %>/decline_rating">
-                <div class="button-secondary-decline"><%= t(:decline) %>
-                    <div class="button-secondary-decline-corner"></div>
-                </div>
-            </a>
+                <a class="" style="width: 50%;" href="/match_scoring/<%= match_scoring.id %>/decline_rating">
+                    <div class="button-secondary-decline" style="width: 100%;"><%= t(:decline) %>
+                        <div class="button-secondary-decline-corner"></div>
+                    </div>
+                </a>
+            </div>
+
     </div>
   <% end %>    
 <% end %>

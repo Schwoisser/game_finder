@@ -372,18 +372,18 @@ h4 {
     cursor: pointer;
 }
 
-.tab-navigation-corner{
-    // content: "";
-    position: absolute;
-    top: 0.5rem;
-    margin: -7px;
-    width: 30px;
-    height: 18px;
-    left: 50%;
-    transform: rotate(45deg) translate(-60%, 122%);
-    background-color: #fff;
-    z-index: 999999;
-}
+// .tab-navigation-corner{
+//     // content: "";
+//     position: absolute;
+//     top: 0.5rem;
+//     margin: -7px;
+//     width: 30px;
+//     height: 18px;
+//     left: 50%;
+//     transform: rotate(45deg) translate(-60%, 122%);
+//     background-color: #fff;
+//     z-index: 999999;
+// }
 
 .giocaneernav{
     display: flex;
@@ -534,7 +534,7 @@ h4 {
     }
 
     .tab-navigation-container{
-        margin-left: 15rem; 
+        margin-left: 5rem; 
     }
 
     .tab-navigation-item {
@@ -559,18 +559,18 @@ h4 {
         
     }
     
-    .tab-navigation-corner:after {
-        content: "";
-        position: absolute;
-        top: 0.5rem;
-        margin: -7px;
-        width: 30px;
-        height: 22px;
-        transform: rotate(45deg);
-        background-color: #fff;
-        z-index: 999999;
-        left: 19.35rem;
-    }
+    // .tab-navigation-corner:after {
+    //     content: "";
+    //     position: absolute;
+    //     top: 0.5rem;
+    //     margin: -7px;
+    //     width: 30px;
+    //     height: 22px;
+    //     transform: rotate(45deg);
+    //     background-color: #fff;
+    //     z-index: 999999;
+    //     left: 19.35rem;
+    // }
 
     .notification-wrapper {
         background-color: $background-wrapper;
