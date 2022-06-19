@@ -1,1 +1,1 @@
-<%= render  :partial => "#{current_user.locale}_privacy_policy", locals: {match: @match}  %>
+<%= render  :partial => "#{current_user.try(:locale) ||  I18n.locale || "de" }_privacy_policy", locals: {match: @match}  %>
