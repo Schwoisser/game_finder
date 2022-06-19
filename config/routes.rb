@@ -88,6 +88,9 @@ Rails.application.routes.draw do
 
   resources "dev_notes"
 
+  get "imprint", to: "main#imprint"
+  get "privacy_policy", to: "main#privacy_policy"
+
   # resources "player_groups"
 
 end

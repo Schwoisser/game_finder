@@ -26,7 +26,9 @@
     <div class="viewport-margin">
       <div class="max-view-width ">
         <%= yield %>
-        <div style="height: 61px;"></div>
+
+        <%= render :partial => 'layouts/footer', locals: { } %>
+        <div style="height: 20px;"></div>
       </div>
     </div>
 

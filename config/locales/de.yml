@@ -71,9 +71,12 @@ de:
   player_virtue: "Spielertugend"
   bio: "Bio"
   away: "abwesend"
+  player_already_invited: "Freundschaftsanfrage gesendet."
+  player_is_friend: "Spieler ist auf deiner Freundesliste."
 
 
   send_friend_request: "Freundschaftsanfrage senden"
+  add_friend: "Freund hinzufügen"
   add_friends: "Freunde hinzufügen"
 
   user: "Nutzer"
@@ -95,3 +98,6 @@ de:
   invitation: "Einladung"
   tournaments: "Turniere"
   coming_soon: "in Entwicklung"
+
+  imprint: "Impressum"
+  privacy_policy: "Datenschutzerklärung"

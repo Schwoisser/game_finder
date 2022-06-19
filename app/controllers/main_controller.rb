@@ -17,4 +17,9 @@ class MainController < ApplicationController
 
     def elements
     end
+
+    def imprint
+    end
+    def privacy_policy
+    end
 end

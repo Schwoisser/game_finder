@@ -103,8 +103,13 @@ en:
   bio: "Bio"
   away: "away"
 
+  player_already_invited: "Friend Request send."
+  player_is_friend: "Plyer is on your Friendlist."
+
+
 
   send_friend_request: "Send friend request"
+  add_friend: "Add Friend"
   add_friends: "Add Friends"
 
   user: "User"
@@ -126,3 +131,6 @@ en:
   invitation: "Invitation"
   tournaments: "Tournaments"
   coming_soon: "Coming soon"
+
+  imprint: "Imprint"
+  privacy_policy: "Privacy Policy"

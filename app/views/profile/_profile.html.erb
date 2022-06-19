@@ -4,8 +4,47 @@
     <% else %>
       <div style="border-radius: 100%; height: 80px; width: 80px; background-color: white"></div>
     <% end %>
-  <div class="flex flex-col">
+  <div class="flex flex-col" data-controller="toggle">
     <h1 class="ml-2 flex flex-row"><%= @user.full_name%></h1>
+      <% if (@user != current_user) %>
+        <% friends_user_invited = FriendList.where(inviting_user: current_user , receiving_user: @user)%>
+        <% friend_list_invited =  FriendList.where(inviting_user: @user, receiving_user: current_user)%>
+        <% befriended = (friends_user_invited.first.try(:status) == :accepted  ||  friend_list_invited.first.try(:status)  == :accepted) %>
+
+        <% if (( friends_user_invited.size == 0 ) && ( friend_list_invited.size == 0 )) %>
+            <div class="button-secondary" style="width: 250px;" data-action="click->toggle#toggle">
+              <div class=""><%= t(:add_friend)%>
+                <div class="button-secondary-corner on-background"></div>
+              </div>
+            </div>
+            <div class="ml-3 py-5 rounded-b rounded-tr hidden" data-toggle-target="toggled">
+              <div><%= t(:message) %></div>
+              <% @friend_list = FriendList.new %>
+                <%= simple_form_for @friend_list, url: "/profile/send_friend_request" do |f| %>
+                  <%= f.input :message, label: false, :input_html => {:style=> 'width: 100%;', :value => '' } %>
+                  <%=f.hidden_field :receiving_user_id, :value => @user.id %>
+                  <a class="button-secondary" style="width: 350px; margin-left: 0;" onclick="$('#new_friend_list').submit()" href="/match/new">
+                    <div class="" ><%= t(:send_friend_request) %>
+                    <div class="button-secondary-corner on-background"></div>
+                             </div>
+                  </a>
+              <% end %>
+            </div>
+        <% end %>
+
+      <% unless (( friends_user_invited.size == 0 ) && ( friend_list_invited.size == 0 ) || befriended )  %>
+        <div class="ml-2 py-5 rounded-b rounded-tr">
+          <div><%= t(:player_already_invited) %></div>
+        </div>  
+      <% end %>
+
+      <% if befriended %>
+        <div class="ml-2 py-5 rounded-b rounded-tr">
+          <div><%= t(:player_already_invited) %></div>
+        </div>  
+      <% end %>
+
+    <% end %>
     
     <% if @user == current_user%>
       <a class="button-secondary" href="/profile/edit" style="max-width: 250px">
