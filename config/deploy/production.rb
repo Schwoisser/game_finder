@@ -9,7 +9,7 @@
 
 set :stage, :production
 set :branch, 'master'
-server "giocaneers.com", user: 'rails-user', roles: %w{web db app}
+server "89.58.44.1", user: 'rails-user', roles: %w{web db app}
 set :deploy_to, '/data/var/www/html/giocaneers.com'
 
 # role-based syntax
