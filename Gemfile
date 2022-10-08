@@ -39,6 +39,12 @@ gem 'mysql2'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
+gem 'capistrano', '~> 3.10'
+gem 'capistrano-bundler'
+gem 'capistrano-rails'
+gem 'capistrano-rvm'
+gem 'capistrano-passenger'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
