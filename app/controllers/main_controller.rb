@@ -9,7 +9,11 @@ class MainController < ApplicationController
         @tournaments = Tournament.all
         @invited_games = MatchScoring.where(user_id: @user.id, accepted: false)
         @upcoming_games = MatchScoring.where(user_id: @user.id, accepted: true)
-        @users_in_area_number = User.joins(:games).by_distance(:origin => current_user)[1..13].size
+        begin
+          @users_in_area_number = User.joins(:games).by_distance(:origin => current_user)[1..13].size
+        rescue =>e
+          @users_in_area_number = 0
+        end
         @matches_in_area_number = Match.where(status: "open").by_distance(:origin => current_user)[1..13].try(:size) || 0
         @unrated_matches = MatchScoring.where(user_id: current_user.id, rated: false)
         @dev_notes = DevNote.last(2)
