@@ -6,6 +6,12 @@ require "capistrano/deploy"
 
 require 'capistrano/ssh_doctor'
 
+require 'capistrano/bundler'
+require 'capistrano/rails'
+require 'capistrano/rvm'
+require 'capistrano/passenger'
+
+
 # Load the SCM plugin appropriate to your project:
 #
 # require "capistrano/scm/hg"
