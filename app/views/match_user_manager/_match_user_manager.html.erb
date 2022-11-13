@@ -13,7 +13,9 @@
         <div class="ml-1"></div> 
         <%= match_scoring.user.full_name %>
         <div class="ml-3"> <%= distance = current_user.distance_from(match_scoring.user, :units => :kms).to_i %>km </div>
-        <a href="/match_user_manager/delete_match_scoring/<%= match_scoring.id %>" class="giocaneer-button px-2 rounded ml-2"> <%= t(:delete) %> </a>
+        <% if current_user == match.user %>
+          <a href="/match_user_manager/delete_match_scoring/<%= match_scoring.id %>" class="giocaneer-button px-2 rounded ml-2"> <%= t(:delete) %> </a>
+        <% end %>
       </div>
     <% end %>
 
@@ -28,7 +30,9 @@
         <div class="ml-1"></div> 
         <%= pending_user.user.full_name %>
         <div class="ml-3"> <%= distance = current_user.distance_from(pending_user.user, :units => :kms).to_i %>km </div>
-        <a href="/match_user_manager/accept_pending_user/<%= pending_user.id %>" class="giocaneer-button px-2 rounded ml-2"> <%= t(:accept) %> </a>
+        <% if current_user == match.user %>
+          <a href="/match_user_manager/accept_pending_user/<%= pending_user.id %>" class="giocaneer-button px-2 rounded ml-2"> <%= t(:accept) %> </a>
+        <% end %>
       </div>
     <% end %>
   <% end %>

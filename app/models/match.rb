@@ -4,6 +4,7 @@ class Match < ApplicationRecord
   belongs_to :tournament, optional: true
   belongs_to :user
   has_and_belongs_to_many :users
+  # TODO on delete, delete match_scorings
   has_many :match_scorings, class_name: "MatchScoring"
   has_many :match_pending_users
 

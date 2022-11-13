@@ -6,7 +6,7 @@
 
   <% last_message =  Message.where(sender: current_user, receiver: user).or(Message.where(sender: user, receiver: current_user)).order('created_at asc').last %>
 
-  <a class="p-2 flex flex-row <% if last_message.unread %> bg-highlight <% end %> dark_hover" href="message/send_to/<%= user.id %>" >
+  <a class="p-2 flex flex-row <% if last_message.try(:unread) %> bg-highlight <% end %> dark_hover" href="message/send_to/<%= user.id %>" >
     <div class="flex flex-row" >
       <div class=" flex flex-col text-left" style="width:80px;" >
         <% if user.image.attached? %>
@@ -40,13 +40,13 @@
 <% @friend_invites.each do |friend_request| %>
   <div><%= friend_request.inviting_user.full_name %></div>
     <%= simple_form_for friend_request, url: "/message/answer_friend_request" do |f| %>
-      <div><%= t(:send_friend_request) %></div>
+      <div><%= t(:accept) %></div>
       <%=f.hidden_field :status, :value => "accepted" %>
       <%=f.hidden_field :inviting_user_id, :value => friend_request.inviting_user.id %>
       <%= f.button :submit %>
     <% end %>
     <%= simple_form_for friend_request, url: "/message/answer_friend_request" do |f| %>
-      <div><%= t(:send_friend_request) %></div>
+      <div><%= t(:decline) %></div>
       <%=f.hidden_field :status, :value => "declined" %>
       <%=f.hidden_field :inviting_user_id, :value => friend_request.inviting_user.id %>
       <%= f.button :submit %>

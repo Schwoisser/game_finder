@@ -15,7 +15,14 @@ class MainController < ApplicationController
           @users_in_area_number = 0
         end
         @matches_in_area_number = Match.where(status: "open").by_distance(:origin => current_user)[1..13].try(:size) || 0
-        @unrated_matches = MatchScoring.where(user_id: current_user.id, rated: false)
+        @unrated_matches_temp = MatchScoring.where(user_id: current_user.id, rated: false)
+        @unrated_matches = []
+        # TODO use join
+        @unrated_matches.each |m|
+          if m.match.start_date < Date.current
+            @unrated_matches << m
+          end
+        end
         @dev_notes = DevNote.last(2)
     end 
 

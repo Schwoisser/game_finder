@@ -17,35 +17,40 @@ class MatchController < ApplicationController
 
   def new
     @user = current_user
-    @users = User.within(20, :origin => current_user)
+    @users = User.within(20, :origin => current_user).filter {|u| u != current_user}
     @match = Match.new
   end
 
   def create
+    @user = current_user
+    @users = User.within(20, :origin => current_user).filter {|u| u != current_user}
     match_stuff = match_params
     match_scorings = match_params[:match_scorings]
     match_stuff.delete(:match_scorings)
     match_scorings.delete("")
-    match = Match.new(match_stuff)
+    @match = Match.new(match_stuff)
 
     res = OSMGeocoder.geocode("#{match_stuff[:street]}, #{match_stuff[:zip]}, #{match_stuff[:city]}, #{match_stuff[:country]}")
 
-    match.longitude = res.lng
-    match.latitude = res.lat
+    @match.longitude = res.lng
+    @match.latitude = res.lat
 
     if match_scorings.size > match_stuff[:max_player_number].to_i
-      match.status = "open"
+      @match.status = "open"
     else
-      match.max_player_number = match_scorings.size + 1 # +1 for host
+      @match.max_player_number = match_scorings.size + 1 # +1 for host
     end
-    match.user = current_user
-    match.save
+    @match.user = current_user
+    if @match.save
     
-    match_scorings.each do |user_id|
-      MatchScoring.create(user_id: user_id.to_i, match: match)
+      match_scorings.each do |user_id|
+        unless user_id.to_i == current_user.id
+          MatchScoring.create(user_id: user_id.to_i, match: @match)
+        end
+      end
+      MatchScoring.create(user: current_user, match: @match, accepted: true)
+      redirect_to "/match/#{@match.id}"
     end
-    MatchScoring.create(user: current_user, match: match, accepted: true)
-    redirect_to "/match/#{match.id}"
   end
 
   def edit
@@ -169,7 +174,7 @@ class MatchController < ApplicationController
   private
 
   def match_params
-    params.require(:match).permit(:title, :description, :game_id, :max_player_number, :start_date, :status, :longitude, :latitude, :address, :street, :zip, match_scorings:[], users:[])
+    params.require(:match).permit(:title, :description, :game_id, :max_player_number, :start_date, :status, :longitude, :latitude, :country, :city :street, :zip, match_scorings:[], users:[])
   end
 
   def match_scoring_params

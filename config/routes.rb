@@ -77,6 +77,7 @@ Rails.application.routes.draw do
   resources "messages"
 
   post "/message/answer_friend_request", to: "messages#answer_friend_request"
+  patch "/message/answer_friend_request", to: "messages#answer_friend_request"
   resources "armies"
   resources "battle_reports"
 
