@@ -40,8 +40,10 @@
               </div>
               <div class="flex flex-row text-left hidden" style="width: 100%;" data-toggle-target="toggled">
                 <% "TODO Form for join match withc new match scoring" %>
-                <% unless match.user_in_match(current_user) %>
-                  <a href="/join_match/<%= match.id %>" target="_top" class="giocaneer-button flex flex-col text-left rounded mx-2 p-2 hidden" data-toggle-target="toggled"><%= t(:join)%></a>
+                <% if MatchPendingUser.where(user: current_user, match: match).size == 0 %>
+                  <% unless match.user_in_match(current_user) %>
+                    <a href="/join_match/<%= match.id %>" target="_top" class="giocaneer-button flex flex-col text-left rounded mx-2 p-2 hidden" data-toggle-target="toggled"><%= t(:join)%></a>
+                  <% end %>
                 <% end %>
                 <a href="/match/<%= match.id %>" target="_top" class="inverse-giocaneer-button flex flex-col text-left rounded mr-2 p-2 hidden" data-toggle-target="toggled"><%= t(:view_match) %></a>
               </div>

@@ -27,7 +27,11 @@ class MatchController < ApplicationController
     match_stuff = match_params
     match_scorings = match_params[:match_scorings]
     match_stuff.delete(:match_scorings)
-    match_scorings.delete("")
+    if match_scorings
+      match_scorings.delete("")
+    else
+      match_scorings = []
+    end
     @match = Match.new(match_stuff)
 
     res = OSMGeocoder.geocode("#{match_stuff[:street]}, #{match_stuff[:zip]}, #{match_stuff[:city]}, #{match_stuff[:country]}")
@@ -114,20 +118,27 @@ class MatchController < ApplicationController
   end
 
   def delete_ask
-    @match = Match.find(params[:id])
-    unless @match.user == current_user
-      redirect_to "/match/#{@match.id}"
-    end    
+    begin
+      @match = Match.find(params[:id])
+    rescue =>e
+    end
+
+    if @match
+      unless @match.user == current_user
+        redirect_to "/match/#{@match.id}"
+      end
+    end
   end
 
-  def destroy
+  def delete
 
     @match = Match.find(params[:id])
     unless @match.user == current_user
       return
     end
-    @match.delete
-    redirect_to "/play"
+    @match.destroy
+    @match = false
+    render "delete_ask"
   end
 
   def match_scoring
@@ -181,8 +192,9 @@ class MatchController < ApplicationController
     if @match.max_player_number < @match.users.size || @match.status == "closed"
       return
     end
-
-    @match_scoring = MatchPendingUser.create(user: @user, match: @match)
+    if MatchPendingUser.where(user: current_user, match: @match).size == 0
+      @match_scoring = MatchPendingUser.create(user: @user, match: @match)
+    end
     render "show"
   end
 

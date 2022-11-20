@@ -7,7 +7,7 @@
     <div class="basic-list-container">
 
       <div class="basic-list-item">
-        Spieler Anzahl: <%= @match.max_player_number %>
+        Spieler Anzahl: <%= @match.match_scorings.size %>/<%= @match.max_player_number %>
       </div>
 
       <div class="basic-list-item">
@@ -16,10 +16,6 @@
 
       <div class="basic-list-item">
         <%= @match.game.title %>
-      </div>
-
-      <div class="basic-list-item">
-        <%= @match.status %>
       </div>
 
 

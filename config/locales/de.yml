@@ -107,4 +107,5 @@ de:
   match_description: "Beschreibung"
   edit_match: "Match bearbeiten"
   delete_match: "Match löschen"
+  delete_match_success: "Match wurde gelöscht"
   ask_delete_match: "Wollen sie das Match wirklich löschen?"

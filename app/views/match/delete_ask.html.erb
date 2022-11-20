@@ -1,19 +1,25 @@
-<div class="basic-box">
-  <div class="basic-box-headline"><%= t(:ask_delete_match) %></div>
-  
-  <a rel="nofollow" data-method="delete" href="/match/<%= @match.id%>">
-    <div class="button-primary" style="margin-top: 0;"><%= t(:delete) %> 
-        <div class="button-corner"></div>
-    </div>
-  </a>
-  
-  <a href="/match/<%= @match.id%>">
-    <div class="button-primary-decline"><%= t(:cancel) %> 
-        <div class="button-primary-decline-corner"></div>
-    </div>
-  </a>
+<turbo-frame id="delete_match">
+  <div class="basic-box">
+    <% if @match %>
+    <div class="basic-box-headline"><%= t(:ask_delete_match) %></div>
+    
+    <a href="/match/<%= @match.id%>/delete">
+      <div class="button-primary" style="margin-top: 0;"><%= t(:delete) %> 
+          <div class="button-corner"></div>
+      </div>
+    </a>
+    
+    <a href="/match/<%= @match.id%>">
+      <div class="button-primary-decline"><%= t(:cancel) %> 
+          <div class="button-primary-decline-corner"></div>
+      </div>
+    </a>
+    <% else %>
+    <div class="basic-box-headline"><%= t(:delete_match_success) %></div>
+    <% end %>
 
-  <br>
-</div>
+    <br>
+  </div>
+</turbo-frame>
 
 

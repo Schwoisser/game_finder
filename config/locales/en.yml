@@ -140,4 +140,5 @@ en:
   match_description: "Description"
   edit_match: "Edit Match"
   delete_match: "Delete Match"
+  delete_match_success: "Match has been deleted."
   ask_delete_match: "Do you really want to delete the match?"
