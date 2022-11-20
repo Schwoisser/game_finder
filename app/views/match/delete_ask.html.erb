@@ -1,0 +1,19 @@
+<div class="basic-box">
+  <div class="basic-box-headline"><%= t(:ask_delete_match) %></div>
+  
+  <a rel="nofollow" data-method="delete" href="/match/<%= @match.id%>">
+    <div class="button-primary" style="margin-top: 0;"><%= t(:delete) %> 
+        <div class="button-corner"></div>
+    </div>
+  </a>
+  
+  <a href="/match/<%= @match.id%>">
+    <div class="button-primary-decline"><%= t(:cancel) %> 
+        <div class="button-primary-decline-corner"></div>
+    </div>
+  </a>
+
+  <br>
+</div>
+
+

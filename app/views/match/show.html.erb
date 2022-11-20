@@ -43,11 +43,15 @@
       <br>
 
     </div>
-  <label class="basic_form_label" style="margin-bottom: 0.5rem;"> Match Description:</label>
+  <label class="basic_form_label" style="margin-bottom: 0.5rem;"><%= t(:match_description) %></label>
   <div class="basic-box-headline"><%= @match.description%></div>
   <br>
   <% if @match.user == current_user %>
-    <a href="<%= @match.id %>/edit" class="button"> Edit Match 
+    <a href="<%= @match.id %>/edit" class="button"> <%= t(:edit_match) %>
+      <div class="button-corner"></div>
+    </a>
+
+    <a href="<%= @match.id %>/delete_ask" class="button"> <%= t(:delete_match) %> 
       <div class="button-corner"></div>
     </a>
   <% end %>

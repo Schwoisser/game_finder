@@ -104,3 +104,7 @@ de:
 
   match_host: "Gastgeber"
   you: "du"
+  match_description: "Beschreibung"
+  edit_match: "Match bearbeiten"
+  delete_match: "Match löschen"
+  ask_delete_match: "Wollen sie das Match wirklich löschen?"

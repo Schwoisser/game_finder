@@ -113,6 +113,23 @@ class MatchController < ApplicationController
     redirect_to "/match/#{@match.id}/edit"
   end
 
+  def delete_ask
+    @match = Match.find(params[:id])
+    unless @match.user == current_user
+      redirect_to "/match/#{@match.id}"
+    end    
+  end
+
+  def destroy
+
+    @match = Match.find(params[:id])
+    unless @match.user == current_user
+      return
+    end
+    @match.delete
+    redirect_to "/play"
+  end
+
   def match_scoring
     # TODO check Authorization
     @match_scoring = MatchScoring.find(match_scoring_params[:match_scoring_id])

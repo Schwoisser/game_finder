@@ -137,3 +137,7 @@ en:
 
   match_host: "Host"
   you: "you"
+  match_description: "Description"
+  edit_match: "Edit Match"
+  delete_match: "Delete Match"
+  ask_delete_match: "Do you really want to delete the match?"
