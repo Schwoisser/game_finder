@@ -27,6 +27,8 @@
           <div class="ml-3"> 
             <% unless current_user == match_scoring.user %>
               <%= distance = current_user.distance_from(match_scoring.user, :units => :kms).to_i %>km 
+            <% else %>
+              <%= t(:you) %>
             <% end %>
           </div>
           <% if current_user == match.user %>
