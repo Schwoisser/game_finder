@@ -41,6 +41,7 @@ de:
   create_new_match: "Neues Spiel erstellen"
   player_number: "Spieler Anzahl"
   invite_player: "Spieler einladen"
+  invite_players: "Spieler einladen"
   save_match: "Spiel speichern"
 
   invited_players: "Eingeladene Spieler"

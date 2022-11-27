@@ -72,6 +72,7 @@ en:
   create_new_match: "Create new Match"
   player_number: "Player Number"
   invite_player: "Invite Player"
+  invite_players: "Invite Players"
   save_match: "Save Match"
 
   invited_players: "Invited Players"

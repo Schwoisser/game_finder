@@ -49,7 +49,7 @@
       <%= render  :partial => "match_user_manager/match_user_manager", locals: {match: @match}  %>
 
       <% if @users.size > 0 %>
-        <label class="basic_form_label" style="margin-bottom: 0.5rem;"> <%= t(:invite_player) %>:</label>
+        <label class="basic_form_label" style="margin-bottom: 0.5rem;"> <%= t(:invite_players) %>:</label>
 
         <%= f.collection_check_boxes :match_scorings, @users, :id, :full_name do |user| %>
           <div class="flex flex-row" style="max-width: 620px; margin-bottom: 0.25rem;">
