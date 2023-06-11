@@ -39,11 +39,12 @@ class ProfileController < ApplicationController
   def update
     @user = current_user
     @user.update(user_params)
+    unless user_params[:longitude] && user_params[:latitude]
+      res = OSMGeocoder.geocode("#{user_params[:street]}, #{user_params[:zip]}, #{user_params[:city]}, #{user_params[:country]}")
 
-    res = OSMGeocoder.geocode("#{user_params[:street]}, #{user_params[:zip]}, #{user_params[:city]}, #{user_params[:country]}")
-
-    @user.longitude = res.lng
-    @user.latitude = res.lat
+      @user.longitude = res.lng
+      @user.latitude = res.lat
+    end
     @user.save
 
     redirect_to "/profile"

@@ -1,5 +1,6 @@
   
   
+<% if current_user.latitude && current_user.longitude %>
 <div class="" data-controller="tab" style="">
 
   <div class="tab-navigation">
@@ -18,3 +19,19 @@
   </div>
 
 </div>
+
+<% else %>
+  <div class="basic-box">
+    <div class="basic-box-headline">
+      <%= t(:edit_your_geolocation) %>
+    </div>
+    <a class="" href="/profile/edit">
+      <div class="button-container">
+        <div class="button"><%= t(:edit) %>
+          <div class="button-corner"></div>
+        </div>
+      </div>
+    </a>
+</div>
+<br><br><br><br>
+<% end %>

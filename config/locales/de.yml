@@ -43,6 +43,10 @@ de:
   invite_player: "Spieler einladen"
   invite_players: "Spieler einladen"
   save_match: "Spiel speichern"
+  use_geolocation: "Benutze momentane Geolocation"
+  use_address: "Benutze Adresse"
+
+
 
   invited_players: "Eingeladene Spieler"
   participation_request: "Teilnahmeanfragen"
@@ -75,6 +79,7 @@ de:
   player_already_invited: "Freundschaftsanfrage gesendet."
   player_is_friend: "Spieler ist auf deiner Freundesliste."
 
+  edit_your_geolocation: "Um Spieler in deiner nähe zu finden gib eine Addresse oder Geolocation in dein Profil ein."
 
   send_friend_request: "Freundschaftsanfrage senden"
   add_friend: "Freund hinzufügen"

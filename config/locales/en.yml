@@ -74,6 +74,8 @@ en:
   invite_player: "Invite Player"
   invite_players: "Invite Players"
   save_match: "Save Match"
+  use_geolocation: "Use current geolocation"
+  use_address: "Use address"
 
   invited_players: "Invited Players"
   participation_request: "Participation Request"
@@ -107,7 +109,7 @@ en:
   player_already_invited: "Friend Request send."
   player_is_friend: "Plyer is on your Friendlist."
 
-
+  edit_your_geolocation: "To find players near you provide an address or geolocation in you profile."
 
   send_friend_request: "Send friend request"
   add_friend: "Add Friend"

@@ -10,27 +10,41 @@
       <label class="basic_form_label"><%= t(:title) %>:</label> 
       <%= f.text_field :title, placeholder: t(:title), class:"basic-box-form-input" %>
 
-      <label class="basic_form_label hidden"><%= t(:country) %>:</label> 
-      <%= f.text_field :country, placeholder: t(:country), value: "Deutschland", class:"hidden"  %>
+      <div data-controller="toggle location">
 
-      <label class="basic_form_label"><%= t(:street) %>:</label> 
-      <%= f.text_field :street, placeholder: "#{t(:street)} #{t(:house_number)}", class:"basic-box-form-input" %>
+        <div class="button-primary" data-action="click->location#getLocation" href="/match/new"><%= t(:use_geolocation) %>
+            <div class="button-corner"></div>
+        </div>
+        <div class="button-primary" data-action="click->toggle#toggle" href="/match/new"><%= t(:use_address) %>
+            <div class="button-corner"></div>
+        </div>
 
-      <div class="flex flex-row" style="max-width: 620px;" >
-        <div class="basic_form" style="width: 40%;">
-          <label class="basic_form_label"><%= t(:zip_code)%>:</label> 
-          <%= f.text_field :zip, placeholder: "12345", class:"basic-box-form-input" %>
+        <div class="hidden" data-toggle-target="toggled">
+          <label class="basic_form_label hidden"><%= t(:country) %>:</label> 
+          <%= f.text_field :country, placeholder: t(:country), value: "Deutschland", class:"hidden"  %>
+
+          <label class="basic_form_label"><%= t(:street) %>:</label> 
+          <%= f.text_field :street, placeholder: "#{t(:street)} #{t(:house_number)}", class:"basic-box-form-input" %>
+
+          <div class="flex flex-row" style="max-width: 620px;" >
+            <div class="basic_form" style="width: 40%;">
+              <label class="basic_form_label"><%= t(:zip_code)%>:</label> 
+              <%= f.text_field :zip, placeholder: "12345", class:"basic-box-form-input" %>
+            </div>
+            <div class="basic_form" style="width: 60%;">
+              <label class="basic_form_label"><%= t(:city)%>:</label> 
+              <%= f.text_field :city, placeholder: t(:city) %>
+            </div>
+          </div>
         </div>
-        <div class="basic_form" style="width: 60%;">
-          <label class="basic_form_label"><%= t(:city)%>:</label> 
-          <%= f.text_field :city, placeholder: t(:city) %>
-        </div>
+
+        <%= f.hidden_field :longitude, data: { "location-target": :longitude } %>
+        <%= f.hidden_field :latitude, data: { "location-target": :latitude } %>
+
       </div>
 
-
-
       <%# <label class="basic_form_label">Ort:</label>  %>
-      <% render :partial => 'layouts/location_selector' %>
+      
 
       <div class="flex flex-row" style="max-width: 620px;">
         <div class="basic_form" style="width: 40%;">
@@ -43,8 +57,7 @@
         </div>
       </div>
       <%= f.hidden_field :status, :value => @match.status %>
-      <%= f.hidden_field :longitude %>
-      <%= f.hidden_field :latitude %>
+
       <br>
       <%= render  :partial => "match_user_manager/match_user_manager", locals: {match: @match}  %>
 

@@ -18,8 +18,10 @@ class MainController < ApplicationController
     unrated_matches_temp = MatchScoring.where(user_id: current_user.id, rated: false)
     @unrated_matches = []
     unrated_matches_temp.each do |m|
-      if m.match.start_date < Date.current
-        @unrated_matches << m
+      if m.match
+        if m.match.start_date < Date.current
+          @unrated_matches << m
+        end
       end
     end
     @dev_notes = DevNote.last(2)

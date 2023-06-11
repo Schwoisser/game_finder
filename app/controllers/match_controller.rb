@@ -34,10 +34,22 @@ class MatchController < ApplicationController
     end
     @match = Match.new(match_stuff)
 
-    res = OSMGeocoder.geocode("#{match_stuff[:street]}, #{match_stuff[:zip]}, #{match_stuff[:city]}, #{match_stuff[:country]}")
+    if match_stuff[:street] != "" && match_stuff[:city] != ""
 
-    @match.longitude = res.lng
-    @match.latitude = res.lat
+      res = OSMGeocoder.geocode("#{match_stuff[:street]}, #{match_stuff[:zip]}, #{match_stuff[:city]}, #{match_stuff[:country]}")
+
+      @match.longitude = res.lng
+      @match.latitude = res.lat
+    elsif match_stuff[:longitude] != "" && match_stuff[:latitude] != ""
+      @match.longitude = match_stuff[:longitude].to_i
+      @match.latitude = match_stuff[:latitude].to_i
+    else
+      begin
+        @match.longitude = match_stuff[:longitude].to_i
+        @match.latitude = match_stuff[:latitude].to_i
+      rescue => e
+      end
+    end
 
     if match_scorings.size > match_stuff[:max_player_number].to_i
       @match.status = "open"
@@ -54,6 +66,8 @@ class MatchController < ApplicationController
       end
       MatchScoring.create(user: current_user, match: @match, accepted: true)
       redirect_to "/match/#{@match.id}"
+    else
+      # TODO error handling
     end
   end
 
