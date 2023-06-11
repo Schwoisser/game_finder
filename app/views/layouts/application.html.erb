@@ -29,14 +29,14 @@
       <div class="max-view-width ">
         <%= yield %>
 
+        <%= render 'popups/popup' %>
+
         <%= render :partial => 'layouts/footer', locals: { } %>
         <div style="height: 20px;"></div>
       </div>
     </div>
 
     <%= render :partial => 'layouts/nav', locals: { } %>
-
-    <%= render 'popups/popup' %>
 
   </body>
 </html>
