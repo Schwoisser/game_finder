@@ -318,8 +318,20 @@ h4 {
     background-color: $background-light;
 }
 
+.bg-icon {
+    background-color: $background-container-item-b;
+}
+
 .text-bright {
     color: $text-bright;
+}
+
+.text-dark {
+  color: $text-secondary
+}
+
+.text-xs {
+  font-size: $font-size-xs;
 }
 
 .max-view-width {

@@ -1,0 +1,59 @@
+<br><br>
+<% if @friend_list_users && @friend_list_users.size == 0%>
+<h4> <%= t(:look_for_friends)%> </h4>
+<% end %>
+<% @friend_list_users.each do |user| %>
+
+  <% last_message =  Message.where(sender: current_user, receiver: user).or(Message.where(sender: user, receiver: current_user)).order('created_at asc').last %>
+
+  <a class="p-2 flex flex-row <% if last_message.try(:unread) %> bg-highlight <% end %> dark_hover" href="message/send_to/<%= user.id %>" >
+    <div class="flex flex-row" >
+      <div class=" flex flex-col text-left" style="width:80px;" >
+        <% if user.image.attached? %>
+          <img style="border-radius: 100%; height: 30px; width: 30px;"  src="<%= (url_for(user.image)) %>" >
+        <% else %>
+          <div class="m-1" style="height:30px; width:30px; background-color: white; border-radius: 5rem;"></div>
+        <% end %>
+      </div>
+
+      
+      <div class=" flex flex-col text-left" style="width:552px;">
+        <div class="flex flex-row text-left" style="width:552px;">
+          <%= user.full_name %>
+        </div>
+        
+        <div class="flex flex-row <% if last_message.unread %>caption<% end %>" style="width:552px;">
+          <% if last_message %>
+            <%= last_message.message %>
+          <% end %>
+        </div>
+      </div>
+      <div class=" flex flex-col text-left" style="width:100px;">
+      <% if last_message %>
+        <%= last_message.created_at.strftime("%d.%m.%Y") %>
+        <% end %>
+      </div>
+    </div>
+  </a>
+<% end %>
+
+<% @friend_invites.each do |friend_request| %>
+  <div><%= friend_request.inviting_user.full_name %></div>
+    <%= simple_form_for friend_request, url: "/message/answer_friend_request" do |f| %>
+      <div><%= t(:accept) %></div>
+      <%=f.hidden_field :status, :value => "accepted" %>
+      <%=f.hidden_field :inviting_user_id, :value => friend_request.inviting_user.id %>
+      <%= f.button :submit %>
+    <% end %>
+    <%= simple_form_for friend_request, url: "/message/answer_friend_request" do |f| %>
+      <div><%= t(:decline) %></div>
+      <%=f.hidden_field :status, :value => "declined" %>
+      <%=f.hidden_field :inviting_user_id, :value => friend_request.inviting_user.id %>
+      <%= f.button :submit %>
+    <% end %>
+<% end %>
+
+
+  <a href="/play">
+    <h4> <%= t(:add_friends) %> </h4>
+  </a>

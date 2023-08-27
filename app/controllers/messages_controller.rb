@@ -1,4 +1,37 @@
 class MessagesController < ApplicationController
+
+  def show
+    unless params[:id]
+      @user = current_user
+      @friend_list = FriendList.where(inviting_user: current_user, status: :accepted).or(FriendList.where(receiving_user: current_user, status: :accepted))
+      @friend_list_users = []
+      @tab = params[:tab]
+      @friend_list.each do |friend|
+        if friend.inviting_user != current_user
+          @friend_list_users << friend.inviting_user
+        else
+          @friend_list_users << friend.receiving_user
+        end
+      end
+      @friend_invites = FriendList.where(receiving_user: current_user, status: :sent)
+      # TODO FriendList + Last Message (tuples)
+      # link auf messages new mit user id
+      # message / user_id -> alles nachrichten mit dem user
+      # + message new form
+    else
+      @user = User.find(params[:id])
+    end
+
+    @player_attribute_count = PlayerAttributeCount.where(user: @user).order(votes: :desc).first
+    if @player_attribute_count
+      @player_attribute = PlayerAttribute.find(@player_attribute_count.player_attribute_id)
+      @player_attribute_title = @player_attribute.title
+    else
+      @player_attribute_title ="none yet"
+    end
+  end
+  
+
   def index
     @user = current_user
     @friend_list = FriendList.new

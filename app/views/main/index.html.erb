@@ -12,6 +12,38 @@
       <%= image_tag 'logo.svg'%>
   </div>
 
+  <div class="flex flex-row">
+    <div class="p-2 flex flex-col">
+    <% if @user.image.attached? %>
+      <img style="border-radius: 100%; height: 44px; width: 44px;"  src="<%= (url_for(@user.image)) %>" >
+    <% else %>
+      <div style="border-radius: 100%; height: 44px; width: 44px; background-color: white"></div>
+    <% end %>
+    </div>
+    <div class="p-2 flex flex-col">
+      <%= @user.full_name%>
+    </div>
+      <div class="p-2 flex flex-col">
+        <a class="" href="<%= profile_path %>">
+          <div class="bg-icon p-1 " style="border-radius: 100%; height: 40px; width: 40px;">
+            <svg class="mx-auto mb-2" style="margin-top: 2px;" width="22px" height="25px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
+                <title>GUIIcons_Profile</title>
+                <desc>Created with Sketch.</desc>
+                <g id="Icons_Profile" stroke="#767676" stroke-width="1" fill="#767676" fill-rule="evenodd">
+                <path d="M0.166666667,22 L21.1666667,22 C19.4860782,16.0246914 16.0054648,13.037037 10.7248265,13.037037 C5.44418817,13.037037 1.92480156,16.0246914 0.166666667,22 Z" id="Path-3" stroke="#767676" stroke-width="1.8"></path>
+                <ellipse id="Oval" stroke="#767676" stroke-width="1.8" cx="10.3974359" cy="4.48148148" rx="4.23076923" ry="4.48148148"></ellipse>
+                </g>
+            </svg>
+          </div>
+
+          <div class="text-center text-dark text-xs" >
+              <%= t(:edit) %> <%= t(:profile) %>
+          </div>
+      </a>
+    </div>
+  </div>
+
   <div class="basic-box">
     <div class="flex flex-row p-2 justify-center ">
 

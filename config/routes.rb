@@ -76,6 +76,7 @@ Rails.application.routes.draw do
   get "match_user_manager/invite_user_to_match/:user_id/:match_id", to: "match_user_manager#invite_user_to_match"
 
   get "message/send_to/:id", to: "messages#send_to"
+  get "messages", to: "messages#show"
   resources "messages"
 
   post "/message/answer_friend_request", to: "messages#answer_friend_request"
