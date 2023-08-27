@@ -79,6 +79,8 @@ de:
   player_already_invited: "Freundschaftsanfrage gesendet."
   player_is_friend: "Spieler ist auf deiner Freundesliste."
 
+  logged_in_as: "Eingeloggt als"
+
   edit_your_geolocation: "Um Spieler in deiner nähe zu finden gib eine Addresse oder Geolocation in dein Profil ein."
 
   send_friend_request: "Freundschaftsanfrage senden"

@@ -334,6 +334,14 @@ h4 {
   font-size: $font-size-xs;
 }
 
+.text-sm {
+  font-size: $font-size-sm;
+}
+
+.text-md {
+  font-size: $font-size-md;
+}
+
 .max-view-width {
     width: auto;
     max-width: 44.5rem;

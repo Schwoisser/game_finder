@@ -109,6 +109,8 @@ en:
   player_already_invited: "Friend Request send."
   player_is_friend: "Plyer is on your Friendlist."
 
+  logged_in_as: "Logged in as"
+
   edit_your_geolocation: "To find players near you provide an address or geolocation in you profile."
 
   send_friend_request: "Send friend request"
